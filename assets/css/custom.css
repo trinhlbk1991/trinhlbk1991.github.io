@@ -23,3 +23,15 @@
 .post-title h1 {
     text-transform: uppercase;
 }
+
+.post-metadata {
+    display: inline-block;
+    margin: auto;
+    float: right;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.post-metadata span {
+	margin-right: 1.5rem;
+}
