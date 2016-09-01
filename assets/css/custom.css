@@ -1,3 +1,25 @@
 .author-photo {
     background-color: #222;
 }
+
+
+.post-list li  a {
+    font-size: 1rem;
+    text-decoration: underline;
+    font-weight: normal;
+}
+
+.post-list li > a {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.post-list li {
+    margin-bottom: 55px;
+}
+
+.post-title h1 {
+    text-transform: uppercase;
+}
