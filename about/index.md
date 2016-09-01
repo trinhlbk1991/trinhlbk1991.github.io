@@ -6,8 +6,10 @@ author: admin
 comments: true
 categories: []
 permalink: /about/
-image: https://c2.staticflickr.com/2/1581/24673266122_00acaae3b7_h.jpg
+feature: https://c2.staticflickr.com/2/1516/25597233662_4a5a0509f2_c.jpg
 ---
+
+## Glasses. Geek. Backpacker.
 
 Hi, My name's Trinh Le. I am a Software Engineer experienced with Web and Mobile Development.
 
