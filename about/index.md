@@ -1,37 +1,19 @@
 ---
 layout: page
-title: About the Theme
-tags: [about, Jekyll, theme, moon]
-date: 2016-03-21
-comments: false
+title: About Us
+date: 2014-12-05 03:24
+author: admin
+comments: true
+categories: []
+permalink: /about/
+image: https://c2.staticflickr.com/2/1581/24673266122_00acaae3b7_h.jpg
 ---
-    
-<center><a href="http://taylantatli.github.io/Moon"><b>Moon</b></a> is a minimal, one column jekyll theme.</center>
 
-## Features
-* Minimal, you can focus on your content
-* Responsive
-* Disqus integration
-* Syntax highlighting
-* Optional post image
-* Social icons
-* Page for sharing projects
-* Optional background image
-* Simple navigation menu
-* MathJax support
+Hi, I'm Trinh Le and I develop Android apps since 2013. I am passionate in making mobile games and apps for Android devices.
 
-## Preview
+You can find my profile at <a target="_blank" href="https://www.linkedin.com/in/trinhlbk1991">Linkedin</a> or take a look at my personal <a target="_blank" href="https://play.google.com/store/apps/dev?id=7059334999797832434">Google Play Store</a>.
 
-{% capture images %}
-    https://cloud.githubusercontent.com/assets/754514/14509720/61c61058-01d6-11e6-93ab-0918515ecd56.png
-    https://cloud.githubusercontent.com/assets/754514/14509716/61ac6c8e-01d6-11e6-879f-8308883de790.png
-{% endcapture %}
-{% include gallery images=images caption="Screenshots of Moon Theme" cols=2 %}
+Do you need to get Android dev work done? Get in touch to inquire my availability.
 
-See a [live version of Moon](http://taylantatli.github.io/Moon) hosted on GitHub.
+Email: <a target="_blank" href="mailto:trinhlbk1991@gmail.com" target="_top">trinhlbk1991@gmail.com</a>
 
-## Getting Started
-
-To learn how to install and use this theme check out the [Setup Guide](http://taylantatli.me/Moon/moon-theme/) for more information.
-      
-[Install Moon](https://github.com/TaylanTatli/Moon){: .btn}

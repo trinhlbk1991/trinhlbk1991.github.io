@@ -1,14 +1,14 @@
 # Site
 title:              Ice Tea 09
 bio:                'Share to be shared'
-description:        "Moon is a minimal, one column jekyll theme for your blog."
+description:        ""
 reading_time:       true
-words_per_minute:   100
+words_per_minute:   150
 logo:               'assets/img/logo.png'
 background:         'assets/img/placeholder-big.jpg'
 tiled_bg:           false   # Set this true if you want to tile your background image, otherwise it will be covered
 locale:             en_US
-url:                http://icetea09.com
+url:                http://localhost:4000
 
 # Jekyll
 permalink:          /:categories/:year/:month/:day/:title/
