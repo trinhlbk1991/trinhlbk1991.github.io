@@ -2,10 +2,10 @@
 layout: post
 title:  2D Graphics using Multi-threading
 date: 2014-03-02 09:51
-author: admin
+author: trinh_le
 comments: true
-categories: [2d graphics, Android, Java, multi-thread]
-tags: [Android, Java]
+categories: [blog]
+tags: [Android]
 ---
 
 <h2>A - Introduction Multi-threading</h2>

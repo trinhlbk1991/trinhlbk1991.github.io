@@ -2,10 +2,10 @@
 layout: post
 title: File Storage in Android
 date: 2015-07-19 16:22
-author: admin
+author: trinh_le
 comments: true
 categories: [blog]
-tags: [Android, Java]
+tags: [Java]
 image: /images/posts/19709750348_4de20141d2_b.jpg
 ---
 

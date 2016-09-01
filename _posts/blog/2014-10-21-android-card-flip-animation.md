@@ -2,10 +2,10 @@
 layout: post
 title: Card Flip Animation
 date: 2014-10-21 14:36
-author: admin
+author: trinh_le
 comments: true
 categories: [blog]
-tags: [Java, Android]
+tags: [Android]
 ---
 
 In previous posts, I showed you how to apply animation (<a title="Activity Fade Transition" href="http://icetea09.com/blog/2014/06/15/android-activity-fade-transition/">fade</a>, <a title="Activity Slide Transition" href="http://icetea09.com/blog/2014/06/17/android-activity-slide-transition/">slide</a>) to activity transaction.

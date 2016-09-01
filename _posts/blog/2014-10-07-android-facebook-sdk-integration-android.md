@@ -2,10 +2,10 @@
 layout: post
 title: Facebook SDK Integration in Android
 date: 2014-10-07 18:28
-author: admin
+author: trinh_le
 comments: true
 categories: [blog]
-tags: [Java, Android]
+tags: [Android]
 ---
 
 You must know that social media has a very important position in modern life - every thing can be shared on social network.

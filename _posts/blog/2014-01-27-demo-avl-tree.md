@@ -2,10 +2,10 @@
 layout: post
 title:  Demo AVL Tree
 date: 2014-01-27 10:56
-author: admin
+author: trinh_le
 comments: true
 categories: [blog]
-tags: [C Sharp]
+tags: [C#]
 ---
 
 This is my final project for the Data Structure and Algorithm subjeb in my university.

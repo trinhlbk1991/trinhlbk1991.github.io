@@ -2,10 +2,10 @@
 layout: post
 title: Tab Layout
 date: 2014-02-06 11:44
-author: admin
+author: trinh_le
 comments: true
 categories: [blog]
-tags: [Java, Android]
+tags: [Android]
 ---
 
 <h2>A - Introduction about Tab Layout</h2>

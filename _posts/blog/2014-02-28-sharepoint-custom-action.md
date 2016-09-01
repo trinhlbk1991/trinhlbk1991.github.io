@@ -2,10 +2,10 @@
 layout: post
 title:  Custom Action
 date: 2014-02-28 14:55
-author: admin
+author: trinh_le
 comments: true
 categories: [blog]
-tags: [C Sharp, SharePoint]
+tags: [SharePoint]
 ---
 
 <h2>A. What is Custom Action?</h2>

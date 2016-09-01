@@ -2,10 +2,10 @@
 layout: post
 title:  Comparing the Sorting Algorithms Program
 date: 2014-01-28 13:46
-author: admin
+author: trinh_le
 comments: true
 categories: [blog]
-tags: [C Sharp]
+tags: [C#]
 ---
 
 A COMPARING THE SORTING ALGORITHMS PROGRAM IN C

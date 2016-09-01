@@ -2,10 +2,10 @@
 layout: post
 title: Custom Toast
 date: 2014-01-22 09:33
-author: admin
+author: trinh_le
 comments: true
 categories: [blog]
-tags: [Java, Android]
+tags: [Android]
 ---
 A toast is a view containing a quick little message for the user. It will never receive focus and will be dismiss after a specific time.
 

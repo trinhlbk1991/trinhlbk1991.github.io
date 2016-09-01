@@ -6,7 +6,7 @@ author: Trinh Le
 avatar: trinhle.png
 comments: true
 categories: [blog]
-tags: [Android, Java, Espresso]
+tags: [Android, Espresso]
 image: /images/posts/espresso.png
 ---
 

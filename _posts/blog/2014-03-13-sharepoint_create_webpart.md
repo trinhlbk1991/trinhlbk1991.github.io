@@ -2,10 +2,10 @@
 layout: post
 title:  Create Webpart
 date: 2014-03-13 09:53
-author: admin
+author: trinh_le
 comments: true
 categories: [blog]
-tags: [C Sharp, SharePoint]
+tags: [SharePoint]
 ---
 
 <h2>A - What is Webpart?</h2>

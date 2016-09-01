@@ -2,10 +2,10 @@
 layout: post
 title: Save Data To File
 date: 2014-03-04 09:34
-author: admin
+author: trinh_le
 comments: true
 categories: [blog]
-tags: [Java, Android]
+tags: [Android]
 ---
 
 

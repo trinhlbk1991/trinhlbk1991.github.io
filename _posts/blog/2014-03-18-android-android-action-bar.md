@@ -2,10 +2,10 @@
 layout: post
 title: Android Action Bar
 date: 2014-03-18 13:59
-author: admin
+author: trinh_le
 comments: true
 categories: [blog]
-tags: [Java, Android]
+tags: [Android]
 ---
 
 <h2>A - Android Action Bar introduction</h2>

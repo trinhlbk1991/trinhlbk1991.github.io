@@ -2,7 +2,7 @@
 layout: post
 title:  Object Comparison
 date: 2014-05-04 22:25
-author: danghuynh
+author: Dang Huynh
 comments: true
 categories: [blog]
 tags: [JavaScript]

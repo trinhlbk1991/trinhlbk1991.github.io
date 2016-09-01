@@ -2,10 +2,10 @@
 layout: post
 title: Floating View like Facebook Chatheads
 date: 2015-03-16 23:21
-author: admin
+author: trinh_le
 comments: true
 categories: [blog]
-tags: [Java, Android]
+tags: [Android]
 image: https://c2.staticflickr.com/2/1517/25279627219_998c657db3_b.jpg
 ---
 

@@ -6,7 +6,7 @@ author: trinh_le
 comments: true
 categories: [blog]
 share: true
-tags: [Java, Android]
+tags: [Android]
 ---
 
 You are developing an Android app and you don't want to use the default dialog like this:

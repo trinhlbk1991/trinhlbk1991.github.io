@@ -2,10 +2,10 @@
 layout: post
 title: Apply MVP Pattern for Android
 date: 2014-11-10 17:29
-author: admin
+author: trinh_le
 comments: true
 categories: [blog]
-tags: [Java, Android]
+tags: [Android]
 ---
 
 <h2>A - What is MVP?</h2>

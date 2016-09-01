@@ -2,10 +2,10 @@
 layout: post
 title: Simple Request Using Volley
 date: 2014-10-22 12:19
-author: admin
+author: trinh_le
 comments: true
 categories: [blog]
-tags: [Java, Android]
+tags: [Android]
 ---
 
 <h2>A – What is Volley?</h2>

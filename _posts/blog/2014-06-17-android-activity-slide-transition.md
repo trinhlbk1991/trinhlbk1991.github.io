@@ -2,10 +2,10 @@
 layout: post
 title: Activity Slide Transition
 date: 2014-06-17 22:18
-author: admin
+author: trinh_le
 comments: true
 categories: [blog]
-tags: [Java, Android]
+tags: [Android]
 ---
 
 <h2>A - Introduction</h2>

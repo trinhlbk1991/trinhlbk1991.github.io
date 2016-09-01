@@ -2,10 +2,10 @@
 layout: post
 title:  Add Webpart Into Application Page
 date: 2014-02-26 17:50
-author: admin
+author: trinh_le
 comments: true
 categories: [blog]
-tags: [C Sharp, SharePoint]
+tags: [SharePoint]
 ---
 
 <h2>A - Custom Webpart</h2>

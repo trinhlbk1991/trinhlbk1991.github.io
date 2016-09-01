@@ -2,10 +2,10 @@
 layout: post
 title: Notification
 date: 2014-03-05 06:19
-author: admin
+author: trinh_le
 comments: true
 categories: [blog]
-tags: [Java, Android]
+tags: [Android]
 ---
 
 <h2>A - Introduction</h2>

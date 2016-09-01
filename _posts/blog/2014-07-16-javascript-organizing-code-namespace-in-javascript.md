@@ -2,7 +2,7 @@
 layout: post
 title:  Organizing code with namespace in JavaScript
 date: 2014-07-16 21:55
-author: danghuynh
+author: Dang Huynh
 comments: true
 categories: [blog]
 tags: [JavaScript]

@@ -2,10 +2,10 @@
 layout: post
 title:  Support Multiple Languages in Android
 date: 2014-05-04 14:05
-author: admin
+author: trinh_le
 comments: true
 categories: [blog]
-tags: [Java, Android]
+tags: [Android]
 ---
 
 <h2>A - Introduction</h2>

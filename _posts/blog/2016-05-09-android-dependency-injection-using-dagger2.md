@@ -6,7 +6,7 @@ author: Trinh Le
 avatar: trinhle.png
 comments: true
 categories: [blog]
-tags: [Android, Java, Dagger2, Design Pattern]
+tags: [Android, Dagger2, Design Pattern]
 image: /images/posts/espresso.png
 ---
 

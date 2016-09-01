@@ -2,7 +2,7 @@
 layout: post
 title:  Tips and Tricks for JavaScript Array
 date: 2014-06-17 18:59
-author: admin
+author: trinh_le
 comments: true
 categories: [blog]
 tags: [JavaScript]

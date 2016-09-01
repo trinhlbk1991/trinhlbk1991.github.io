@@ -2,7 +2,7 @@
 layout: post
 title:  Single Client Validation for Multiple Dynamic Custom Validator
 date: 2014-01-24 15:40
-author: admin
+author: trinh_le
 comments: true
 categories: [blog]
 tags: [JavaScript]

@@ -2,10 +2,10 @@
 layout: post
 title: Apply Material Design to Pre-Lollipop Devices using AppCompat v21
 date: 2014-12-09 02:08
-author: admin
+author: trinh_le
 comments: true
 categories: [blog]
-tags: [Java, Android]
+tags: [Android]
 image: /images/posts/24164029984_b3f2200484_h.jpg
 ---
 

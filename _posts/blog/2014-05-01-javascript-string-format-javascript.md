@@ -2,7 +2,7 @@
 layout: post
 title:  String.Format in JavaScript
 date: 2014-05-01 12:44
-author: admin
+author: trinh_le
 comments: true
 categories: [blog]
 tags: [JavaScript]

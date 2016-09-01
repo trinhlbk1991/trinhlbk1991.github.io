@@ -2,10 +2,10 @@
 layout: post
 title: Couchbase Lite
 date: 2015-05-15 22:39
-author: admin
+author: trinh_le
 comments: true
 categories: [blog]
-tags: [Java, Android, Couchbase]
+tags: [Android, Couchbase]
 image: https://c2.staticflickr.com/2/1672/24165316453_c57900dcc0_h.jpg
 ---
 

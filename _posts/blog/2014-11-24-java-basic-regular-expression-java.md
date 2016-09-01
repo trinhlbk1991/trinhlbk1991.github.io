@@ -2,7 +2,7 @@
 layout: post
 title: Basic Regular Expression in Java
 date: 2014-11-24 17:32
-author: admin
+author: trinh_le
 comments: true
 categories: [blog]
 tags: [Java]

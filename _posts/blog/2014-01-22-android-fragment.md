@@ -5,7 +5,7 @@ date: 2014-01-22 10:33
 author: admin
 comments: true
 categories: [blog]
-tags: [Java, Android]
+tags: [Android]
 ---
 <h2>A - Introduction</h2>
 Fragment is some kind of "small Activity". It can be embed into an Activity and reused in others.

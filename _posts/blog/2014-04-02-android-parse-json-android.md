@@ -2,10 +2,10 @@
 layout: post
 title: Parse JSON in Android
 date: 2014-04-02 16:00
-author: admin
+author: trinh_le
 comments: true
 categories: [blog]
-tags: [Java, Android]
+tags: [Android]
 ---
 
 <h2>A - Introduction</h2>

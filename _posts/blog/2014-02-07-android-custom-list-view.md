@@ -2,10 +2,10 @@
 layout: post
 title: Custom List View
 date: 2014-02-07 10:29
-author: admin
+author: trinh_le
 comments: true
 categories: [blog]
-tags: [Java, Android]
+tags: [Android]
 ---
 
 <h2>A - Introduction</h2>

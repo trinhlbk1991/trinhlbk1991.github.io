@@ -2,10 +2,10 @@
 layout: post
 title: Get Result From Other App
 date: 2014-06-10 22:34
-author: admin
+author: trinh_le
 comments: true
 categories: [blog]
-tags: [Java, Android]
+tags: [Android]
 ---
 
 <h2>A - Preface</h2>

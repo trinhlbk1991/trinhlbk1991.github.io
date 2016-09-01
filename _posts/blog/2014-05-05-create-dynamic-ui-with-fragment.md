@@ -2,10 +2,10 @@
 layout: post
 title:  Create Dynamic UI with Fragment
 date: 2014-05-05 17:50
-author: admin
+author: trinh_le
 comments: true
 categories: [blog]
-tags: [Java, Android]
+tags: [Android]
 ---
 
 <h2>A - Preface</h2>

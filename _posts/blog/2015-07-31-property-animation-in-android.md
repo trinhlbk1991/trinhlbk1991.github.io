@@ -6,7 +6,7 @@ author: Trinh Le
 avatar: trinhle.png
 comments: true
 categories: [blog]
-tags: [Android, Java]
+tags: [Android]
 image: /images/posts/24163933764_7868362799_o.gif
 ---
 <h2><b>A - Property Animation in Android Overview</b></h2>

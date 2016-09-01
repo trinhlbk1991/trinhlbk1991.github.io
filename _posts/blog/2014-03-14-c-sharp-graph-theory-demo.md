@@ -2,10 +2,10 @@
 layout: post
 title:  Graph Theory Demo
 date: 2014-03-14 09:52
-author: admin
+author: trinh_le
 comments: true
 categories: [blog]
-tags: [C Sharp]
+tags: [C#]
 ---
 
 <h2>A - Introduction Graph Theory Demo</h2>

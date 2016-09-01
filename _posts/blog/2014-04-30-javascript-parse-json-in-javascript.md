@@ -2,7 +2,7 @@
 layout: post
 title:  Parse JSON in JavaScript
 date: 2014-04-30 14:25
-author: admin
+author: trinh_le
 comments: true
 categories: [blog]
 tags: [JavaScript]

@@ -2,10 +2,10 @@
 layout: post
 title: Singleton Implementation
 date: 2014-05-12 15:36
-author: admin
+author: trinh_le
 comments: true
 categories: [blog]
-tags: [Java, Android]
+tags: [Android]
 ---
 
 <h2>A - Intent</h2>

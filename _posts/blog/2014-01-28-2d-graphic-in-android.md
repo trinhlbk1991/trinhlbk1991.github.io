@@ -2,9 +2,10 @@
 layout: post
 title:  2D Graphic in Android
 date: 2014-01-28 13:21
-author: admin
+author: trinh_le
 comments: true
 categories: [blog]
+tags: [Android]
 ---
 
 

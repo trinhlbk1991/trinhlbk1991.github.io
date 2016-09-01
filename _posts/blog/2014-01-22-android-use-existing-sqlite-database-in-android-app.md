@@ -2,10 +2,10 @@
 layout: post
 title: Use Existing SQLite Database in Android App
 date: 2014-01-22 10:40
-author: admin
+author: trinh_le
 comments: true
 categories: [blog]
-tags: [Java, Android]
+tags: [Android]
 ---
 
 In my previous post about <a title="[Android] SQLite" href="http://icetea09.com/blog/2014/03/03/android-sqlite/">SQLite </a>, I only post the way to create database when application started.

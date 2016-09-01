@@ -2,10 +2,10 @@
 layout: post
 title:  CAML Query
 date: 2014-03-12 10:07
-author: admin
+author: trinh_le
 comments: true
 categories: [blog]
-tags: [C Sharp, SharePoint]
+tags: [SharePoint]
 ---
 <h2>A - What is CAML Query?</h2>
 CAML stands for <b>Collaborative Application Markup Language </b>(too long to remember <img id="smilie_242" style="font-size: 14px; line-height: 1.5em;" title="Sweat" alt=":sweat:" src="http://vozforums.com/images/smilies/Off/sweat.gif" />)

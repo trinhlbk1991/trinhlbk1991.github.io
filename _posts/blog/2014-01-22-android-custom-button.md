@@ -6,7 +6,7 @@ author: trinh_le
 comments: true
 categories: [blog]
 share: true
-tags: [Java, Android]
+tags: [Android]
 ---
 
 Sometime, you don't want to use provided buttons style of Android like this:

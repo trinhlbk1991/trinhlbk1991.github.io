@@ -2,10 +2,10 @@
 layout: post
 title: Using ProcessBatchData To Import Data To SharePoint List
 date: 2014-01-24 14:52
-author: admin
+author: trinh_le
 comments: true
 categories: [blog]
-tags: [C Sharp, SharePoint]
+tags: [SharePoint]
 ---
 
 <h2>1 - When to use ProcessBatchData ?</h2>

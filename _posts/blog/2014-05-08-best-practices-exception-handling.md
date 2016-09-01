@@ -2,10 +2,10 @@
 layout: post
 title: Best Practices for Exception Handling
 date: 2014-05-08 18:38
-author: admin
+author: trinh_le
 comments: true
 categories: [blog]
-tags: [Java, Android]
+tags: [Android]
 ---
 
 

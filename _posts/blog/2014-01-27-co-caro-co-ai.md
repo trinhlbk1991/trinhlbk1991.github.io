@@ -2,10 +2,10 @@
 layout: post
 title:  Cờ Caro Có AI
 date: 2014-01-27 11:05
-author: admin
+author: trinh_le
 comments: true
 categories: [blog]
-tags: [C Sharp]
+tags: [C#]
 ---
 
 <h2><strong>I. </strong><strong>Giới thiệu bài toán:</strong></h2>

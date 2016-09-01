@@ -2,10 +2,10 @@
 layout: post
 title: Add Webpart Connection Programmatically
 date: 2014-01-22 10:51
-author: admin
+author: trinh_le
 comments: true
 categories: [blog]
-tags: [SharePoint, C Sharp]
+tags: [SharePoint]
 ---
 Yesterday, I was assigned a quite tough task which cost me a lot of effort to finish <img id="smilie_251" title="Nosebleed" src="http://vozforums.com/images/smilies/Off/nosebleed.gif" alt="add webpart connection programmatically" />
 

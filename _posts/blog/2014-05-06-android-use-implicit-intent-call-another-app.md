@@ -2,10 +2,10 @@
 layout: post
 title: Use Implicit Intent to Call Another App
 date: 2014-05-06 18:54
-author: admin
+author: trinh_le
 comments: true
 categories: [blog]
-tags: [Java, Android]
+tags: [Android]
 ---
 
 <h2>A - Preface</h2>

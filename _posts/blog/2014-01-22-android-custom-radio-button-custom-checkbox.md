@@ -2,10 +2,10 @@
 layout: post
 title: Custom Radio Button & Custom Checkbox
 date: 2014-01-22 10:47
-author: admin
+author: trinh_le
 comments: true
 categories: [blog]
-tags: [Java, Android]
+tags: [Android]
 ---
 
 In previous post "<a href="http://icetea09.com/blog/2014/01/22/android-custom-button/">Custom Button</a>" we know how to customize a default Button of Android.

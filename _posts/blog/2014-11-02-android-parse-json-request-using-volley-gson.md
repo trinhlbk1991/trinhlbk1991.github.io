@@ -2,10 +2,10 @@
 layout: post
 title: Parse JSON Request using Volley and GSON
 date: 2014-11-02 17:38
-author: admin
+author: trinh_le
 comments: true
 categories: [blog]
-tags: [Java, Android]
+tags: [Android]
 ---
 
 In previous <a title="Simple Request Using Volley" href="http://icetea09.com/blog/2014/10/22/android-simple-request-using-volley/" target="_blank">post</a>,  I showed you how to use Volley to make a simple request in Android application.

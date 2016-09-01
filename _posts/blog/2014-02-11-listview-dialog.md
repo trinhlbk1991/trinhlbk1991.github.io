@@ -2,10 +2,10 @@
 layout: post
 title: ListView Dialog
 date: 2014-02-11 15:32
-author: admin
+author: trinh_le
 comments: true
 categories: [blog]
-tags: [Java, Android]
+tags: [Android]
 ---
 
 First of all, I'll show you the result of this post to give you some motivation <img title="Beauty" src="http://vozforums.com/images/smilies/Off/beauty.gif" alt=":beauty:" />

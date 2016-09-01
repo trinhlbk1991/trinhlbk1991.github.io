@@ -2,10 +2,10 @@
 layout: post
 title: Drawer Navigation Menu with Material Design Style
 date: 2015-01-02 15:01
-author: admin
+author: trinh_le
 comments: true
 categories: [blog]
-tags: [Java, Android]
+tags: [Android]
 image: https://c2.staticflickr.com/2/1477/24165316263_b46eadf1ed_h.jpg
 ---
 
