@@ -46,7 +46,22 @@ layout: compress
                 {{ content }}
                 
                 <div class="entry-meta">
-                {% include meta.html %}
+                    <br><hr>
+                    <span class="entry-tags">
+                        <a href="{{ site.url }}/travelouge-archive/#{{ page.country }}" title="Country {{ page.country }}" class="tag"><span class="term">{{ page.country }}</span></a>
+                    </span>
+                    <span class="social-share">
+                        <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ page.url }}" title="Share on Facebook" class="tag">
+                            <span class="term"><i class="fa fa-facebook-square"></i> Like</span>
+                        </a>
+                        <a target="_blank" href="https://twitter.com/intent/tweet?text={{ site.url }}{{ page.url }}" title="Share on Twitter" class="tag">
+                            <span class="term"><i class="fa fa-twitter-square"></i> Tweet</span>
+                        </a>
+                        <a target="_blank" href="https://plus.google.com/share?url={{ site.url }}{{ page.url }}" title="Share on Google+" class="tag">
+                                <span class="term"><i class="fa fa-google-plus-square"></i> +1</span>
+                        </a>
+                    </span>
+                    <div style="clear:both"></div>
                 </div>
 
             </div>
