@@ -1,7 +1,8 @@
 # Site
 title:              Ice Tea 09
 bio:                'Share to be shared'
-description:        ""
+email:              'trinhlbk1991@gmail.com'
+description:        'Share to be shared'
 reading_time:       true
 words_per_minute:   150
 logo:               'assets/img/logo.png'
@@ -39,9 +40,9 @@ disqus_shortname:   icetea09
   #ad-slot:
 #bing-verify:
 #email:
-twitter:            khanhtrinhspk
+twitter_username:   khanhtrinhspk
 #facebook:           lebakhanhtrinh
-github:             trinhlbk1991
+github_username:    trinhlbk1991
 stackoverflow:      2134265/trinh-le
 linkedin:           trinhlbk1991
 #xing:              username
