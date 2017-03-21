@@ -7,7 +7,7 @@ avatar: trinhle.png
 comments: true
 
 tags: [Android, Dagger2, Design Pattern]
-image: /images/posts/espresso.png
+image: assets/images/android/dagger2.jpeg
 ---
 
 <h2>1 - What is Dependency Injection?</h2>
@@ -19,13 +19,13 @@ For example, in our Android app (more specifically, in <b>LoginActivity</b>), we
 This is the <b>AuthenticationApi</b> class, which will contact the server and verify input credentials:
 {% highlight java %}
 public interface IAuthenticationApi {
-    
+
     Future<Authentication> authentication(String username, String password);
 
 }
 
 public class AuthenticationApi implements IAuthenticationApi{
-    
+
     @Override
     public Future<Authentication> authentication(String username, String password) {
         // Do a lot of stuff here like hitting server with provided auth info
@@ -84,7 +84,7 @@ Then, inside Application class, we create a new instance of <b>ApiFactory</b> an
 
 {% highlight java %}
 public class MyApplication extends Application {
-    
+
     private ApiFactory mApiFactory;
 
     public void setApiFactory(ApiFactory apiFactory) {
@@ -134,7 +134,7 @@ Basically, the technique of DI is simple. But if your project is quite big, you 
 <h2>2 - Dagger2 Introduction</h2>
 
 <h3>2.1 - What is Dagger2?</h3>
-Dagger2 is a fully static, compile-time dependency injection framework for both Java and Android. 
+Dagger2 is a fully static, compile-time dependency injection framework for both Java and Android.
 It is an adaptation of an earlier version created by Square and now maintained by Google.
 
 <h3>2.2 - Why using Dagger2?</h3>
@@ -163,7 +163,7 @@ Add following plugin and dependencies into app scope <b>build.gradle</b> file:
 
 {% highlight java %}
 apply plugin: 'com.neenbedankt.android-apt'
- 
+
 buildscript {
   repositories {
     jcenter()
@@ -172,16 +172,16 @@ buildscript {
     classpath 'com.neenbedankt.gradle.plugins:android-apt:1.4'
   }
 }
- 
+
 android {
   ...
 }
- 
+
 dependencies {
   apt 'com.google.dagger:dagger-compiler:2.0'
   compile 'com.google.dagger:dagger:2.0'
-  provided 'javax.annotation:jsr250-api:1.0' 
-  
+  provided 'javax.annotation:jsr250-api:1.0'
+
   ...
 }
 {% endhighlight %}
@@ -248,14 +248,14 @@ Component interfaces is where you declare the association between Module and the
 public interface MyComponent {
     void inject(LoginActivity activity);
 
-     public final static class Initializer { 
-        public static MyComponent init(boolean mockMode) { 
+     public final static class Initializer {
+        public static MyComponent init(boolean mockMode) {
             return DaggerMyComponent.builder()
                 .androidModule(new AndroidModule())
                 .apiModule(new ApiModule())
-                .build(); 
-        } 
-    } 
+                .build();
+        }
+    }
 }
 {% endhighlight %}
 
@@ -267,7 +267,7 @@ Next, inside your application class, instantiate the Component you just declare 
 
 {% highlight java %}
 public class MyApplication extends Application {
-    
+
     private static MyApplication mInstance;
     private MyComponent mComponent;
 
@@ -359,13 +359,13 @@ Under the <b>debug</b> code base directory, we create another <b>MyComponent</b>
 public interface MyComponent {
      void inject(LoginActivity activity);
 
-     public final static class Initializer { 
-        public static MyComponent init(boolean mockMode) { 
+     public final static class Initializer {
+        public static MyComponent init(boolean mockMode) {
             return DaggerMyComponent.builder()
                 .androidModule(new AndroidModule())
                 .debugApiModule(new DebugApiModule(mockMode))
-                .build(); 
-        } 
+                .build();
+        }
     }
 }
 {% endhighlight %}
@@ -376,7 +376,7 @@ Then, we modify the Application class to expose a method to set the mock mode:
 
 {% highlight java %}
 public class MyApplication extends Application {
-    
+
     private static MyApplication mInstance;
     private MyComponent mComponent;
 
@@ -395,7 +395,7 @@ public class MyApplication extends Application {
         return mComponent;
     }
 
-    public void setMockMode(boolean useMock) { 
+    public void setMockMode(boolean useMock) {
         mComponent = MyComponent.Initializer.init(false);
     }
 
@@ -405,22 +405,22 @@ public class MyApplication extends Application {
 Now, in test class (below is the code of <b>BaseActivityTest</b> which will be extended later), we can easily switching between mock and real mode:
 
 {% highlight java %}
-public class BaseActivityTest { 
-    
+public class BaseActivityTest {
+
     @Inject
     AuthenticationApi mMockAuthenticationApi;
 
-    @Override 
-    protected void setUp() throws Exception { 
-        super.setUp(); 
-        MyApplication app = (MyApplication) getInstrumentation().getTargetContext().getApplicationContext(); 
-        app.setMockMode(true); 
+    @Override
+    protected void setUp() throws Exception {
+        super.setUp();
+        MyApplication app = (MyApplication) getInstrumentation().getTargetContext().getApplicationContext();
+        app.setMockMode(true);
         app.getComponent().inject(this);
-    } 
+    }
 
-    @Override 
-    protected void tearDown() throws Exception { 
-        App.getInstance().setMockMode(false); 
+    @Override
+    protected void tearDown() throws Exception {
+        App.getInstance().setMockMode(false);
     }
 
 }
@@ -428,7 +428,7 @@ public class BaseActivityTest {
 
 <h2>5 - Sample Code</h2>
 
-So, that's all for Dagger2 in this post. 
+So, that's all for Dagger2 in this post.
 
 You can find the full sample source code on my Github page.
 

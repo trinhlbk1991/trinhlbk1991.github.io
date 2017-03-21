@@ -7,8 +7,10 @@ avatar: trinhle.png
 comments: true
 
 tags: [Android]
-image: /images/posts/24163933764_7868362799_o.gif
+image: assets/images/android/animation.jpg
 ---
+
+
 <h2><b>A - Property Animation in Android Overview</b></h2>
 Property animation in Android is very powerful, allows you to animate almost anything!
 <br/>

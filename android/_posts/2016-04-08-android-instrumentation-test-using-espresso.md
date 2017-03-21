@@ -7,7 +7,7 @@ avatar: trinhle.png
 comments: true
 
 tags: [Android, Espresso]
-image: /images/posts/espresso.png
+image: assets/images/android/espresso.jpg
 ---
 
 <h2>1. Introduction</h2>
@@ -42,7 +42,7 @@ Go to <b>Settings</b> → <b>Developer Options</b>, then disable all following a
 
 <ul>
     <li>Window animation scale</li>
-    <li>Transition animation scale</li> 
+    <li>Transition animation scale</li>
     <li>Animator duration scale</li>
 </ul>
 
@@ -58,12 +58,12 @@ Some common <b>ViewMatcher</b>:
 
 You can easily locate a View in view hierarchy by using `onView()` with one or many <b>ViewMatcher</b>:
 {% highlight java %}
-onView(withId(R.id.tv_hello)) 
+onView(withId(R.id.tv_hello))
 //Find the View which has id as tv_hello
 {% endhighlight %}
 Or
 {% highlight java %}
-onView(allOf(withId(R.id.tv_hello), withText(“Goodbye”)) 
+onView(allOf(withId(R.id.tv_hello), withText(“Goodbye”))
 //Find the View which has id as tv_hello AND have text as Goodbye
 {% endhighlight %}
 
@@ -88,7 +88,7 @@ Some common ViewAction:
 
 Example:
 {% highlight java %}
-onView(withId(R.id.btn_hello)).perform(scrollTo(), click()); 
+onView(withId(R.id.btn_hello)).perform(scrollTo(), click());
 //If the btn_hello is not visible on screen, scroll to it, then perform a click!
 {% endhighlight %}
 
@@ -104,7 +104,7 @@ Some common ViewAssertions:
 
 Example:
 {% highlight java %}
-onView(withId(R.id.btn_hello)).check(matches(isDisplayed())); 
+onView(withId(R.id.btn_hello)).check(matches(isDisplayed()));
 //Check if the button btn_hello is displayed on the screen.
 {% endhighlight %}
 

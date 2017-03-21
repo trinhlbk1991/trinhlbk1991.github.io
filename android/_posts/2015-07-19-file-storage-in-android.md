@@ -6,7 +6,7 @@ author: trinh_le
 comments: true
 
 tags: [Java]
-image: /images/posts/19709750348_4de20141d2_b.jpg
+image: assets/images/android/storage.jpg
 ---
 
 In a very old post (<a href="http://icetea09.com/blog/2014/03/04/android-save-data-to-file/" target="_blank">Save Data To File</a>), I wrote about writing data to and reading data from internal file storage. And that is a very very simple post about working with File Storage in Android.
