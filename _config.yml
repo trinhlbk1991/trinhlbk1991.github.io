@@ -38,6 +38,8 @@ pinterest_url:
 slack_url:
 twitter_url: https://twitter.com/khanhtrinhspk
 
+disqus_shortname:   icetea09
+
 # Build settings
 markdown: kramdown
 
