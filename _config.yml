@@ -2,7 +2,7 @@
 title: Iced Tea Labs
 subtitle: Share to be shared
 email: trinhlbk1991@gmail.com
-description:
+description: "Check out our Google Play Store"
 baseurl: "" # the subpath of your site, e.g. /blog
 url: http://icetea09.com # the base hostname & protocol for your site
 author: Trinh Le
@@ -32,7 +32,7 @@ facebook_url:
 github_url: https://github.com/trinhlbk1991
 gitlab_url:
 googleplus_url:
-instagram_url: https://instagram.com
+instagram_url:
 linkedin_url: https://www.linkedin.com/in/trinhlbk1991
 pinterest_url:
 slack_url:
