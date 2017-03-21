@@ -9,8 +9,8 @@ logo:               'assets/img/logo.png'
 background:         'assets/img/placeholder-big.jpg'
 tiled_bg:           false   # Set this true if you want to tile your background image, otherwise it will be covered
 locale:             en_US
-#url:                http://localhost:4000
-url:                http://icetea09.com
+url:                http://localhost:4000
+#url:                http://icetea09.com
 
 # Jekyll
 permalink:          /:categories/:year/:month/:day/:title/
@@ -31,40 +31,14 @@ sass:
 disqus_shortname:   icetea09
 
 # Social
-# if you don't have any of social below, comment the line.
-#google:
-#  plus:             TrinhLetrinhlbk
-  #analytics:        UA-48722139-1
-  #verify:
-  #ad-client:
-  #ad-slot:
-#bing-verify:
-#email:
 twitter_username:   khanhtrinhspk
-#facebook:           lebakhanhtrinh
 github_username:    trinhlbk1991
 stackoverflow:      2134265/trinh-le
 linkedin:           trinhlbk1991
-#xing:              username
-instagram:          trinhlbk
-#lastfm:            username
-#tumblr:            username
-#pinterest:         username
-#foursquare:        username
-#steam:              username
-#dribbble:          username
-#youtube:            UCNrNsDFoxbeOYi6Ap5SsZpQ
-#soundcloud:        username
-#weibo:             username
-flickr:             trinhlbk1991
-#codepen:           username
-#keybase:           username
-#xmpp:              username@server.com
-#hackernews:        username
 
 # Gems
 gems:
-  - jekyll-mentions
+#  - jekyll-mentions
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-gist
