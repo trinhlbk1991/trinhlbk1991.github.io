@@ -2,16 +2,10 @@
 title: Iced Tea Labs
 subtitle: Share to be shared
 email: trinhlbk1991@gmail.com
-description: A responsive site template designed by HTML5 Up<br /> and released under the Creative Commons.
+description:
 baseurl: "" # the subpath of your site, e.g. /blog
 url: http://icetea09.com # the base hostname & protocol for your site
 author: Trinh Le
-street_address: 1234 Somewhere Road
-city: Nashville
-state: TN
-zip_code: 55555
-country: United States of America
-phone: (716) 555-5555
 
 # Homepage tiles
 tiles-source: posts # accepts "posts" or "pages"
@@ -35,14 +29,14 @@ sass:
 # Social settings
 500px_url:
 facebook_url:
-github_url:
-gitlab_url: https://gitlab.com/u/andrewbanchich
-googleplus_url: https://plus.google.com/u/0/+AndrewBanchich
+github_url: https://github.com/trinhlbk1991
+gitlab_url:
+googleplus_url:
 instagram_url: https://instagram.com
-linkedin_url: https://www.linkedin.com/in/andrew-banchich-a4ba1195
+linkedin_url: https://www.linkedin.com/in/trinhlbk1991
 pinterest_url:
 slack_url:
-twitter_url: https://twitter.com/andrewbanchich
+twitter_url: https://twitter.com/khanhtrinhspk
 
 # Build settings
 markdown: kramdown
