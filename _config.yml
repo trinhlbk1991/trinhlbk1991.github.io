@@ -1,17 +1,23 @@
-# Site
-title:              Ice Tea 09
-bio:                'Share to be shared'
-email:              'trinhlbk1991@gmail.com'
-description:        'Share to be shared'
-reading_time:       false
-words_per_minute:   150
-logo:               'assets/img/logo.png'
-background:         'assets/img/placeholder-big.jpg'
-tiled_bg:           false   # Set this true if you want to tile your background image, otherwise it will be covered
-locale:             en_US
-url:                http://icetea09.com
+# Site settings
+title: Iced Tea Labs
+subtitle: Share to be shared
+email: trinhlbk1991@gmail.com
+description: A responsive site template designed by HTML5 Up<br /> and released under the Creative Commons.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: http://icetea09.com # the base hostname & protocol for your site
+author: Trinh Le
+street_address: 1234 Somewhere Road
+city: Nashville
+state: TN
+zip_code: 55555
+country: United States of America
+phone: (716) 555-5555
 
-# Jekyll
+# Homepage tiles
+tiles-source: posts # accepts "posts" or "pages"
+tiles-count: 6
+
+#Jekyll
 permalink:          /:categories/:title/
 markdown:           kramdown
 highlighter:        rouge
@@ -26,24 +32,20 @@ sass:
   sass_dir:         _sass
   style:            compressed
 
-# Comments
-disqus_shortname:   icetea09
+# Social settings
+500px_url:
+facebook_url:
+github_url:
+gitlab_url: https://gitlab.com/u/andrewbanchich
+googleplus_url: https://plus.google.com/u/0/+AndrewBanchich
+instagram_url: https://instagram.com
+linkedin_url: https://www.linkedin.com/in/andrew-banchich-a4ba1195
+pinterest_url:
+slack_url:
+twitter_url: https://twitter.com/andrewbanchich
 
-# Social
-twitter_username:   khanhtrinhspk
-github_username:    trinhlbk1991
-stackoverflow:      2134265/trinh-le
-linkedin:           trinhlbk1991
+# Build settings
+markdown: kramdown
 
-# Gems
-gems:
-#  - jekyll-mentions
-  - jekyll-feed
-  - jekyll-sitemap
-  - jekyll-gist
-
-jekyll-mentions:
-    base_url: https://github.com
-
-# Exclude list
-exclude: [README.md, Gemfile, Gemfile.lock, node_modules, gulpfile.js, package.json, _site, src, vendor, CNAME, LICENSE, Rakefile]
+sass:
+  style: compressed
