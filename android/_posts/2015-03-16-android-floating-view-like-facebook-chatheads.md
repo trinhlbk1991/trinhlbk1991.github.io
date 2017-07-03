@@ -6,7 +6,7 @@ author: trinh_le
 comments: true
 
 tags: [Android]
-image: https://c2.staticflickr.com/2/1517/25279627219_998c657db3_b.jpg
+image: assets/images/android/facebook.jpg
 ---
 
 In this post, I'll show you how to create a <em><strong>floating view like Facebook chatheads</strong></em> - the view that was drawn on top of other applications.

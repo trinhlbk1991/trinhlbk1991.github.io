@@ -2947,7 +2947,7 @@
 				.spotlights > section > .content > .inner {
 					margin: 0 auto;
 					max-width: 100%;
-					width: 65em;
+					width: 50em;
 				}
 
 			.spotlights > section:nth-child(2n) {
