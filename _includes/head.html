@@ -8,6 +8,7 @@
 	<!--[if lte IE 8]><link rel="stylesheet" href="{{ "assets/css/ie8.css" | relative_url }}" /><![endif]-->
 	<link rel="stylesheet" href="{{ "assets/css/custom.css" | relative_url }}" />
 
+	{% include analytics.html %}
 	{% if page.comments != false %}
   	{% include disqus.html %}
   {% endif %}
