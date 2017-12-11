@@ -2,7 +2,7 @@
 layout: post
 title: Moon Privacy Policy
 description: Privacy policy for Moon
-image: assets/images/privacy/buckist.png
+image: assets/images/privacy/moon.png
 author: Trinh Le
 ---
 
