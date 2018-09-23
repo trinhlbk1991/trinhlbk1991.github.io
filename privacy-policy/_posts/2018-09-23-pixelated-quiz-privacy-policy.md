@@ -1,21 +1,21 @@
 ---
 layout: post
-title: Wizarding School Quiz Privacy Policy
-description: Privacy policy for Wizarding School Quiz
-image: assets/images/privacy/hpquiz.png
+title: Pixelated Quiz Privacy Policy
+description: Privacy policy for Pixelated Quiz
+image: assets/images/privacy/pixelate.png
 author: Trinh Le
 ---
 
 
 <h2>Privacy Policy</h2>
 
-<p> Iced Tea Labs built the Wizarding School Quiz app as an Ad Supported app. This SERVICE is provided by Iced Tea Labs at no cost and is intended for use as is.</p>
+<p> Iced Tea Labs built the Pixelated Quiz app as an Ad Supported app. This SERVICE is provided by Iced Tea Labs at no cost and is intended for use as is.</p>
 
 <p>This page is used to inform visitors regarding my policies with the collection, use, and disclosure of Personal Information if anyone decided to use my Service.</p>
 
 <p>If you choose to use my Service, then you agree to the collection and use of information in relation to this policy. The Personal Information that I collect is used for providing and improving the Service. I will not use or share your information with anyone except as described in this Privacy Policy.</p>
 
-<p>The terms used in this Privacy Policy have the same meanings as in our Terms and Conditions, which is accessible at Wzarding School Quiz unless otherwise defined in this Privacy Policy.
+<p>The terms used in this Privacy Policy have the same meanings as in our Terms and Conditions, which is accessible at Pixelated Quiz unless otherwise defined in this Privacy Policy.
 </p>
 
 <p><strong>Information Collection and Use</strong></p>
