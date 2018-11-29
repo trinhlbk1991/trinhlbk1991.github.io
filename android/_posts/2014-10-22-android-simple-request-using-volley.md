@@ -3,6 +3,7 @@ layout: post
 title: Simple Request Using Volley
 date: 2014-10-22 12:19
 author: trinh_le
+avatar: trinhle.png
 comments: true
 
 tags: [Android]

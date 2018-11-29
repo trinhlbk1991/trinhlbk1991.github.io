@@ -7,9 +7,8 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: http://icedtealabs.com # the base hostname & protocol for your site
 author: Trinh Le
 
-# Homepage tiles
-tiles-source: posts # accepts "posts" or "pages"
-tiles-count: 6
+paginate: 11
+paginate_path: /page:num/
 
 #Jekyll
 permalink:          /:categories/:title/
@@ -27,21 +26,15 @@ sass:
   style:            compressed
 
 # Social settings
-500px_url:
-facebook_url:
+facebook_url: https://www.facebook.com/IcedTeaLabs
 github_url: https://github.com/trinhlbk1991
-gitlab_url:
-googleplus_url:
-instagram_url:
+instagram_url: https://www.instagram.com/trinhlbk/
 linkedin_url: https://www.linkedin.com/in/trinhlbk1991
-pinterest_url:
-slack_url:
-twitter_url: https://twitter.com/khanhtrinhspk
+twitter_url: https://twitter.com/trinhlbk1991
 
 disqus_shortname:   icetea09
 
-# Build settings
-markdown: kramdown
-
 sass:
   style: compressed
+
+plugins: [jekyll-paginate]

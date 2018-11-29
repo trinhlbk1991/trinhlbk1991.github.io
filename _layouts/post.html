@@ -1,39 +1,77 @@
-<!DOCTYPE html>
-<!--
-	Forty by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
+---
+# this is an empty front matter
+---
+
+<!DOCTYPE HTML>
+
 <html>
+	<head>
+		<title>{{ page.title }}</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="{{ 'assets/js/ie/html5shiv.js' | relative_url }}"></script><![endif]-->
+		<link rel="stylesheet" href="{{ 'assets/css/main.css' | relative_url}}" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="{{ 'assets/css/ie9.css' | relative_url}}" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="{{ 'assets/css/ie8.css' | relative_url }}" /><![endif]-->
+	</head>
+	<body class="single">
 
-{% include head.html %}
+		<!-- Wrapper -->
+			<div id="wrapper">
 
-<body>
+				{% include header.html %}
 
-    {% include header.html %}
+				{% include menu.html %}
+
+				<!-- Main -->
+				<div id="main">
+
+					<!-- Post -->
+						<article class="post">
+
+							<header>
+								<div class="title">
+									<h2><a href="#">{{ page.title }}</a></h2>
+									<p>{{ post.description }}</p>
+								</div>
+
+								<div class="meta">
+									<time class="published" datetime="{{post.date  | date: '%B %d, %Y' }}">{{ page.date  | date: '%B %d, %Y' }}</time>
+									<a href="#" class="author">
+										<span class="name">{{ page.author }}</span>
+										<img src="{{ page.avatar | prepend: 'images/' | relative_url }}" alt="" />
+									</a>
+								</div>
+
+							</header>
+
+							<a href="#" class="image featured"><img src="{{ page.image | relative_url }}" alt="" /></a>
+
+							{{ content }}
+
+							<footer>
+								<ul class="stats">
+									{% for tag in page.tags %}
+				    				<li> <a href="#">{{ tag }} </a> </li>
+				  				{% endfor %}
+								</ul>
+							</footer>
+						</article>
+
+				</div>
+
+				{% include footer.html %}
 
 
-<!-- Main -->
-<div id="main" class="alt">
+			</div>
 
-<!-- One -->
-<section id="one">
-	<header class="major">
-		<h1>{{ page.title }}</h1>
-	</header>
-	{% if page.image %}<span class="image main"><img src="{{ site.baseurl }}/{{ page.image }}" alt="" /></span>{% endif %}
-	
-	<div class="inner">	
-		<p>{{ content }}</p>
-    	{% if page.comments and site.disqus_shortname %}<section id="disqus_thread" class="animated fadeInUp"></section><!-- /#disqus_thread -->{% endif %}
-	</div>
-	
-</section>
 
-</div>
+		<!-- Scripts -->
+			<script src="{{ 'assets/js/jquery.min.js' | relative_url }}"></script>
+			<script src="{{ 'assets/js/skel.min.js' | relative_url }}"></script>
+			<script src="{{ 'assets/js/util.js' | relative_url }}"></script>
+			<!--[if lte IE 8]><script src="{{ 'assets/js/ie/respond.min.js' | relative_url }}"></script><![endif]-->
+			<script src="{{ 'assets/js/main.js' | relative_url }}"></script>
 
-    {% include footer.html %}
-
-</body>
-
+	</body>
 </html>

@@ -4,6 +4,7 @@ title: Buckist Privacy Policy
 description: Privacy policy for Buckist
 image: assets/images/privacy/buckist.png
 author: Trinh Le
+avatar: trinhle.png
 ---
 
 <h1>1.Introduction</h1>

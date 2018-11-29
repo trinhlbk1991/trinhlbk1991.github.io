@@ -4,6 +4,7 @@ title: Moon Privacy Policy
 description: Privacy policy for Moon
 image: assets/images/privacy/moon.png
 author: Trinh Le
+avatar: trinhle.png
 ---
 
 ## Privacy Policy

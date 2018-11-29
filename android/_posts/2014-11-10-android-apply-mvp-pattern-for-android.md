@@ -3,6 +3,7 @@ layout: post
 title: Apply MVP Pattern for Android
 date: 2014-11-10 17:29
 author: trinh_le
+avatar: trinhle.png
 comments: true
 
 tags: [Android]

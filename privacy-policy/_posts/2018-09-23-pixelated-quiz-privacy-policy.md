@@ -4,6 +4,7 @@ title: Pixelated Quiz Privacy Policy
 description: Privacy policy for Pixelated Quiz
 image: assets/images/privacy/pixelate.png
 author: Trinh Le
+avatar: trinhle.png
 ---
 
 

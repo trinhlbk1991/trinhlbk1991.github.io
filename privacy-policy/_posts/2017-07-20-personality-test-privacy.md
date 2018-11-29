@@ -4,6 +4,7 @@ title: Personality Test Privacy Policy
 description: Privacy policy for Personality Test
 image: assets/images/privacy/mbti.png
 author: Trinh Le
+avatar: trinhle.png
 ---
 
 <h1>1.Introduction</h1>

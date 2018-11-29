@@ -4,6 +4,7 @@ title: Wizarding School Quiz Privacy Policy
 description: Privacy policy for Wizarding School Quiz
 image: assets/images/privacy/hpquiz.png
 author: Trinh Le
+avatar: trinhle.png
 ---
 
 
