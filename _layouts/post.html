@@ -60,7 +60,16 @@
 								</ul>
 							</footer>
 
-							{% include facebook-comments.html %}
+							<head>
+							  <style>
+							    .fb_iframe_widget_lift {
+							        z-index: 1;
+							        width: 100% !important;
+							    }
+							  </style>
+							</head>
+
+							<div class="fb-comments" data-href="{{ page.url | prepend:site.url }}" data-width="100%" data-numposts="11"></div>
 
 						</article>
 
