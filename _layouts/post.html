@@ -9,7 +9,14 @@
 		<title>{{ page.title }}</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
 		<meta property="fb:app_id" content="528663570930333" />
+		<meta property="og:url" content="{{ page.url | relative_url }}" />
+		<meta property="og:type" content="article" />
+		<meta property="og:title" content="{{ page.title }}" />
+		<meta property="og:description" content="{{ page.content | markdownify | strip_html | strip_newlines | truncate: 300 }}" />
+		<meta property="og:image" content="{{ page.image | relative_url }}" />
+
 		<!--[if lte IE 8]><script src="{{ 'assets/js/ie/html5shiv.js' | relative_url }}"></script><![endif]-->
 		<link rel="stylesheet" href="{{ 'assets/css/main.css' | relative_url}}" />
 		<!--[if lte IE 9]><link rel="stylesheet" href="{{ 'assets/css/ie9.css' | relative_url}}" /><![endif]-->
@@ -59,6 +66,8 @@
 				  				{% endfor %}
 								</ul>
 							</footer>
+
+							{% include facebook-share.html %}
 
 							<head>
 							  <style>
