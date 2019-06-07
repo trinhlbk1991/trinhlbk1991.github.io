@@ -1,29 +1,7 @@
-<header id="header">
-  <h1><a href="{{ site.url }}">{{ site.title }}</a></h1>
-
-  <nav class="links">
-    <ul>
-      <li><a href="{{ 'android'  | relative_url }}">Android</a></li>
-      <li><a href="{{ 'javascript'  | relative_url }}">JavaScript</a></li>
-      <li><a href="#">About Us</a></li>
-
-    </ul>
-  </nav>
-
-<!--
-  <nav class="main">
-    <ul>
-      <li class="search">
-        <a class="fa-search" href="#search">Search</a>
-        <form id="search" method="get" action="#">
-          <input type="text" name="query" placeholder="Search" />
-        </form>
-      </li>
-      <li class="menu">
-        <a class="fa-bars" href="#menu">Menu</a>
-      </li>
-    </ul>
-  </nav>
--->
-
+<header class="masthead">
+  <h3 class="masthead-title">
+    <a href="{{ site.github.url }}/">{{ site.title }}</a>
+    <small class="masthead-subtitle">{{ site.description }}</small>
+    {% include menu.html %}
+  </h3>
 </header>

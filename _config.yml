@@ -1,41 +1,29 @@
-# Site settings
-title: Iced Tea Labs
-subtitle: Share to be shared
-email: trinhlbk1991@gmail.com
-description: "Check out our Google Play Store"
-baseurl: "" # the subpath of your site, e.g. /blog
-url: http://icedtealabs.com # the base hostname & protocol for your site
-author: Trinh Le
+# Site Build Settings
 
-paginate: 11
-paginate_path: /page:num/
+# Jekyll-paginate-v2 configuration
+#  pagination:
+#   enabled: true
+#   per_page: 5
+#   permalink: '/page/:num/'
+#   title: ':title - page :num of :max'
+#   limit: 0
+#   sort_field: 'date'
+#   sort_reverse: true
 
-#Jekyll
-permalink:          /:categories/:title/
-markdown:           kramdown
-highlighter:        rouge
-kramdown:
-  auto_ids:         true
-  footnote_nr:      1
-  entity_output:    as_char
-  toc_levels:       1..6
-  enable_coderay:   false
-mathjax:            true
-sass:
-  sass_dir:         _sass
-  style:            compressed
+# jekyll-paginate configuration
+paginate:            11
 
-# Social settings
-facebook_url: https://www.facebook.com/IcedTeaLabs
-github_url: https://github.com/trinhlbk1991
-instagram_url: https://www.instagram.com/trinhlbk/
-linkedin_url: https://www.linkedin.com/in/trinhlbk1991
-twitter_url: https://twitter.com/trinhlbk1991
-twitter_username: trinhlbk1991
+# Build settings
+markdown:            kramdown
+highlighter:         rouge
+permalink:           none
+plugins:             [jekyll-paginate, jekyll-sitemap, jekyll-feed, jekyll-seo-tag]
 
-disqus_shortname:   icetea09
+# Customise atom feed settings (this is where Jekyll-Feed gets configuration information)
+title:		           'Iced Tea Labs'
+description:	       'Share to be shared'
+author:              'Trinh Le'
 
-sass:
-  style: compressed
-
-plugins: [jekyll-paginate]
+# RSS 2.0 can be used instead of Atom by uncommenting following two lines
+#feed:
+#  path: rss-feed.xml

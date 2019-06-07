@@ -1,11 +1,4 @@
-<section id="footer">
-  <ul class="icons">
-    <li><a href="{{ site.github_url }}" class="fa-github" target="_blank"><span class="label">Github</span></a></li>
-    <li><a href="{{ site.linkedin_url }}" class="fa-linkedin" target="_blank"><span class="label">LinkedIn</span></a></li>
-    <li><a href="{{ site.twitter_url }}" class="fa-twitter" target="_blank"><span class="label">Twitter</span></a></li>
-    <li><a href="{{ site.facebook_url }}" class="fa-facebook" target="_blank"><span class="label">Facebook</span></a></li>
-    <li><a href="{{ site.instagram_url }}" class="fa-instagram" target="_blank"><span class="label">Instagram</span></a></li>
-    <li><a href="mailto:trinhlbk1991@gmail.com" class="fa-envelope" target="_blank"><span class="label">Email</span></a></li>
-  </ul>
-  <p class="copyright">&copy; {{ site.title }}. Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a>. Jekyll integration: <a href="http://andrewbanchi.ch" target="_blank">Andrew Banchich</a>. Images: <a href="http://unsplash.com" target="_blank">Unsplash</a>.</p>
-</section>
+<footer class="footer">
+  {% include social-icons.html %}
+  <div class="post-date"><a href="{{ site.github.url }}/menu/about.html">{{ site.title }} | {{ site.description }} by {{ site.author }}</a></div>
+</footer>

@@ -1,105 +1,39 @@
 ---
-# this is an empty front matter
+layout: default
 ---
 
-<!DOCTYPE HTML>
+<h1>
+  {{ page.title }}
+</h1>
 
-<html>
-	<head>
-		<title>{{ page.title }}</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
+{% if page.image %}
+  <img src="{{ site.github.url }}/{{ page.image }}">
+{% endif %}
 
-		<meta property="fb:app_id" content="528663570930333" />
-		<meta property="og:url" content="{{ page.url | relative_url }}" />
-		<meta property="og:type" content="article" />
-		<meta property="og:title" content="{{ page.title }}" />
-		<meta property="og:description" content="{{ page.content | markdownify | strip_html | strip_newlines | truncate: 300 }}" />
-		<meta property="og:image" content="{{ page.image | relative_url }}" />
+{{ content }}
 
-		<!--[if lte IE 8]><script src="{{ 'assets/js/ie/html5shiv.js' | relative_url }}"></script><![endif]-->
-		<link rel="stylesheet" href="{{ 'assets/css/main.css' | relative_url}}" />
-		<!--[if lte IE 9]><link rel="stylesheet" href="{{ 'assets/css/ie9.css' | relative_url}}" /><![endif]-->
-		<!--[if lte IE 8]><link rel="stylesheet" href="{{ 'assets/css/ie8.css' | relative_url }}" /><![endif]-->
-	</head>
-	<body class="single">
+<span class="post-date">
+  {{ site.data.settings.post_date_prefix }}
+  {% assign d = page.date | date: "%-d"  %}
+  {{ page.date | date: "%B" }}
+  {% case d %}
+    {% when '1' or '21' or '31' %}{{ d }}st
+    {% when '2' or '22' %}{{ d }}nd
+    {% when '3' or '23' %}{{ d }}rd
+    {% else %}{{ d }}th{% endcase %},
+  {{ page.date | date: "%Y" }}
+  by
+  {% if page.author %}
+    {{ page.author }}
+  {% else %}
+    {{ site.author }}
+  {% endif %}
+</span>
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+{% include social-sharing.html %}
 
-				{% include facebook-init.html %}
+{% include related-posts.html %}
 
-				{% include header.html %}
-
-				{% include menu.html %}
-
-				<!-- Main -->
-				<div id="main">
-
-					<!-- Post -->
-						<article class="post">
-
-							<header>
-								<div class="title">
-									<h2><a href="#">{{ page.title }}</a></h2>
-									<p>{{ post.description }}</p>
-								</div>
-
-								<div class="meta">
-									<time class="published" datetime="{{post.date  | date: '%B %d, %Y' }}">{{ page.date  | date: '%B %d, %Y' }}</time>
-									<a href="#" class="author">
-										<span class="name">{{ page.author }}</span>
-										<img src="{{ page.avatar | prepend: 'images/' | relative_url }}" alt="" />
-									</a>
-								</div>
-
-							</header>
-
-							<a href="#" class="image featured"><img src="{{ page.image | relative_url }}" alt="" /></a>
-
-							{{ content }}
-
-							<footer>
-								<ul class="stats">
-									{% for tag in page.tags %}
-				    				<li> <a href="#">{{ tag }} </a> </li>
-				  				{% endfor %}
-								</ul>
-							</footer>
-
-							{% include facebook-share.html %}
-							{% include twitter-share.html %}
-
-							<head>
-							  <style>
-							    .fb_iframe_widget_lift {
-							        z-index: 1;
-							        width: 100% !important;
-							    }
-							  </style>
-							</head>
-
-							<div class="fb-comments" data-href="{{ page.url | prepend:site.url }}" data-width="100%" data-numposts="11"></div>
-
-						</article>
-
-
-				</div>
-
-				{% include footer.html %}
-
-
-			</div>
-
-
-		<!-- Scripts -->
-			<script src="{{ 'assets/js/jquery.min.js' | relative_url }}"></script>
-			<script src="{{ 'assets/js/skel.min.js' | relative_url }}"></script>
-			<script src="{{ 'assets/js/util.js' | relative_url }}"></script>
-			<!--[if lte IE 8]><script src="{{ 'assets/js/ie/respond.min.js' | relative_url }}"></script><![endif]-->
-			<script src="{{ 'assets/js/main.js' | relative_url }}"></script>
-
-			{% include google-analytics.html %}
-
-	</body>
-</html>
+{% if site.data.settings.disqus.comments %}
+  {% include disqus.html %}
+{% endif %}
