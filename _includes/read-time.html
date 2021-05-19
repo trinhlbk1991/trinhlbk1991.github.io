@@ -1,21 +1,19 @@
-{% if post.layout != post %}
-  {% assign words = post.content | strip_html | number_of_words %}
-  {% if words < 180 %}
-    less than 1 minute read
-  {% elsif words < 360 %}
-    1 minute read
-  {% else %}
-    {{ words | divided_by:180 }} minute read
-  {% endif %}
-{% endif %}
+<!--
+  Calculate the post's reading time, and display the word count in tooltip
+ -->
+{% assign words = include.content | strip_html | number_of_words: "auto" %}
 
-{% if post.layout == post %}
-  {% assign words = content | number_of_words %}
-  {% if words < 180 %}
-    less than 1 minute read
-  {% elsif words < 360 %}
-    1 minute read
-  {% else %}
-    {{ words | divided_by:180 }} minute read
-  {% endif %}
-{% endif %}
+<!-- words per minute  -->
+{% assign wpm = 180 %}
+{% assign min_time = 1 %}
+
+{% assign read_time = words | divided_by: wpm %}
+
+{% unless read_time > 0 %}
+  {% assign read_time = min_time %}
+{% endunless %}
+
+<!-- return element -->
+<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="{{ words }} words">
+  {{- read_time -}}{{" "}}{{- site.data.label.read_time_unit | default: "min" -}}
+</span>

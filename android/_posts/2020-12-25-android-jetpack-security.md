@@ -23,9 +23,11 @@ By using Jetpack Security (JetSec), you can easily encrypt Files and SharePrefer
 
 To use JetSec in your project, just simply adding the dependencies below in your app’s build.gradle:
 
+```gradle
     dependencies {
         implementation "androidx.security:security-crypto:1.0.0-rc03"
     }
+```
 
 ## Key Generation
 
@@ -39,28 +41,32 @@ Before doing any cryptographic operation, you have to generate the key first.
 
 Out of the box, JetSec provides the default master key within the MasterKey class with the AES256_GCM_SPEC specification. The master key is generated and stored in the [Android Keystore](https://developer.android.com/training/articles/keystore) system, which makes it difficult to extract the key material.
 
-    val masterKeyAlias = MasterKeys.getOrCreate(MasterKeys.*AES256_GCM_SPEC*)
+```kotlin
+    val masterKeyAlias = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC)
+```
 
 The default master key should be fine for general purposes. In case you want to create a master key with a [custom specification](https://developer.android.com/reference/androidx/security/crypto/MasterKey.Builder), JetSpec also supports that:
 
+```kotlin
     val customSpec = KeyGenParameterSpec.Builder(
             "master_key",
-            KeyProperties.*PURPOSE_ENCRYPT *or KeyProperties.*PURPOSE_DECRYPT
-    *)
-            .setBlockModes(KeyProperties.*BLOCK_MODE_GCM*)
-            .setEncryptionPaddings(KeyProperties.*ENCRYPTION_PADDING_NONE*)
+            KeyProperties.PURPOSE_ENCRYPT or KeyProperties.PURPOSE_DECRYPT
+    )
+            .setBlockModes(KeyProperties.BLOCK_MODE_GCM)
+            .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_NONE)
             .setKeySize(256)
             .setUserAuthenticationRequired(true)
             .setUserAuthenticationValidityDurationSeconds(60)
-            .*apply ***{
-                **if (Build.VERSION.*SDK_INT *>= Build.VERSION_CODES.*P*) {
+            .apply {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
                     setUnlockedDeviceRequired(true)
                     setIsStrongBoxBacked(true)
                 }
-            **}
-            **.build()
+            }
+            .build()
     
     val masterKeyAlias = MasterKeys.getOrCreate(customSpec)
+```
 
 ## EncryptedSharedPreferences
 
@@ -74,17 +80,19 @@ Using EncryptedSharedPreferences, both keys and values are encrypted:
 
 The below code snippets show you how to edit a record of the encrypted shared preferences:
 
+```kotlin
     val sharedPrefs: SharedPreferences = EncryptedSharedPreferences.create(
             "secured_shared_prefs",
             masterKeyAlias,
-            *applicationContext*,
-            EncryptedSharedPreferences.PrefKeyEncryptionScheme.*AES256_SIV*,
-            EncryptedSharedPreferences.PrefValueEncryptionScheme.*AES256_GCM
-    *)
+            applicationContext,
+            EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
+            EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
+    )
     
     sharedPrefs.edit()
             .putString("auth_token", "random_auth_token")
             .apply()
+```
 
 And the result 🎉
 
@@ -98,38 +106,41 @@ To provide secure read and write operations from file streams, JetSec uses the S
 
 The below code snippets show you how to write data into file securely:
 
-    val fileToWrite = File(getDir("sensitive_data", *MODE_PRIVATE*), "encrypted_data.txt")
+```kotlin
+    val fileToWrite = File(getDir("sensitive_data", MODE_PRIVATE), "encrypted_data.txt")
     val encryptedFile = EncryptedFile.Builder(
             fileToWrite,
-            *applicationContext*,
+            applicationContext,
             masterKeyAlias,
-            EncryptedFile.FileEncryptionScheme.*AES256_GCM_HKDF_4KB
-    *).build()
+            EncryptedFile.FileEncryptionScheme.AES256_GCM_HKDF_4KB
+    ).build()
     
     val fileContent = "Hello world!"
-            .*toByteArray*(StandardCharsets.*UTF_8*)
+            .toByteArray(StandardCharsets.UTF_8)
     
     encryptedFile
             .openFileOutput()
-            .*run ***{
-                **write(fileContent)
+            .run {
+                write(fileContent)
                 flush()
                 close()
-            **}**
+            }
+```
 
 … and read encrypted data from a file securely:
 
-    val fileToRead = File(getDir("sensitive_data", *MODE_PRIVATE*), "encrypted_data.txt")
+```kotlin
+    val fileToRead = File(getDir("sensitive_data", MODE_PRIVATE), "encrypted_data.txt")
     val encryptedFile = EncryptedFile.Builder(
             fileToRead,
-            *applicationContext*,
+            applicationContext,
             masterKeyAlias,
-            EncryptedFile.FileEncryptionScheme.*AES256_GCM_HKDF_4KB
-    *).build()
+            EncryptedFile.FileEncryptionScheme.AES256_GCM_HKDF_4KB
+    ).build()
     
     val byteArrayOutputStream = ByteArrayOutputStream()
-    encryptedFile.openFileInput().*run ***{
-        **var nextByte: Int = read()
+    encryptedFile.openFileInput().run {
+        var nextByte: Int = read()
     
         while (nextByte != -1) {
             byteArrayOutputStream.write(nextByte)
@@ -137,9 +148,10 @@ The below code snippets show you how to write data into file securely:
         }
     
         close()
-    **}
+    }
     
-    **val plaintext = *String*(byteArrayOutputStream.toByteArray())
+    val plaintext = String(byteArrayOutputStream.toByteArray())
+```
 
 And the result 🎉
 

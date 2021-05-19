@@ -38,7 +38,7 @@ The root cause of ANR is when the application’s UI thread has been blocked for
 
 Enable Strict Mode allows you to detect accident network/IO calls on main thread.
 
-```
+```kotlin
     if (BuildConfig.DEBUG) {
         StrictMode.setThreadPolicy(
             StrictMode.ThreadPolicy.Builder()
@@ -81,7 +81,7 @@ To generate a bug report, you can either:
 
 ### Long-running task on the main thread
 
-```
+```kotlin
     btn_execute.setOnClickListener {
         LongRunningTask().execute()
     }
@@ -92,7 +92,8 @@ You can easily detect those long-running task by observing the timeline of main 
 ![](https://cdn-images-1.medium.com/max/2558/1*tNyxvaLpZkjcXJ1UW4hMXQ.png)
 
 To resolve this, we simply just move the long-running task to another thread:
-```
+
+```kotlin
     btn_execute.setOnClickListener {
         Thread {
             LongRunningTask().execute()
@@ -133,7 +134,7 @@ In some cases, even your long-running task executes off the main thread, your ap
 
 Those lock contention can be detected by analyzing the trace/bug report file:
 
-```
+```log
     ------ **VM TRACES AT LAST ANR** (/data/anr/anr_2020-02-24-11-39-05-971: 2020-02-24 11:39:08) ------
 
     **"main" prio=5 tid=1 Blocked**
@@ -164,7 +165,7 @@ Those lock contention can be detected by analyzing the trace/bug report file:
 By reading the bug report, you can easily specify the lock detention root cause and resolve it! 🎉
 
 ### Slow BroadcastReceiver
-```
+```kotlin
     private val broadcastReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
             LongRunningTask().execute()
@@ -178,7 +179,7 @@ By reading the bug report, you can easily specify the lock detention root cause 
 ```
 
 In order to find the slow BroadcastReceiver, you can analyze the trace/bug report:
-```
+```log
     ------ **VM TRACES AT LAST ANR** (/data/anr/anr_2020-02-24-12-02-02-111: 2020-02-24 12:02:03) ------
 
     DALVIK THREADS (13):
@@ -201,7 +202,7 @@ In order to find the slow BroadcastReceiver, you can analyze the trace/bug repor
 ```
 
 To resolve this, you can simply move all the heavy execution code in the BroadcastReceiver to an **IntentService**:
-```
+```kotlin
     private val broadcastReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
             startService(Intent(context, MyIntentService::class.java))
