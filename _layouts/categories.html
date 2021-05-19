@@ -43,7 +43,7 @@ layout: page
       {% endif %}
         <a href="{{ site.baseurl }}/categories/{{ category_name | slugify | url_encode }}/"
           class="ml-1 mr-2">
-          {{ category_name }}
+          {{ category_name | capitalize }}
         </a>
 
         <!-- content count -->
