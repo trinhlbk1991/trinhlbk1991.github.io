@@ -28,9 +28,13 @@
         {% else %}
         <span>
           {% assign url = item %}
+
           {% if item == 'posts' and page.layout == 'post' %}
             {% assign url = '/' %}
+          {% elsif page.layout == 'post' %}
+            {% capture url %}categories/{{item}}/{% endcapture %}
           {% endif %}
+
           <a href="{{ url | relative_url }}">
             {{ item | capitalize }}
           </a>
