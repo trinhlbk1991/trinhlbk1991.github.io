@@ -107,7 +107,7 @@ GEM
     yell (2.2.2)
 
 PLATFORMS
-  universal-darwin-20
+  x86_64-linux
 
 DEPENDENCIES
   html-proofer (~> 3.18)
