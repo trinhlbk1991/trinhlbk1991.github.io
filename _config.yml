@@ -60,7 +60,7 @@ theme_mode: light
 img_cdn: ''
 
 # the avatar on sidebar, support local or CORS resources
-avatar: https://play-lh.googleusercontent.com/Ul4Kuz0ik7yRfyiFYWDJ1B8kXQpY7IMG_lNkK4HXBPWven44s4BeS08v-qIaH2JuDHA
+avatar: /assets/images/ic_iced_tea_labs.png
 
 # boolean type, the global switch for ToC in posts.
 toc: false
