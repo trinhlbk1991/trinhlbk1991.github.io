@@ -5,7 +5,7 @@ date: 2014-01-22 10:40
 author: trinh_le
 comments: true
 
-tags: []
+tags: [SQLite, Android Database]
 ---
 
 In my previous post about <a title="[Android] SQLite" href="http://icetea09.com/blog/2014/03/03/android-sqlite/">SQLite </a>, I only post the way to create database when application started.

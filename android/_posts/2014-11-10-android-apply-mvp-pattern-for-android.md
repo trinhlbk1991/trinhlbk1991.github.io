@@ -6,7 +6,7 @@ author: trinh_le
 avatar: trinhle.png
 comments: true
 
-tags: []
+tags: [MVP, Design Pattern]
 ---
 
 <h2>A - What is MVP?</h2>

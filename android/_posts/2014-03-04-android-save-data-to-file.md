@@ -5,7 +5,7 @@ date: 2014-03-04 09:34
 author: trinh_le
 comments: true
 
-tags: []
+tags: [Android Database]
 ---
 
 

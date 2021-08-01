@@ -5,7 +5,7 @@ date: 2015-01-02 15:01
 author: trinh_le
 comments: true
 
-tags: []
+tags: [Android UI, Mategiral Design]
 image: https://c2.staticflickr.com/2/1477/24165316263_b46eadf1ed_h.jpg
 ---
 

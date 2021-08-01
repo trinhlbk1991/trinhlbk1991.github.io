@@ -5,7 +5,7 @@ date: 2014-06-15 19:14
 author: trinh_le
 comments: true
 
-tags: []
+tags: [Android UI, Animation, Transition]
 ---
 
 <h2>A - Introduction</h2>

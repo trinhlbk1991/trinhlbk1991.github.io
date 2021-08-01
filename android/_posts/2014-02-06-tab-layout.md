@@ -5,7 +5,7 @@ date: 2014-02-06 11:44
 author: trinh_le
 comments: true
 
-tags: []
+tags: [Tab Layout]
 ---
 
 <h2>A - Introduction about Tab Layout</h2>

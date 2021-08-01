@@ -5,7 +5,7 @@ date: 2014-10-11 23:21
 author: trinh_le
 comments: true
 
-tags: [SVN]
+tags: [SVN, Dropbox]
 ---
 Version controlling is one of the most important concept in Software Development. It allow you to track all the version of files, folders among different team members in a very easy way.
 

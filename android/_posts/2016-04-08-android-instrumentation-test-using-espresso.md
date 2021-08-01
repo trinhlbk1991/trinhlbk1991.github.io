@@ -6,7 +6,7 @@ author: Trinh Le
 avatar: trinhle.png
 comments: true
 
-tags: [Espresso]
+tags: [Espresso, Testing]
 image: assets/images/android/espresso.jpg
 ---
 

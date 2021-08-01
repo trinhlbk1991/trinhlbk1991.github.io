@@ -5,7 +5,7 @@ date: 2014-05-04 14:05
 author: trinh_le
 comments: true
 
-tags: []
+tags: [Localization]
 ---
 
 <h2>A - Introduction</h2>

@@ -5,7 +5,7 @@ date: 2014-10-07 18:28
 author: trinh_le
 comments: true
 
-tags: []
+tags: [Facebook]
 ---
 
 You must know that social media has a very important position in modern life - every thing can be shared on social network.

@@ -5,7 +5,7 @@ date: 2014-01-28 13:21
 author: trinh_le
 comments: true
 
-tags: []
+tags: [Animation, Custom View, Android UI]
 ---
 
 

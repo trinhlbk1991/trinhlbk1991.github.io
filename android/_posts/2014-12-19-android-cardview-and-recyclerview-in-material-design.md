@@ -5,7 +5,7 @@ date: 2014-12-19 02:01
 author: trinh_le
 comments: true
 
-tags: []
+tags: [Android UI, Material Design]
 ---
 Firstly, to have some visual view about this post, you can take a look at this demo video:
 <iframe width="560" height="315" src="//www.youtube.com/embed/0mf5Pipe6ew" frameborder="0" allowfullscreen="allowfullscreen"></iframe>

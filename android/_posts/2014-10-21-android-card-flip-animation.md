@@ -5,7 +5,7 @@ date: 2014-10-21 14:36
 author: trinh_le
 comments: true
 
-tags: []
+tags: [Android UI, Animation]
 ---
 
 In previous posts, I showed you how to apply animation (<a title="Activity Fade Transition" href="http://icetea09.com/blog/2014/06/15/android-activity-fade-transition/">fade</a>, <a title="Activity Slide Transition" href="http://icetea09.com/blog/2014/06/17/android-activity-slide-transition/">slide</a>) to activity transaction.

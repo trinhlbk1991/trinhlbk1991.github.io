@@ -5,7 +5,7 @@ date: 2014-03-17 15:26
 author: trinh_le
 comments: true
 
-tags: []
+tags: [Menu, Navigation Drawer, Android UI]
 ---
 
 <h2>A - Introduction Android Sliding Menu</h2>

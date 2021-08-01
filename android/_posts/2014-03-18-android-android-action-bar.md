@@ -5,7 +5,7 @@ date: 2014-03-18 13:59
 author: trinh_le
 comments: true
 
-tags: []
+tags: [Android UI]
 ---
 
 <h2>A - Android Action Bar introduction</h2>

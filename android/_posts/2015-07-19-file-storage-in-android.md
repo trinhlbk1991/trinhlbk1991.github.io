@@ -5,7 +5,7 @@ date: 2015-07-19 16:22
 author: trinh_le
 comments: true
 
-tags: []
+tags: [Android Database]
 image: assets/images/android/storage.jpg
 ---
 

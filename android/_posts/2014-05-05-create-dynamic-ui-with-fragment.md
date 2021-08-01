@@ -5,7 +5,7 @@ date: 2014-05-05 17:50
 author: trinh_le
 comments: true
 
-tags: []
+tags: [Android UI, Fragment]
 ---
 
 <h2>A - Preface</h2>

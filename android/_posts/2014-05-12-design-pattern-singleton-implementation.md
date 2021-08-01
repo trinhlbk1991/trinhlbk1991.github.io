@@ -5,7 +5,7 @@ date: 2014-05-12 15:36
 author: trinh_le
 comments: true
 
-tags: []
+tags: [Design Pattern, Singleton]
 ---
 
 <h2>A - Intent</h2>

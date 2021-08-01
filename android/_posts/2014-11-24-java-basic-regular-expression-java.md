@@ -5,7 +5,7 @@ date: 2014-11-24 17:32
 author: trinh_le
 comments: true
 
-tags: []
+tags: [Regex, Regular Expression]
 ---
 
 <h2>A - Regular Expression Overview</h2>
