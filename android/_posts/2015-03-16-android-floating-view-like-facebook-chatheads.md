@@ -5,7 +5,7 @@ date: 2015-03-16 23:21
 author: trinh_le
 comments: true
 
-tags: [Android]
+tags: []
 image: assets/images/android/facebook.jpg
 ---
 

@@ -5,7 +5,7 @@ date: 2014-04-30 14:25
 author: trinh_le
 comments: true
 
-tags: [JavaScript]
+tags: []
 ---
 
 In the previous post ( <a title="[Android] Parse JSON in Android" href="http://icetea09.com/blog/2014/04/02/android-parse-json-android/">[Android] Parse JSON in Android</a> ), I showed how to get the JSON string from server and parse it into desired object using Java. This time, in this tutorial, I'll parse JSON in JavaScript. This can be applied when you develop an mobile application using PhoneGap.

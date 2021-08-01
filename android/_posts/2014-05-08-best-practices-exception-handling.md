@@ -5,7 +5,7 @@ date: 2014-05-08 18:38
 author: trinh_le
 comments: true
 
-tags: [Android]
+tags: []
 ---
 
 

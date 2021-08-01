@@ -5,7 +5,7 @@ date: 2014-11-02 17:38
 author: trinh_le
 comments: true
 
-tags: [Android]
+tags: []
 ---
 
 In previous <a title="Simple Request Using Volley" href="http://icetea09.com/blog/2014/10/22/android-simple-request-using-volley/" target="_blank">post</a>,  I showed you how to use Volley to make a simple request in Android application.

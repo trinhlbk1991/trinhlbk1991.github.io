@@ -5,7 +5,7 @@ date: 2014-06-17 18:59
 author: trinh_le
 comments: true
 
-tags: [JavaScript]
+tags: []
 ---
 
 At the very first sight, I don't like JavaScript!

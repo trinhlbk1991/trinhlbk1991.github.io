@@ -7,7 +7,7 @@ author: Trinh Le
 avatar: trinhle.png
 comments: true
 
-tags: [Android, Jetpack, Jetpack Security]
+tags: [Jetpack, Jetpack Security]
 image: 
 ---
 

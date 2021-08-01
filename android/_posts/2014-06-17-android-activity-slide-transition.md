@@ -5,7 +5,7 @@ date: 2014-06-17 22:18
 author: trinh_le
 comments: true
 
-tags: [Android]
+tags: []
 ---
 
 <h2>A - Introduction</h2>

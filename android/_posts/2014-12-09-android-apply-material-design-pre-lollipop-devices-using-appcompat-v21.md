@@ -5,7 +5,7 @@ date: 2014-12-09 02:08
 author: trinh_le
 comments: true
 
-tags: [Android]
+tags: []
 image: /images/posts/24164029984_b3f2200484_h.jpg
 ---
 

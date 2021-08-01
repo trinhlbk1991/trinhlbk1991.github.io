@@ -7,7 +7,7 @@ author: Trinh Le
 avatar: trinhle.png
 comments: true
 
-tags: [Android, Hilt, Dagger, Dependency Injection]
+tags: [Hilt, Dagger, Dependency Injection]
 image: 
 ---
 

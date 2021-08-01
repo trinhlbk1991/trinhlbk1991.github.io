@@ -7,7 +7,7 @@ author: Trinh Le
 avatar: trinhle.png
 comments: true
 
-tags: [Android, RxJava, Design Pattern]
+tags: [RxJava, Design Pattern]
 image: assets/images/android/rxjava.jpg
 ---
 

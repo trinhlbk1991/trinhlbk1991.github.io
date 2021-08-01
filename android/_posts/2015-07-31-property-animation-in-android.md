@@ -5,7 +5,7 @@ date: 2015-07-31 11:02
 author: Trinh Le
 avatar: trinhle.png
 comments: true
-tags: [Android]
+tags: []
 image: assets/images/android/animation.jpg
 ---
 

@@ -5,7 +5,7 @@ date: 2015-05-15 22:39
 author: trinh_le
 comments: true
 
-tags: [Android, Couchbase]
+tags: [Couchbase]
 image: https://c2.staticflickr.com/2/1672/24165316453_c57900dcc0_h.jpg
 ---
 

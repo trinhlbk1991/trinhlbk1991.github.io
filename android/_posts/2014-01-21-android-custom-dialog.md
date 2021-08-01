@@ -5,7 +5,7 @@ date: 2014-01-21 23:57
 author: trinh_le
 comments: true
 share: true
-tags: [Android]
+tags: []
 ---
 
 You are developing an Android app and you don't want to use the default dialog like this:

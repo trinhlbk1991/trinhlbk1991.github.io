@@ -5,7 +5,7 @@ date: 2014-05-06 18:54
 author: trinh_le
 comments: true
 
-tags: [Android]
+tags: []
 ---
 
 <h2>A - Preface</h2>

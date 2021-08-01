@@ -7,7 +7,7 @@ author: Trinh Le
 avatar: trinhle.png
 comments: true
 
-tags: [Android, ANR, Android Performance]
+tags: [ANR, Android Performance]
 image: assets/images/android/anr.jpg
 ---
 

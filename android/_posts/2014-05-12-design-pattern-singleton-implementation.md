@@ -5,7 +5,7 @@ date: 2014-05-12 15:36
 author: trinh_le
 comments: true
 
-tags: [Android]
+tags: []
 ---
 
 <h2>A - Intent</h2>

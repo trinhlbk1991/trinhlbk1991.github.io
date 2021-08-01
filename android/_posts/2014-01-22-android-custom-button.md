@@ -5,7 +5,7 @@ date: 2014-01-22 23:57
 author: trinh_le
 comments: true
 share: true
-tags: [Android]
+tags: []
 ---
 
 Sometime, you don't want to use provided buttons style of Android like this:

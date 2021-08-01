@@ -7,7 +7,7 @@ author: Trinh Le
 avatar: trinhle.png
 comments: true
 
-tags: [Android, Clean Architecture, MVVM, Design Patterns]
+tags: [Clean Architecture, MVVM, Design Patterns]
 image: assets/images/android/clean-code.jpg
 ---
 

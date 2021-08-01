@@ -5,7 +5,7 @@ date: 2014-05-01 12:44
 author: trinh_le
 comments: true
 
-tags: [JavaScript]
+tags: []
 ---
 
 <h2>A - Introduction</h2>

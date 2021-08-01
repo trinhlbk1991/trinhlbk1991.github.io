@@ -5,7 +5,7 @@ date: 2014-05-04 22:25
 author: Dang Huynh
 comments: true
 
-tags: [JavaScript]
+tags: []
 ---
 
 <h2>A. Preface:</h2>

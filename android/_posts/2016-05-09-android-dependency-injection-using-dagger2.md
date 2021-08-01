@@ -6,7 +6,7 @@ author: Trinh Le
 avatar: trinhle.png
 comments: true
 
-tags: [Android, Dagger2, Design Pattern]
+tags: [Dagger2, Design Pattern]
 image: assets/images/android/dagger2.jpeg
 ---
 

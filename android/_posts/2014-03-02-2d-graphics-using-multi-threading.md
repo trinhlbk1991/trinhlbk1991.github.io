@@ -5,7 +5,7 @@ date: 2014-03-02 09:51
 author: trinh_le
 comments: true
 
-tags: [Android]
+tags: []
 ---
 
 <h2>A - Introduction Multi-threading</h2>

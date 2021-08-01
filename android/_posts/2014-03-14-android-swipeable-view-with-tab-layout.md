@@ -5,7 +5,7 @@ date: 2014-03-14 13:23
 author: trinh_le
 comments: true
 
-tags: [Android]
+tags: []
 ---
 
 In my previous post <a style="font-size: 14px; line-height: 1.5em;" title="[Android] Tab Layout" href="http://icetea09.com/blog/2014/02/06/tab-layout/">"Android Tab Layout"</a><span style="font-size: 14px; line-height: 1.5em;">, I showed you how to use TabHost to display a Tab layout. Unfortunately, TabHost is deprecated by android in favor of fragments.</span>

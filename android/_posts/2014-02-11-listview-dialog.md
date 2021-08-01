@@ -5,7 +5,7 @@ date: 2014-02-11 15:32
 author: trinh_le
 comments: true
 
-tags: [Android]
+tags: []
 ---
 
 First of all, I'll show you the result of this post to give you some motivation <img title="Beauty" src="http://vozforums.com/images/smilies/Off/beauty.gif" alt=":beauty:" />
