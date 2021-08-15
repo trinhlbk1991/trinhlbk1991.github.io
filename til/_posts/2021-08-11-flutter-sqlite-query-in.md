@@ -32,6 +32,6 @@ db.query(
 );
 ```
 
-The main point is to generate enought `?` placeholders in your `where` statement and you're good to go!
+The main point is to generate enough `?` placeholders in your `where` statement and you're good to go!
 
 Happy coding! 💻
