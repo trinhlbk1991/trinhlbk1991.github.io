@@ -1,0 +1,14 @@
+[
+    {
+      "relation": [
+        "delegate_permission/common.handle_all_urls"
+      ],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "com.icetea09.bucketlist",
+        "sha256_cert_fingerprints": [
+          "D2:96:5E:6A:4B:C9:C2:1A:5C:64:ED:C1:81:1B:83:8C:E0:47:D5:13:3B:5A:BA:0B:A0:C3:6A:21:3B:DB:50:3D"
+        ]
+      }
+    }
+  ]
