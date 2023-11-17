@@ -1,0 +1,144 @@
+<!DOCTYPE html><html lang="en-US" mode="light" ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><title>Apply MVP Pattern for Android | Iced Tea Labs</title><link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicons/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicons/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicons/favicon-16x16.png"><link rel="manifest" href="/assets/img/favicons/site.webmanifest"><link rel="shortcut icon" href="/assets/img/favicons/favicon.ico"><meta name="apple-mobile-web-app-title" content="Iced Tea Labs"><meta name="application-name" content="Iced Tea Labs"><meta name="msapplication-TileColor" content="#da532c"><meta name="msapplication-config" content="/assets/img/favicons/browserconfig.xml"><meta name="theme-color" content="#ffffff"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://fonts.gstatic.com"><link rel="preconnect" href="https://www.google-analytics.com" crossorigin="use-credentials"><link rel="dns-prefetch" href="https://www.google-analytics.com"><link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><link rel="preconnect" href="https://cdn.jsdelivr.net"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.11.2/css/all.min.css"><link rel="stylesheet" href="/assets/css/style.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/magnific-popup@1.1.0/dist/magnific-popup.min.css"> <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script> <script defer src="https://cdn.jsdelivr.net/combine/npm/popper.js@1.15.0,npm/bootstrap@4/dist/js/bootstrap.min.js"></script> <script async src="https://cdn.jsdelivr.net/combine/npm/lozad/dist/lozad.min.js,npm/magnific-popup@1/dist/jquery.magnific-popup.min.js"></script> <script defer src="/assets/js/dist/post.min.js"></script> <script defer src="/app.js"></script> <script defer src="https://www.googletagmanager.com/gtag/js?id=UA-48722139-1"></script> <script> document.addEventListener("DOMContentLoaded", function(event) { window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'UA-48722139-1'); }); </script><body data-spy="scroll" data-target="#toc"><div id="sidebar" class="d-flex flex-column align-items-end"><div class="profile-wrapper text-center"><div id="avatar"> <a href="/" alt="avatar" class="mx-auto"> <img src="/assets/images/ic_iced_tea_labs.png" alt="avatar" onerror="this.style.display='none'"> </a></div><div class="site-title mt-3"> <a href="/">Iced Tea Labs</a></div><div class="site-subtitle">Glasses 👓 Geek 💻 Backpacker 🎒 Climber 🧗‍♂️</div></div><ul class="w-100"><li class="nav-item"> <a href="/" class="nav-link"> <i class="fa-fw fas fa-home ml-xl-3 mr-xl-3 unloaded"></i> <span>HOME</span> </a><li class="nav-item"> <a href="/categories/" class="nav-link"> <i class="fa-fw fas fa-stream ml-xl-3 mr-xl-3 unloaded"></i> <span>CATEGORIES</span> </a><li class="nav-item"> <a href="/tags/" class="nav-link"> <i class="fa-fw fas fa-tags ml-xl-3 mr-xl-3 unloaded"></i> <span>TAGS</span> </a><li class="nav-item"> <a href="/archives/" class="nav-link"> <i class="fa-fw fas fa-archive ml-xl-3 mr-xl-3 unloaded"></i> <span>ARCHIVES</span> </a><li class="nav-item"> <a href="/about/" class="nav-link"> <i class="fa-fw fas fa-info ml-xl-3 mr-xl-3 unloaded"></i> <span>ABOUT</span> </a></ul><div class="sidebar-bottom mt-auto d-flex flex-wrap justify-content-center"> <a href="https://github.com/trinhlbk1991" aria-label="github" target="_blank" rel="noopener"> <i class="fab fa-github-alt"></i> </a> <a href="https://twitter.com/trinhlbk1991" aria-label="twitter" target="_blank" rel="noopener"> <i class="fab fa-twitter"></i> </a> <a href=" javascript:location.href = 'mailto:' + ['trinhlbk1991','gmail.com'].join('@')" aria-label="email" > <i class="fas fa-envelope"></i> </a> <a href="/feed.xml" aria-label="rss" > <i class="fas fa-rss"></i> </a> <a href="https://www.linkedin.com/in/trinhlbk1991/" aria-label="linkedin" target="_blank" rel="noopener"> <i class="fab fa-linkedin"></i> </a></div></div><div id="topbar-wrapper" class="row justify-content-center topbar-down"><div id="topbar" class="col-11 d-flex h-100 align-items-center justify-content-between"> <span id="breadcrumb"> <span> <a href="/categories/android/"> Android </a> </span> <span>Apply MVP Pattern for Android</span> </span> <i id="sidebar-trigger" class="fas fa-bars fa-fw"></i><div id="topbar-title"> Post</div><i id="search-trigger" class="fas fa-search fa-fw"></i> <span id="search-wrapper" class="align-items-center"> <i class="fas fa-search fa-fw"></i> <input class="form-control" id="search-input" type="search" aria-label="search" autocomplete="off" placeholder="Search..."> <i class="fa fa-times-circle fa-fw" id="search-cleaner"></i> </span> <span id="search-cancel" >Cancel</span></div></div><div id="main-wrapper"><div id="main"><div class="row"><div id="post-wrapper" class="col-12 col-lg-11 col-xl-8"><div class="post pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><h1 data-toc-skip>Apply MVP Pattern for Android</h1><div class="post-meta text-muted d-flex flex-column"><div> <span class="semi-bold"> trinh_le </span> <span class="timeago " data-toggle="tooltip" data-placement="bottom" title="Mon, Nov 10, 2014, 5:29 PM +0700" prep="on" > Nov 10, 2014 <i class="unloaded">2014-11-10T17:29:00+07:00</i> </span></div><div> <span> <span class="timeago lastmod" data-toggle="tooltip" data-placement="bottom" title="Sun, Aug 1, 2021, 12:49 PM +0700" prefix="Updated " > Aug 1, 2021 <i class="unloaded">2021-08-01T12:49:51+07:00</i> </span> </span> <span class="readtime" data-toggle="tooltip" data-placement="bottom" title="476 words">2 min</span></div></div><div class="post-content"><h2>A - What is MVP?</h2><p>MVP pattern stands for Model - View - Presenter. <br /> MVP is a derivative from famous MVC guy. It allows separate the presentation layer from the business logic.</p><p style="padding-left: 30px;">-   <strong>Model</strong>: handle persisting and retrieving data, along with any business logic that the data must adhere to</p><p style="padding-left: 30px;">-   <strong>View</strong>: gather user input and update the display</p><p style="padding-left: 30px;">-   <strong>Presenter</strong>: the "middle-man" handles the communication between Model and View</p><p>Separating user interface from logic in Android is not easy, but the MVP pattern makes a little easier to prevent our activities turn into very coupled classes consisting on hundreds or even thousands of lines.</p><p>That will make our Android application more testable, extendable and maintainable.</p><h2>B - Demo apply MVP Pattern for Android</h2><p>In this part, we will create a small and simple demo about applying MVP pattern for Android application.</p><p>This demo app allows user to add new product and load all the products.</p><p>Firstly, we need to create the layout:</p><p><strong>activity_main.xml</strong></p><pre>
+&lt;RelativeLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;
+    android:paddingBottom=&quot;@dimen/activity_vertical_margin&quot;
+    android:paddingLeft=&quot;@dimen/activity_horizontal_margin&quot;
+    android:paddingRight=&quot;@dimen/activity_horizontal_margin&quot;
+    android:paddingTop=&quot;@dimen/activity_vertical_margin&quot;
+    tools:context=&quot;.MainActivity&quot;&gt;
+
+    &lt;EditText
+        android:layout_width=&quot;fill_parent&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:ems=&quot;10&quot;
+        android:id=&quot;@+id/et_product&quot;
+        android:hint=&quot;Product Name&quot;
+        android:layout_alignParentLeft=&quot;true&quot;
+        android:layout_alignParentStart=&quot;true&quot; /&gt;
+
+    &lt;Button
+        android:layout_width=&quot;fill_parent&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:text=&quot;Add&quot;
+        android:id=&quot;@+id/btn_add&quot;
+        android:layout_below=&quot;@+id/et_product&quot;
+        android:layout_alignParentLeft=&quot;true&quot;
+        android:layout_alignParentStart=&quot;true&quot; /&gt;
+
+    &lt;Button
+        android:layout_width=&quot;fill_parent&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:text=&quot;Load&quot;
+        android:id=&quot;@+id/btn_load&quot;
+        android:layout_below=&quot;@+id/btn_add&quot;
+        android:layout_alignParentLeft=&quot;true&quot;
+        android:layout_alignParentStart=&quot;true&quot; /&gt;
+
+    &lt;TextView
+        android:layout_width=&quot;fill_parent&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:id=&quot;@+id/tv_products&quot;
+        android:layout_below=&quot;@+id/btn_load&quot;
+        android:layout_alignParentLeft=&quot;true&quot;
+        android:layout_alignParentStart=&quot;true&quot; /&gt;
+
+&lt;/RelativeLayout&gt;
+</pre><p>Then, create an Interface for the View:</p><p><strong>IProductsView.java</strong></p><pre>
+public interface IProductsView {
+    public void showProducts(String products);
+    public void clearInputFields();
+}
+</pre><p>Lat the MainActivity implements the view interface above:</p><p><strong>MainActivity.java</strong></p><pre>
+public class MainActivity extends ActionBarActivity implements IProductsView, View.OnClickListener {
+    EditText mEtProduct;
+    TextView mtvProducts;
+    Button mBtnAdd;
+    Button mBtnLoad;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        mEtProduct = (EditText)findViewById(R.id.et_product);
+        mtvProducts = (TextView)findViewById(R.id.tv_products);
+        mBtnAdd = (Button)findViewById(R.id.btn_add);
+        mBtnLoad = (Button)findViewById(R.id.btn_load);
+        mBtnAdd.setOnClickListener(this);
+        mBtnLoad.setOnClickListener(this);
+    }
+
+    @Override
+    public void showProducts(String products) {
+        mtvProducts.setText(products);
+    }
+
+    @Override
+    public void clearInputFields() {
+        mEtProduct.setText(&quot;&quot;);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.btn_add: break;
+            case R.id.btn_load: break;
+        }
+    }
+}
+</pre><p>Next, we move to Model part, create Product class:</p><p><strong>Product.java</strong></p><pre>
+public class Product {
+    private String mName;
+
+    public Product(String name){
+        mName = name;
+    }
+
+    public String getmName() {
+        return mName;
+    }
+}
+</pre><p>Now, we must create the Presenter class that contains the Model, View instances and some method to handle business logic:</p><p><strong>ProductsPresenter.java</strong></p><pre>
+public class ProductsPresenter {
+    IProductsView mView;
+    List&lt;Product&gt; products;
+
+    public ProductsPresenter(IProductsView view){
+        mView = view;
+        products = new ArrayList&lt;Product&gt;();
+        products.add(new Product(&quot;Nikon D3200&quot;));
+    }
+
+    public void addProduct(String product){
+        products.add(new Product(product));
+        mView.clearInputFields();
+    }
+
+    public void loadProducts(){
+        String result = &quot;&quot;;
+        for(Product product : products){
+            result += product.getmName() + &quot;\n&quot;;
+        }
+        mView.showProducts(result);
+    }
+}
+</pre><p>Now, get back to MainActivity and add the Presenter into it:</p><p><strong>MainActivity.java</strong></p><pre>
+ProductsPresenter mProductsPresenter;
+...
+
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    ...
+    mProductsPresenter = new ProductsPresenter(this);
+}
+
+@Override
+public void onClick(View v) {
+    switch (v.getId()){
+        case R.id.btn_add: mProductsPresenter.addProduct(mEtProduct.getText().toString()); break;
+        case R.id.btn_load: mProductsPresenter.loadProducts(); break;
+    }
+}
+</pre><p>Finally, run the demo and enjoy the result!</p><p><img class="size-full wp-image-1932 aligncenter" src="http://icetea09.com/wp-content/uploads/2014/11/android-mvp-demo.jpg" alt="android-mvp-demo" width="300" height="464" /></p><h2>C - Source code of Demo apply MVP Pattern for Android</h2><p><a href="https://drive.google.com/file/d/0Bw3dwdSezn6fd3JlNE8zeXlERE0/view?usp=sharing" target="_blank">https://drive.google.com/file/d/0Bw3dwdSezn6fd3JlNE8zeXlERE0/view?usp=sharing</a></p><p><a href="http://www.mediafire.com/download/o8kcmnkicaxp6v5/DemoAndroidMVP.zip" target="_blank">http://www.mediafire.com/download/o8kcmnkicaxp6v5/DemoAndroidMVP.zip</a></p></div><div class="post-tail-wrapper text-muted"><div class="post-meta mb-3"> <i class="far fa-folder-open fa-fw mr-1"></i> <a href='/categories/android/'>android</a></div><div class="post-tags"> <i class="fa fa-tags fa-fw mr-1"></i> <a href="/tags/mvp/" class="post-tag no-text-decoration" >MVP</a> <a href="/tags/design-pattern/" class="post-tag no-text-decoration" >Design Pattern</a></div><div class="post-tail-bottom d-flex justify-content-between align-items-center mt-3 pt-5 pb-2"><div class="license-wrapper"> This post is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> by the author.</div><div class="share-wrapper"> <span class="share-label text-muted mr-1">Share</span> <span class="share-icons"> <a href="https://twitter.com/intent/tweet?text=Apply MVP Pattern for Android - Iced Tea Labs&url=https://icedtealabs.com//android/android-apply-mvp-pattern-for-android/" data-toggle="tooltip" data-placement="top" title="Twitter" target="_blank" rel="noopener" aria-label="Twitter"> <i class="fa-fw fab fa-twitter"></i> </a> <a href="https://www.facebook.com/sharer/sharer.php?title=Apply MVP Pattern for Android - Iced Tea Labs&u=https://icedtealabs.com//android/android-apply-mvp-pattern-for-android/" data-toggle="tooltip" data-placement="top" title="Facebook" target="_blank" rel="noopener" aria-label="Facebook"> <i class="fa-fw fab fa-facebook-square"></i> </a> <a href="https://telegram.me/share?text=Apply MVP Pattern for Android - Iced Tea Labs&url=https://icedtealabs.com//android/android-apply-mvp-pattern-for-android/" data-toggle="tooltip" data-placement="top" title="Telegram" target="_blank" rel="noopener" aria-label="Telegram"> <i class="fa-fw fab fa-telegram"></i> </a> <i class="fa-fw fas fa-link small" onclick="copyLink()" data-toggle="tooltip" data-placement="top" title="Copy link"></i> </span></div></div></div></div></div><div id="panel-wrapper" class="col-xl-3 pl-2 text-muted topbar-down"><div class="access"><div id="access-tags"> <span>Our Products</span><div class="d-flex flex-wrap mt-3 mb-1 mr-3"> <a class="post-tag" href="https://play.google.com/store/apps/details?id=com.icetea09.bucketlist"><div class="d-flex align-items-center"> <img src="/assets/images/buckist.png" width="50" height="50" /><div><strong>Buckist</strong> - Best bucket list app</div></div></a> <a class="post-tag" href="https://play.google.com/store/apps/details?id=com.icedtealabs.mymoney"><div class="d-flex align-items-center"> <img src="/assets/images/mymoney.png" width="50" height="50" /><div><strong>myMoney</strong> - Expense Manager</div></div></a> <a class="post-tag" href="https://play.google.com/store/apps/details?id=com.icedtealabs.moon"><div class="d-flex align-items-center"> <img src="https://play-lh.googleusercontent.com/fh1U3sqmhbWWRiS6fjh4caslBlE86ZlJBgucayR5wko743aM_U143sHPLTVZvJuHZA=s360-rw" width="50" height="50" /><div><strong>Moon</strong> - Blue light filter, night mode</div></div></a></div></div><div id="access-tags"> <span>Trending Tags</span><div class="d-flex flex-wrap mt-3 mb-1 mr-3"> <a class="post-tag" href="/tags/android-ui/">Android UI</a> <a class="post-tag" href="/tags/custom-view/">Custom View</a> <a class="post-tag" href="/tags/animation/">Animation</a> <a class="post-tag" href="/tags/android-database/">Android Database</a> <a class="post-tag" href="/tags/design-pattern/">Design Pattern</a> <a class="post-tag" href="/tags/dagger/">Dagger</a> <a class="post-tag" href="/tags/dependency-injection/">Dependency Injection</a> <a class="post-tag" href="/tags/facebook/">Facebook</a> <a class="post-tag" href="/tags/fragment/">Fragment</a> <a class="post-tag" href="/tags/hilt/">Hilt</a></div></div></div></div></div><div class="row"><div class="col-12 col-lg-11 col-xl-8"><div id="post-extend-wrapper" class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><div id="related-posts" class="mt-5 mb-2 mb-sm-4"><h3 class="pt-2 mt-1 mb-4 ml-1" data-toc-skip>Further Reading</h3><div class="card-deck mb-4"><div class="card"> <a href="/android/design-pattern-singleton-implementation/"><div class="card-body"> <span class="timeago small" > May 12, 2014 <i class="unloaded">2014-05-12T15:36:00+07:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>Singleton Implementation</h3><div class="text-muted small"><p> A - Intent Ensure only ONE instance of the class is created Provide global access to that instance B - Usage Singleton will be applied when you want to have exactly ONE instance of a class, no ...</p></div></div></a></div><div class="card"> <a href="/android/android-dependency-injection-using-dagger2/"><div class="card-body"> <span class="timeago small" > May 9, 2016 <i class="unloaded">2016-05-09T14:57:00+07:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>Android Dependency Injection using Dagger2</h3><div class="text-muted small"><p> 1 - What is Dependency Injection? Dependency Injection is a design pattern which help us to reduce the coupling between modules (classes). Hence, that makes our modules reusable, interchangeable an...</p></div></div></a></div><div class="card"> <a href="/android/android-rxjava-introduction/"><div class="card-body"> <span class="timeago small" > Jul 27, 2017 <i class="unloaded">2017-07-27T11:34:00+07:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>RxJava Introduction</h3><div class="text-muted small"><p> What is RxJava? Quoted from RxJava home page: RxJava is a Java VM implementation of Reactive Extensions: a library for composing asynchronous and event-based programs by using observable seque...</p></div></div></a></div></div></div><div class="post-navigation d-flex justify-content-between"> <a href="/android/android-parse-json-request-using-volley-gson/" class="btn btn-outline-primary" prompt="Older"><p>Parse JSON Request using Volley and GSON</p></a> <a href="/android/java-basic-regular-expression-java/" class="btn btn-outline-primary" prompt="Newer"><p>Basic Regular Expression in Java</p></a></div><div id="disqus" class="pt-2 pb-2"><p class="text-center text-muted small pb-5"> Comments powered by <a href="https://disqus.com/">Disqus</a>.</p></div><script src="/assets/js/lib/jquery.disqusloader.min.js"></script> <script> const options = { scriptUrl: '//icetea09.disqus.com/embed.js', disqusConfig: function() { this.page.title = 'Apply MVP Pattern for Android'; this.page.url = 'https://icedtealabs.com//android/android-apply-mvp-pattern-for-android/'; this.page.identifier = '/android/android-apply-mvp-pattern-for-android/'; } }; $.disqusLoader('#disqus', options); </script></div></div></div><footer class="d-flex w-100 justify-content-center"><div class="d-flex justify-content-between align-items-center"><div class="footer-left"><p class="mb-0"> © 2023 <a href="https://twitter.com/trinhlbk1991">Trinh Le</a>. <span data-toggle="tooltip" data-placement="top" title="Except where otherwise noted, the blog posts on this site are licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author.">Some rights reserved.</span></p></div><div class="footer-right"><p class="mb-0"> Powered by <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a> with <a href="https://github.com/cotes2020/jekyll-theme-chirpy" target="_blank" rel="noopener">Chirpy</a> theme.</p></div></div></footer></div><div id="search-result-wrapper" class="d-flex justify-content-center unloaded"><div class="col-12 col-sm-11 post-content"><div id="search-hints"><h4 class="text-muted mb-4">Trending Tags</h4><a class="post-tag" href="/tags/android-ui/">Android UI</a> <a class="post-tag" href="/tags/custom-view/">Custom View</a> <a class="post-tag" href="/tags/animation/">Animation</a> <a class="post-tag" href="/tags/android-database/">Android Database</a> <a class="post-tag" href="/tags/design-pattern/">Design Pattern</a> <a class="post-tag" href="/tags/dagger/">Dagger</a> <a class="post-tag" href="/tags/dependency-injection/">Dependency Injection</a> <a class="post-tag" href="/tags/facebook/">Facebook</a> <a class="post-tag" href="/tags/fragment/">Fragment</a> <a class="post-tag" href="/tags/hilt/">Hilt</a></div><div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div></div></div></div><div id="mask"></div><a id="back-to-top" href="#" aria-label="back-to-top" class="btn btn-lg btn-box-shadow" role="button"> <i class="fas fa-angle-up"></i> </a> <script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@1.7.3/dest/simple-jekyll-search.min.js"></script> <script> SimpleJekyllSearch({ searchInput: document.getElementById('search-input'), resultsContainer: document.getElementById('search-results'), json: '/assets/js/data/search.json', searchResultTemplate: '<div class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-lg-4 pr-lg-4 pl-xl-0 pr-xl-0"> <a href="https://icedtealabs.com/{url}">{title}</a><div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1"> {categories} {tags}</div><p>{snippet}</p></div>', noResultsText: '<p class="mt-5">Oops! No result founds.</p>', templateMiddleware: function(prop, value, template) { if (prop === 'categories') { if (value === '') { return `${value}`; } else { return `<div class="mr-sm-4"><i class="far fa-folder fa-fw"></i>${value}</div>`; } } if (prop === 'tags') { if (value === '') { return `${value}`; } else { return `<div><i class="fa fa-tag fa-fw"></i>${value}</div>`; } } } }); </script>

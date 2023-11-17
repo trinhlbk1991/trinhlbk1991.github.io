@@ -1,0 +1,238 @@
+<!DOCTYPE html><html lang="en-US" mode="light" ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><title>Facebook SDK Integration in Android | Iced Tea Labs</title><link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicons/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicons/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicons/favicon-16x16.png"><link rel="manifest" href="/assets/img/favicons/site.webmanifest"><link rel="shortcut icon" href="/assets/img/favicons/favicon.ico"><meta name="apple-mobile-web-app-title" content="Iced Tea Labs"><meta name="application-name" content="Iced Tea Labs"><meta name="msapplication-TileColor" content="#da532c"><meta name="msapplication-config" content="/assets/img/favicons/browserconfig.xml"><meta name="theme-color" content="#ffffff"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://fonts.gstatic.com"><link rel="preconnect" href="https://www.google-analytics.com" crossorigin="use-credentials"><link rel="dns-prefetch" href="https://www.google-analytics.com"><link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><link rel="preconnect" href="https://cdn.jsdelivr.net"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.11.2/css/all.min.css"><link rel="stylesheet" href="/assets/css/style.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/magnific-popup@1.1.0/dist/magnific-popup.min.css"> <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script> <script defer src="https://cdn.jsdelivr.net/combine/npm/popper.js@1.15.0,npm/bootstrap@4/dist/js/bootstrap.min.js"></script> <script async src="https://cdn.jsdelivr.net/combine/npm/lozad/dist/lozad.min.js,npm/magnific-popup@1/dist/jquery.magnific-popup.min.js"></script> <script defer src="/assets/js/dist/post.min.js"></script> <script defer src="/app.js"></script> <script defer src="https://www.googletagmanager.com/gtag/js?id=UA-48722139-1"></script> <script> document.addEventListener("DOMContentLoaded", function(event) { window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'UA-48722139-1'); }); </script><body data-spy="scroll" data-target="#toc"><div id="sidebar" class="d-flex flex-column align-items-end"><div class="profile-wrapper text-center"><div id="avatar"> <a href="/" alt="avatar" class="mx-auto"> <img src="/assets/images/ic_iced_tea_labs.png" alt="avatar" onerror="this.style.display='none'"> </a></div><div class="site-title mt-3"> <a href="/">Iced Tea Labs</a></div><div class="site-subtitle">Glasses 👓 Geek 💻 Backpacker 🎒 Climber 🧗‍♂️</div></div><ul class="w-100"><li class="nav-item"> <a href="/" class="nav-link"> <i class="fa-fw fas fa-home ml-xl-3 mr-xl-3 unloaded"></i> <span>HOME</span> </a><li class="nav-item"> <a href="/categories/" class="nav-link"> <i class="fa-fw fas fa-stream ml-xl-3 mr-xl-3 unloaded"></i> <span>CATEGORIES</span> </a><li class="nav-item"> <a href="/tags/" class="nav-link"> <i class="fa-fw fas fa-tags ml-xl-3 mr-xl-3 unloaded"></i> <span>TAGS</span> </a><li class="nav-item"> <a href="/archives/" class="nav-link"> <i class="fa-fw fas fa-archive ml-xl-3 mr-xl-3 unloaded"></i> <span>ARCHIVES</span> </a><li class="nav-item"> <a href="/about/" class="nav-link"> <i class="fa-fw fas fa-info ml-xl-3 mr-xl-3 unloaded"></i> <span>ABOUT</span> </a></ul><div class="sidebar-bottom mt-auto d-flex flex-wrap justify-content-center"> <a href="https://github.com/trinhlbk1991" aria-label="github" target="_blank" rel="noopener"> <i class="fab fa-github-alt"></i> </a> <a href="https://twitter.com/trinhlbk1991" aria-label="twitter" target="_blank" rel="noopener"> <i class="fab fa-twitter"></i> </a> <a href=" javascript:location.href = 'mailto:' + ['trinhlbk1991','gmail.com'].join('@')" aria-label="email" > <i class="fas fa-envelope"></i> </a> <a href="/feed.xml" aria-label="rss" > <i class="fas fa-rss"></i> </a> <a href="https://www.linkedin.com/in/trinhlbk1991/" aria-label="linkedin" target="_blank" rel="noopener"> <i class="fab fa-linkedin"></i> </a></div></div><div id="topbar-wrapper" class="row justify-content-center topbar-down"><div id="topbar" class="col-11 d-flex h-100 align-items-center justify-content-between"> <span id="breadcrumb"> <span> <a href="/categories/android/"> Android </a> </span> <span>Facebook SDK Integration in Android</span> </span> <i id="sidebar-trigger" class="fas fa-bars fa-fw"></i><div id="topbar-title"> Post</div><i id="search-trigger" class="fas fa-search fa-fw"></i> <span id="search-wrapper" class="align-items-center"> <i class="fas fa-search fa-fw"></i> <input class="form-control" id="search-input" type="search" aria-label="search" autocomplete="off" placeholder="Search..."> <i class="fa fa-times-circle fa-fw" id="search-cleaner"></i> </span> <span id="search-cancel" >Cancel</span></div></div><div id="main-wrapper"><div id="main"><div class="row"><div id="post-wrapper" class="col-12 col-lg-11 col-xl-8"><div class="post pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><h1 data-toc-skip>Facebook SDK Integration in Android</h1><div class="post-meta text-muted d-flex flex-column"><div> <span class="semi-bold"> trinh_le </span> <span class="timeago " data-toggle="tooltip" data-placement="bottom" title="Tue, Oct 7, 2014, 6:28 PM +0700" prep="on" > Oct 7, 2014 <i class="unloaded">2014-10-07T18:28:00+07:00</i> </span></div><div> <span> <span class="timeago lastmod" data-toggle="tooltip" data-placement="bottom" title="Sun, Aug 1, 2021, 12:49 PM +0700" prefix="Updated " > Aug 1, 2021 <i class="unloaded">2021-08-01T12:49:51+07:00</i> </span> </span> <span class="readtime" data-toggle="tooltip" data-placement="bottom" title="1003 words">5 min</span></div></div><div class="post-content"><p>You must know that social media has a very important position in modern life - every thing can be shared on social network.</p><p>One of the largest and most famous social network is Facebook. Integrate with Facebook to help you build engaging social apps and get more installs.</p><p>In this post, I’ll show you every steps in Facebook SDK integration in Android to let user login, post a status or a photo to his timeline.</p><h2>A - Create Facebook App</h2><p>Firstly, go to <a href="https://developers.facebook.com/" target="_blank">Facebook Developer Console</a> page, select Apps –&gt; Add New App to create a new Facebook app.</p><p>Pick desired platform and enter your app name, pick app category.</p><p>Then, enter the package name and default Activity class name of your Android app:</p><p><img class="aligncenter" src="https://farm3.staticflickr.com/2949/15467497875_08fb49719e_b.jpg" alt="" /></p><p>Next, enter your key hashes for the development and release version.</p><p>I’ll show you how to get development key hash in the next section.</p><p><img class="aligncenter" src="https://farm4.staticflickr.com/3930/15464357021_e7235df3dd_b.jpg" alt="" /></p><p>After finished all those steps, you’re done with creating new Facebook app and can view the <strong>App ID</strong> and <strong>App</strong> <strong>Secret</strong> key also.</p><p><img class="aligncenter" src="https://farm4.staticflickr.com/3933/15280796690_a7c89d2a94_b.jpg" alt="" /></p><h2>B - Generate Key Hash for Facebook settings</h2><p>For the “original” way, you can prefer this <a href="http://stackoverflow.com/questions/7506392/how-to-create-android-facebook-key-hash" target="_blank">link</a> and follow all the steps to get the key hash.</p><p>If you’re not a huge fan of cmd (like me <img id="smilie_215" title="Shame" src="http://vozforums.com/images/smilies/Off/shame.gif" alt=":shame:" />), just put the following code snipet in your Main Activity and get the key hash from log cat:</p><pre>
+private void getKeyHash(){
+	PackageInfo info;
+	try {
+		info = getPackageManager().getPackageInfo(&quot;ice.tea09.demofacebooksdk&quot;, PackageManager.GET_SIGNATURES);
+		for (Signature signature : info.signatures) {
+			MessageDigest md;
+			md = MessageDigest.getInstance(&quot;SHA&quot;);
+			md.update(signature.toByteArray());
+			String something = new String(Base64.encode(md.digest(), 0));
+			Log.e(&quot;hash key&quot;, something);
+		}
+	} catch (NameNotFoundException e1) {
+		Log.e(&quot;name not found&quot;, e1.toString());
+	} catch (NoSuchAlgorithmException e) {
+		Log.e(&quot;no such an algorithm&quot;, e.toString());
+	} catch (Exception e) {
+		Log.e(&quot;exception&quot;, e.toString());
+	}
+}
+</pre><h2> C - Import Facebook SDK</h2><p>You can download Facebook SDK from the <a href="https://developers.facebook.com/docs/android/" target="_blank">Facebook Developer</a> page.</p><p>After that, extract and import the SDK to eclipse.</p><p>Select <strong>File</strong> –&gt; <strong>Import</strong> and pick <strong>General</strong> –&gt; <strong>Existing Projects into Workspace</strong></p><p><img class="aligncenter" src="https://fbcdn-dragon-a.akamaihd.net/hphotos-ak-xpa1/t39.2178-6/851585_532369743468895_1397874742_n.png" alt="" /></p><p>After that, browse to the Facebook SDK folder and selected disired projects:</p><p><img class="aligncenter" src="https://fbcdn-dragon-a.akamaihd.net/hphotos-ak-xpa1/t39.2178-6/10333109_670654639663063_475665340_n.png" alt="" /></p><p>To add Facebook SDK to your project, right click on your project, select <strong>Properties</strong>.</p><p>Pick <strong>Android</strong> and on the right side in <strong>Library</strong> section, click on Add button to select Facebook SDK project.</p><p>Finally, click OK and build your project.</p><p><img class="aligncenter" src="https://fbcdn-dragon-a.akamaihd.net/hphotos-ak-xpa1/t39.2178-6/851576_527513617291891_2119098295_n.png" alt="" /></p><h2>D - Facebook SDK Integration in Android Demo</h2><p>Now, every required settings is done. We can start on creating a demo project that integrated with Facebook SDK and allow user to login, post status, photos to his time line.</p><h3>1 - Demo app layout</h3><p>Firstly, we made a very simple layout with 3 buttons:</p><ul><li>Login<li>Update Status<li>Post Image</ul><p><strong>activity_main.xml</strong></p><pre>
+&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot;
+    xmlns:facebook=&quot;http://schemas.android.com/apk/res-auto&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;
+    android:orientation=&quot;vertical&quot;
+    android:paddingBottom=&quot;@dimen/activity_vertical_margin&quot;
+    android:paddingLeft=&quot;@dimen/activity_horizontal_margin&quot;
+    android:paddingRight=&quot;@dimen/activity_horizontal_margin&quot;
+    android:paddingTop=&quot;@dimen/activity_vertical_margin&quot;
+    tools:context=&quot;ice.tea09.demofacebooksdk.MainActivity&quot; &gt;
+
+    &lt;com.facebook.widget.LoginButton
+        android:id=&quot;@+id/fb_login_button&quot;
+        android:layout_width=&quot;fill_parent&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:layout_marginTop=&quot;5dp&quot;
+        facebook:confirm_logout=&quot;false&quot;
+        facebook:fetch_user_info=&quot;true&quot; /&gt;
+
+    &lt;TextView
+        android:id=&quot;@+id/tv_username&quot;
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:layout_gravity=&quot;center&quot;
+        android:layout_margin=&quot;10dp&quot;
+        android:textSize=&quot;18sp&quot; /&gt;
+
+    &lt;Button
+        android:id=&quot;@+id/btn_post_status&quot;
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:text=&quot;Update Status&quot; /&gt;
+
+    &lt;Button
+        android:id=&quot;@+id/btn_post_photo&quot;
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:text=&quot;Post Image&quot; /&gt;
+
+&lt;/LinearLayout&gt;
+</pre><p>As you can see, we use the <strong>LoginButton</strong> of Facebook SDK.</p><blockquote>A Log In/Log Out button that maintains session state and logs in/out for the app. This control will create and use the active session upon construction if it has the available data (if the app ID is specified in the manifest). It will also open the active session if it does not require user interaction (i.e. if the session is in the SessionState.CREATED_TOKEN_LOADED state. Developers can override the use of the active session by calling the LoginButton.setSession(com.facebook.Session) method.</blockquote><h3>2 - Demo app implementation</h3><p>Firstly, declare all inneed variables:</p><pre>
+private LoginButton btnLogin;
+private Button btnPostPhoto;
+private Button btnPostStatus;
+
+private TextView tvUsername;
+
+private UiLifecycleHelper uiHelper;
+GraphUser user;
+private static final List&lt;String&gt; FACEBOOK_PERMISSIONS = Arrays.asList(&quot;publish_actions&quot;);
+
+private static String testStatus = &quot;Test status from Ice Tea 09.&quot;;
+</pre><p>The <strong>UiLifecycleHelper </strong>object used to to create, automatically open (if applicable), save, and restore the Active Session in a way that is similar to Android UI lifecycles.</p><pre>
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+	super.onCreate(savedInstanceState);
+
+	uiHelper = new UiLifecycleHelper(this, statusCallback);
+	uiHelper.onCreate(savedInstanceState);
+
+	setContentView(R.layout.activity_main);
+
+}
+
+private Session.StatusCallback statusCallback = new Session.StatusCallback() {
+	@Override
+	public void call(Session session, SessionState state,
+			Exception exception) {
+		if (state.isOpened()) {
+			Log.d(&quot;MainActivity&quot;, &quot;Facebook session opened&quot;);
+		} else if (state.isClosed()) {
+			Log.d(&quot;MainActivity&quot;, &quot;Facebook session closed&quot;);
+		}
+	}
+};
+
+@Override
+public void onResume() {
+	super.onResume();
+	uiHelper.onResume();
+}
+
+@Override
+public void onPause() {
+	super.onPause();
+	uiHelper.onPause();
+}
+
+@Override
+public void onDestroy() {
+	super.onDestroy();
+	uiHelper.onDestroy();
+}
+
+@Override
+public void onActivityResult(int requestCode, int resultCode, Intent data) {
+	super.onActivityResult(requestCode, resultCode, data);
+	uiHelper.onActivityResult(requestCode, resultCode, data);
+}
+
+@Override
+public void onSaveInstanceState(Bundle savedState) {
+	super.onSaveInstanceState(savedState);
+	uiHelper.onSaveInstanceState(savedState);
+}
+</pre><p>Next, we implement some functions like <strong>postPhoto(), postStatus(), checkPermissions() </strong>and <strong>requestPermissions()</strong>:</p><pre>
+public void postPhoto() {
+	if(this.user != null){
+		if (checkPermissions()) {
+			Bitmap img = BitmapFactory.decodeResource(getResources(),
+					R.drawable.ic_launcher);
+			Request uploadRequest = Request.newUploadPhotoRequest(
+					Session.getActiveSession(), img, new Request.Callback() {
+						@Override
+						public void onCompleted(Response response) {
+							Toast.makeText(MainActivity.this,
+									&quot;Photo uploaded successfully&quot;,
+									Toast.LENGTH_LONG).show();
+						}
+					});
+			uploadRequest.executeAsync();
+		} else {
+			requestPermissions();
+		}
+	}
+	else{
+		Toast.makeText(MainActivity.this,
+				&quot;Please login first!&quot;,
+				Toast.LENGTH_LONG).show();
+	}
+}
+
+public void postStatus() {
+	if(this.user != null){
+		if (checkPermissions()) {
+			Request request = Request.newStatusUpdateRequest(
+					Session.getActiveSession(), testStatus,
+					new Request.Callback() {
+						@Override
+						public void onCompleted(Response response) {
+							if (response.getError() == null)
+								Toast.makeText(MainActivity.this,
+										&quot;Status updated successfully&quot;,
+										Toast.LENGTH_LONG).show();
+						}
+					});
+			request.executeAsync();
+		} else {
+			requestPermissions();
+		}
+	}
+	else{
+		Toast.makeText(MainActivity.this,
+				&quot;Please login first!&quot;,
+				Toast.LENGTH_LONG).show();
+	}
+}
+
+public boolean checkPermissions() {
+	Session s = Session.getActiveSession();
+	if (s != null) {
+		return s.getPermissions().contains(&quot;publish_actions&quot;);
+	} else
+		return false;
+}
+
+public void requestPermissions() {
+	Session s = Session.getActiveSession();
+	if (s != null)
+		s.requestNewPublishPermissions(new Session.NewPermissionsRequest(
+				this, FACEBOOK_PERMISSIONS));
+}
+</pre><p>Finally, update <strong>onCreate()</strong> method to call the desired functions properly:</p><pre>
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+	super.onCreate(savedInstanceState);
+	uiHelper = new UiLifecycleHelper(this, statusCallback);
+	uiHelper.onCreate(savedInstanceState);
+
+	setContentView(R.layout.activity_main);
+
+	tvUsername = (TextView) findViewById(R.id.tv_username);
+	btnLogin = (LoginButton) findViewById(R.id.fb_login_button);
+	btnLogin.setUserInfoChangedCallback(new UserInfoChangedCallback() {
+		@Override
+		public void onUserInfoFetched(GraphUser user) {
+			MainActivity.this.user = user;
+			if (user != null) {
+				tvUsername.setText(&quot;Hello, &quot; + user.getName());
+			} else {
+				tvUsername.setText(&quot;You are not logged&quot;);
+			}
+		}
+	});
+
+	btnPostPhoto = (Button) findViewById(R.id.btn_post_photo);
+	btnPostPhoto.setOnClickListener(new OnClickListener() {
+
+		@Override
+		public void onClick(View view) {
+			postPhoto();
+		}
+	});
+
+	btnPostStatus = (Button) findViewById(R.id.btn_post_status);
+	btnPostStatus.setOnClickListener(new OnClickListener() {
+
+		@Override
+		public void onClick(View v) {
+			postStatus();
+		}
+	});
+
+	getKeyHash();
+}
+</pre><p>Run the demo app and enjoy the result :)</p><p><img src="https://farm4.staticflickr.com/3935/15280866928_30ac4b568b_n.jpg" alt="" /> <img src="https://farm6.staticflickr.com/5601/15444409836_5f5ff5e750_n.jpg" alt="" /></p><p><img src="https://farm4.staticflickr.com/3933/15464356941_47cf9fe97e_n.jpg" alt="" /> <img src="https://farm4.staticflickr.com/3933/15467497855_cfe9de69d5_n.jpg" alt="" /></p><p><img class="aligncenter" src="https://farm3.staticflickr.com/2946/15280932737_e5ff019b95_o.png" alt="" /></p><h2>E - Download Source Code Facebook SDK Integration in Android</h2><p><a href="https://drive.google.com/file/d/0Bw3dwdSezn6fSkxSbnhMcmd4UW8/view?usp=sharing" target="_blank">https://drive.google.com/file/d/0Bw3dwdSezn6fSkxSbnhMcmd4UW8/view?usp=sharing</a></p><p><a href="http://www.mediafire.com/download/lf90hvgyha9f7q2/DemoFacebookSDK.zip" target="_blank">http://www.mediafire.com/download/lf90hvgyha9f7q2/DemoFacebookSDK.zip</a></p></div><div class="post-tail-wrapper text-muted"><div class="post-meta mb-3"> <i class="far fa-folder-open fa-fw mr-1"></i> <a href='/categories/android/'>android</a></div><div class="post-tags"> <i class="fa fa-tags fa-fw mr-1"></i> <a href="/tags/facebook/" class="post-tag no-text-decoration" >Facebook</a></div><div class="post-tail-bottom d-flex justify-content-between align-items-center mt-3 pt-5 pb-2"><div class="license-wrapper"> This post is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> by the author.</div><div class="share-wrapper"> <span class="share-label text-muted mr-1">Share</span> <span class="share-icons"> <a href="https://twitter.com/intent/tweet?text=Facebook SDK Integration in Android - Iced Tea Labs&url=https://icedtealabs.com//android/android-facebook-sdk-integration-android/" data-toggle="tooltip" data-placement="top" title="Twitter" target="_blank" rel="noopener" aria-label="Twitter"> <i class="fa-fw fab fa-twitter"></i> </a> <a href="https://www.facebook.com/sharer/sharer.php?title=Facebook SDK Integration in Android - Iced Tea Labs&u=https://icedtealabs.com//android/android-facebook-sdk-integration-android/" data-toggle="tooltip" data-placement="top" title="Facebook" target="_blank" rel="noopener" aria-label="Facebook"> <i class="fa-fw fab fa-facebook-square"></i> </a> <a href="https://telegram.me/share?text=Facebook SDK Integration in Android - Iced Tea Labs&url=https://icedtealabs.com//android/android-facebook-sdk-integration-android/" data-toggle="tooltip" data-placement="top" title="Telegram" target="_blank" rel="noopener" aria-label="Telegram"> <i class="fa-fw fab fa-telegram"></i> </a> <i class="fa-fw fas fa-link small" onclick="copyLink()" data-toggle="tooltip" data-placement="top" title="Copy link"></i> </span></div></div></div></div></div><div id="panel-wrapper" class="col-xl-3 pl-2 text-muted topbar-down"><div class="access"><div id="access-tags"> <span>Our Products</span><div class="d-flex flex-wrap mt-3 mb-1 mr-3"> <a class="post-tag" href="https://play.google.com/store/apps/details?id=com.icetea09.bucketlist"><div class="d-flex align-items-center"> <img src="/assets/images/buckist.png" width="50" height="50" /><div><strong>Buckist</strong> - Best bucket list app</div></div></a> <a class="post-tag" href="https://play.google.com/store/apps/details?id=com.icedtealabs.mymoney"><div class="d-flex align-items-center"> <img src="/assets/images/mymoney.png" width="50" height="50" /><div><strong>myMoney</strong> - Expense Manager</div></div></a> <a class="post-tag" href="https://play.google.com/store/apps/details?id=com.icedtealabs.moon"><div class="d-flex align-items-center"> <img src="https://play-lh.googleusercontent.com/fh1U3sqmhbWWRiS6fjh4caslBlE86ZlJBgucayR5wko743aM_U143sHPLTVZvJuHZA=s360-rw" width="50" height="50" /><div><strong>Moon</strong> - Blue light filter, night mode</div></div></a></div></div><div id="access-tags"> <span>Trending Tags</span><div class="d-flex flex-wrap mt-3 mb-1 mr-3"> <a class="post-tag" href="/tags/android-ui/">Android UI</a> <a class="post-tag" href="/tags/custom-view/">Custom View</a> <a class="post-tag" href="/tags/animation/">Animation</a> <a class="post-tag" href="/tags/android-database/">Android Database</a> <a class="post-tag" href="/tags/design-pattern/">Design Pattern</a> <a class="post-tag" href="/tags/dagger/">Dagger</a> <a class="post-tag" href="/tags/dependency-injection/">Dependency Injection</a> <a class="post-tag" href="/tags/facebook/">Facebook</a> <a class="post-tag" href="/tags/fragment/">Fragment</a> <a class="post-tag" href="/tags/hilt/">Hilt</a></div></div></div></div></div><div class="row"><div class="col-12 col-lg-11 col-xl-8"><div id="post-extend-wrapper" class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><div id="related-posts" class="mt-5 mb-2 mb-sm-4"><h3 class="pt-2 mt-1 mb-4 ml-1" data-toc-skip>Further Reading</h3><div class="card-deck mb-4"><div class="card"> <a href="/android/android-floating-view-like-facebook-chatheads/"><div class="card-body"> <span class="timeago small" > Mar 16, 2015 <i class="unloaded">2015-03-16T23:21:00+07:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>Floating View like Facebook Chatheads</h3><div class="text-muted small"><p> In this post, I’ll show you how to create a floating view like Facebook chatheads - the view that was drawn on top of other applications. So, the very first question is: How can we do that? An act...</p></div></div></a></div><div class="card"> <a href="/android/android-how-to-deal-with-anrs/"><div class="card-body"> <span class="timeago small" > Feb 24, 2020 <i class="unloaded">2020-02-24T14:59:00+07:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>How to deal with ANRs?</h3><div class="text-muted small"><p> 1. What is ANR? ANR stands for Application Not Responding, which is the state that your application cannot process user input events or even draw. The root cause of ANR is when the application’s ...</p></div></div></a></div><div class="card"> <a href="/android/android-clean-architecture/"><div class="card-body"> <span class="timeago small" > Mar 15, 2020 <i class="unloaded">2020-03-15T14:42:00+07:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>Clean Architecture for Android</h3><div class="text-muted small"><p> Clean Architecture for Android What is Clean Architecture? Clean Architecture is a software design philosophy that separates the software into many ring levels: Each of the circle represents d...</p></div></div></a></div></div></div><div class="post-navigation d-flex justify-content-between"> <a href="/javascript/javascript-organizing-code-namespace-in-javascript/" class="btn btn-outline-primary" prompt="Older"><p>Organizing code with namespace in JavaScript</p></a> <a href="/android/use-dropbox-svn-repository/" class="btn btn-outline-primary" prompt="Newer"><p>Use Dropbox as SVN Repository</p></a></div><div id="disqus" class="pt-2 pb-2"><p class="text-center text-muted small pb-5"> Comments powered by <a href="https://disqus.com/">Disqus</a>.</p></div><script src="/assets/js/lib/jquery.disqusloader.min.js"></script> <script> const options = { scriptUrl: '//icetea09.disqus.com/embed.js', disqusConfig: function() { this.page.title = 'Facebook SDK Integration in Android'; this.page.url = 'https://icedtealabs.com//android/android-facebook-sdk-integration-android/'; this.page.identifier = '/android/android-facebook-sdk-integration-android/'; } }; $.disqusLoader('#disqus', options); </script></div></div></div><footer class="d-flex w-100 justify-content-center"><div class="d-flex justify-content-between align-items-center"><div class="footer-left"><p class="mb-0"> © 2023 <a href="https://twitter.com/trinhlbk1991">Trinh Le</a>. <span data-toggle="tooltip" data-placement="top" title="Except where otherwise noted, the blog posts on this site are licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author.">Some rights reserved.</span></p></div><div class="footer-right"><p class="mb-0"> Powered by <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a> with <a href="https://github.com/cotes2020/jekyll-theme-chirpy" target="_blank" rel="noopener">Chirpy</a> theme.</p></div></div></footer></div><div id="search-result-wrapper" class="d-flex justify-content-center unloaded"><div class="col-12 col-sm-11 post-content"><div id="search-hints"><h4 class="text-muted mb-4">Trending Tags</h4><a class="post-tag" href="/tags/android-ui/">Android UI</a> <a class="post-tag" href="/tags/custom-view/">Custom View</a> <a class="post-tag" href="/tags/animation/">Animation</a> <a class="post-tag" href="/tags/android-database/">Android Database</a> <a class="post-tag" href="/tags/design-pattern/">Design Pattern</a> <a class="post-tag" href="/tags/dagger/">Dagger</a> <a class="post-tag" href="/tags/dependency-injection/">Dependency Injection</a> <a class="post-tag" href="/tags/facebook/">Facebook</a> <a class="post-tag" href="/tags/fragment/">Fragment</a> <a class="post-tag" href="/tags/hilt/">Hilt</a></div><div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div></div></div></div><div id="mask"></div><a id="back-to-top" href="#" aria-label="back-to-top" class="btn btn-lg btn-box-shadow" role="button"> <i class="fas fa-angle-up"></i> </a> <script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@1.7.3/dest/simple-jekyll-search.min.js"></script> <script> SimpleJekyllSearch({ searchInput: document.getElementById('search-input'), resultsContainer: document.getElementById('search-results'), json: '/assets/js/data/search.json', searchResultTemplate: '<div class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-lg-4 pr-lg-4 pl-xl-0 pr-xl-0"> <a href="https://icedtealabs.com/{url}">{title}</a><div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1"> {categories} {tags}</div><p>{snippet}</p></div>', noResultsText: '<p class="mt-5">Oops! No result founds.</p>', templateMiddleware: function(prop, value, template) { if (prop === 'categories') { if (value === '') { return `${value}`; } else { return `<div class="mr-sm-4"><i class="far fa-folder fa-fw"></i>${value}</div>`; } } if (prop === 'tags') { if (value === '') { return `${value}`; } else { return `<div><i class="fa fa-tag fa-fw"></i>${value}</div>`; } } } }); </script>
