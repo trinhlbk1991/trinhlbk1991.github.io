@@ -1,0 +1,175 @@
+<!DOCTYPE html><html lang="en-US" mode="light" ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><title>How to deal with ANRs? | Iced Tea Labs</title><link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicons/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicons/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicons/favicon-16x16.png"><link rel="manifest" href="/assets/img/favicons/site.webmanifest"><link rel="shortcut icon" href="/assets/img/favicons/favicon.ico"><meta name="apple-mobile-web-app-title" content="Iced Tea Labs"><meta name="application-name" content="Iced Tea Labs"><meta name="msapplication-TileColor" content="#da532c"><meta name="msapplication-config" content="/assets/img/favicons/browserconfig.xml"><meta name="theme-color" content="#ffffff"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://fonts.gstatic.com"><link rel="preconnect" href="https://www.google-analytics.com" crossorigin="use-credentials"><link rel="dns-prefetch" href="https://www.google-analytics.com"><link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><link rel="preconnect" href="https://cdn.jsdelivr.net"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.11.2/css/all.min.css"><link rel="stylesheet" href="/assets/css/style.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/magnific-popup@1.1.0/dist/magnific-popup.min.css"> <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script> <script defer src="https://cdn.jsdelivr.net/combine/npm/popper.js@1.15.0,npm/bootstrap@4/dist/js/bootstrap.min.js"></script> <script async src="https://cdn.jsdelivr.net/combine/npm/lozad/dist/lozad.min.js,npm/magnific-popup@1/dist/jquery.magnific-popup.min.js"></script> <script defer src="/assets/js/dist/post.min.js"></script> <script defer src="/app.js"></script> <script defer src="https://www.googletagmanager.com/gtag/js?id=UA-48722139-1"></script> <script> document.addEventListener("DOMContentLoaded", function(event) { window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'UA-48722139-1'); }); </script><body data-spy="scroll" data-target="#toc"><div id="sidebar" class="d-flex flex-column align-items-end"><div class="profile-wrapper text-center"><div id="avatar"> <a href="/" alt="avatar" class="mx-auto"> <img src="/assets/images/ic_iced_tea_labs.png" alt="avatar" onerror="this.style.display='none'"> </a></div><div class="site-title mt-3"> <a href="/">Iced Tea Labs</a></div><div class="site-subtitle">Glasses 👓 Geek 💻 Backpacker 🎒 Climber 🧗‍♂️</div></div><ul class="w-100"><li class="nav-item"> <a href="/" class="nav-link"> <i class="fa-fw fas fa-home ml-xl-3 mr-xl-3 unloaded"></i> <span>HOME</span> </a><li class="nav-item"> <a href="/categories/" class="nav-link"> <i class="fa-fw fas fa-stream ml-xl-3 mr-xl-3 unloaded"></i> <span>CATEGORIES</span> </a><li class="nav-item"> <a href="/tags/" class="nav-link"> <i class="fa-fw fas fa-tags ml-xl-3 mr-xl-3 unloaded"></i> <span>TAGS</span> </a><li class="nav-item"> <a href="/archives/" class="nav-link"> <i class="fa-fw fas fa-archive ml-xl-3 mr-xl-3 unloaded"></i> <span>ARCHIVES</span> </a><li class="nav-item"> <a href="/about/" class="nav-link"> <i class="fa-fw fas fa-info ml-xl-3 mr-xl-3 unloaded"></i> <span>ABOUT</span> </a></ul><div class="sidebar-bottom mt-auto d-flex flex-wrap justify-content-center"> <a href="https://github.com/trinhlbk1991" aria-label="github" target="_blank" rel="noopener"> <i class="fab fa-github-alt"></i> </a> <a href="https://twitter.com/trinhlbk1991" aria-label="twitter" target="_blank" rel="noopener"> <i class="fab fa-twitter"></i> </a> <a href=" javascript:location.href = 'mailto:' + ['trinhlbk1991','gmail.com'].join('@')" aria-label="email" > <i class="fas fa-envelope"></i> </a> <a href="/feed.xml" aria-label="rss" > <i class="fas fa-rss"></i> </a> <a href="https://www.linkedin.com/in/trinhlbk1991/" aria-label="linkedin" target="_blank" rel="noopener"> <i class="fab fa-linkedin"></i> </a></div></div><div id="topbar-wrapper" class="row justify-content-center topbar-down"><div id="topbar" class="col-11 d-flex h-100 align-items-center justify-content-between"> <span id="breadcrumb"> <span> <a href="/categories/android/"> Android </a> </span> <span>How to deal with ANRs?</span> </span> <i id="sidebar-trigger" class="fas fa-bars fa-fw"></i><div id="topbar-title"> Post</div><i id="search-trigger" class="fas fa-search fa-fw"></i> <span id="search-wrapper" class="align-items-center"> <i class="fas fa-search fa-fw"></i> <input class="form-control" id="search-input" type="search" aria-label="search" autocomplete="off" placeholder="Search..."> <i class="fa fa-times-circle fa-fw" id="search-cleaner"></i> </span> <span id="search-cancel" >Cancel</span></div></div><div id="main-wrapper"><div id="main"><div class="row"><div id="post-wrapper" class="col-12 col-lg-11 col-xl-8"><div class="post pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><h1 data-toc-skip>How to deal with ANRs?</h1><div class="post-meta text-muted d-flex flex-column"><div> <span class="semi-bold"> Trinh Le </span> <span class="timeago " data-toggle="tooltip" data-placement="bottom" title="Mon, Feb 24, 2020, 2:59 PM +0700" prep="on" > Feb 24, 2020 <i class="unloaded">2020-02-24T14:59:00+07:00</i> </span></div><div> <span> <span class="timeago lastmod" data-toggle="tooltip" data-placement="bottom" title="Sun, Aug 1, 2021, 12:42 PM +0700" prefix="Updated " > Aug 1, 2021 <i class="unloaded">2021-08-01T12:42:30+07:00</i> </span> </span> <span class="readtime" data-toggle="tooltip" data-placement="bottom" title="766 words">4 min</span></div></div><div class="post-content"><h2 id="1-what-is-anr">1. What is ANR?</h2><p><strong>ANR</strong> stands for <strong>Application Not Responding</strong>, which is the state that your application cannot process user input events or even draw.</p><p>The root cause of ANR is when the application’s UI thread has been blocked for too long:</p><ul><li><p>Have a long-running task on the main thread with more than 5 seconds of execution</p><li><p>Have a BroadcastReceiver that execute more than <a href="https://developer.android.com/reference/android/content/BroadcastReceiver">5 seconds on foreground or 10 seconds in background</a></p></ul><h2 id="2-some-common-cases-that-cause-anr">2. Some common cases that cause ANR</h2><ul><li><p>Perform long-running tasks (IO, heavy computation,…) on main thread</p><li><p>Main thread is blocked by a long execution task in another thread</p><li><p>Main thread is doing asynchronous binder call with another process, which take a long time to return the result</p><li><p>Too slow broadcast receiver</p></ul><h2 id="3-how-to-detect-and-diagnose-anrs">3. How to detect and diagnose ANRs?</h2><h3 id="strict-mode">Strict Mode</h3><p>Enable Strict Mode allows you to detect accident network/IO calls on main thread.</p><div class="language-kotlin highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre><td class="rouge-code"><pre>    <span class="k">if</span> <span class="p">(</span><span class="nc">BuildConfig</span><span class="p">.</span><span class="nc">DEBUG</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nc">StrictMode</span><span class="p">.</span><span class="nf">setThreadPolicy</span><span class="p">(</span>
+            <span class="nc">StrictMode</span><span class="p">.</span><span class="nc">ThreadPolicy</span><span class="p">.</span><span class="nc">Builder</span><span class="p">()</span>
+                <span class="p">.</span><span class="nf">detectNetwork</span><span class="p">()</span>
+                <span class="p">.</span><span class="nf">detectDiskReads</span><span class="p">()</span>
+                <span class="p">.</span><span class="nf">detectDiskWrites</span><span class="p">()</span>
+                <span class="p">.</span><span class="nf">penaltyLog</span><span class="p">()</span>
+                <span class="p">.</span><span class="nf">build</span><span class="p">()</span>
+        <span class="p">)</span>
+    <span class="p">}</span>
+</pre></table></code></div></div><h3 id="anr-dialog">ANR dialog</h3><p>Enable Show all ANRs dialog from Developer Options to visually alerting you whenever has ANR even for background apps.</p><p><img src="https://cdn-images-1.medium.com/max/2000/1*xAED8qYdxAc4-OA0PEQHzg.png" alt="" /></p><h3 id="android-studio-profiler">Android Studio Profiler</h3><p>The Profiler is available on Android Studio 3.0 and above.</p><p>Using the Profiler, you can observe the threads along the app’s timeline. Base on that you can analyze and identify ANRs.</p><h3 id="bug-report">Bug Report</h3><p>Another way to diagnose ANR is to use the bug report feature.</p><p>To generate a bug report, you can either:</p><ul><li>Select from the developer options</ul><p><img src="https://cdn-images-1.medium.com/max/2000/1*Aqlcf-GhHUkzPKSOR0Pbjw.png" alt="" /></p><ul><li>Or, use the following commands:</ul><p><code class="language-kotlin highlighter-rouge"><span class="n">adb</span> <span class="n">bugreport</span> <span class="n">target-location</span></code></p><h2 id="4-how-to-fix-anrs">4. How to fix ANRs?</h2><h3 id="long-running-task-on-the-main-thread">Long-running task on the main thread</h3><div class="language-kotlin highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre>    <span class="n">btn_execute</span><span class="p">.</span><span class="nf">setOnClickListener</span> <span class="p">{</span>
+        <span class="nc">LongRunningTask</span><span class="p">().</span><span class="nf">execute</span><span class="p">()</span>
+    <span class="p">}</span>
+</pre></table></code></div></div><p>You can easily detect those long-running task by observing the timeline of main thread in the Profiler:</p><p><img src="https://cdn-images-1.medium.com/max/2558/1*tNyxvaLpZkjcXJ1UW4hMXQ.png" alt="" /></p><p>To resolve this, we simply just move the long-running task to another thread:</p><div class="language-kotlin highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre><td class="rouge-code"><pre>    <span class="n">btn_execute</span><span class="p">.</span><span class="nf">setOnClickListener</span> <span class="p">{</span>
+        <span class="nc">Thread</span> <span class="p">{</span>
+            <span class="nc">LongRunningTask</span><span class="p">().</span><span class="nf">execute</span><span class="p">()</span>
+        <span class="p">}.</span><span class="nf">start</span><span class="p">()</span>
+    <span class="p">}</span>
+</pre></table></code></div></div><p>And the main thread won’t be blocked anymore 🎉</p><p><img src="https://cdn-images-1.medium.com/max/3016/1*m2eOeEZTjo1gOndbLYCHJA.png" alt="" /></p><h3 id="lock-contention">Lock contention</h3><p>In some cases, even your long-running task executes off the main thread, your app still may face ANRs due to lock contention.</p><div class="language-kotlin highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+</pre><td class="rouge-code"><pre>    <span class="n">btn_execute</span><span class="p">.</span><span class="nf">setOnClickListener</span> <span class="p">{</span>
+        <span class="nc">Thread</span> <span class="p">{</span>
+            <span class="nc">LongRunningTask</span><span class="p">().</span><span class="nf">execute</span><span class="p">()</span>
+        <span class="p">}.</span><span class="nf">start</span><span class="p">()</span>
+
+        <span class="nf">synchronized</span><span class="p">(</span><span class="n">lockObject</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">tv_status</span><span class="p">.</span><span class="n">text</span> <span class="p">=</span> <span class="s">"Finished Execution"</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">inner</span> <span class="kd">class</span> <span class="nc">LongRunningTask</span> <span class="p">{</span>
+        <span class="k">fun</span> <span class="nf">execute</span><span class="p">():</span> <span class="nc">String</span> <span class="p">{</span>
+            <span class="nf">synchronized</span><span class="p">(</span><span class="n">lockObject</span><span class="p">)</span> <span class="p">{</span>
+                <span class="kd">var</span> <span class="py">result</span> <span class="p">=</span> <span class="s">""</span>
+                <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="k">in</span> <span class="mi">0</span><span class="o">..</span><span class="nc">Int</span><span class="p">.</span><span class="nc">MAX_VALUE</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="n">result</span> <span class="p">=</span> <span class="s">"$i"</span>
+                <span class="p">}</span>
+                <span class="k">return</span> <span class="n">result</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</pre></table></code></div></div><p>Those lock contention can be detected by analyzing the trace/bug report file:</p><pre><code class="language-log">    ------ **VM TRACES AT LAST ANR** (/data/anr/anr_2020-02-24-11-39-05-971: 2020-02-24 11:39:08) ------
+
+    **"main" prio=5 tid=1 Blocked**
+      | group="main" sCount=2 dsCount=0 flags=1 obj=0x714c91f0 self=0xee537800
+      | sysTid=32337 nice=-10 cgrp=default sched=0/0 handle=0xeebb8dc8
+      | state=S schedstat=( 1084437004 741209249 935 ) utm=38 stm=69 core=0 HZ=100
+      | stack=0xff086000-0xff088000 stackSize=8192KB
+      | held mutexes=
+      at **com.icedtealabs.anrdemo.MainActivity$onCreate$1.onClick(MainActivity.kt:20)**
+      **- waiting to lock &lt;0x0a1b1d2e&gt; (a java.lang.Object) held by thread 22**
+
+    **......**
+
+    "Thread-8" prio=5 **tid=22** Native
+      | group="main" sCount=2 dsCount=0 flags=1 obj=0x12d80000 self=0xe34f3c00
+      | sysTid=32553 nice=0 cgrp=default sched=0/0 handle=0xbfaab230
+      | state=S schedstat=( 211312896032 78218568213 176791 ) utm=3214 stm=17916 core=1 HZ=100
+      | stack=0xbf9a8000-0xbf9aa000 stackSize=1040KB
+      | held mutexes=
+      at java.lang.Integer.toString(Integer.java:437)
+      at java.lang.String.valueOf(String.java:3032)
+      at **com.icedtealabs.anrdemo.MainActivity$LongRunningTask.execute(MainActivity.kt:32)**
+      - locked &lt;0x0a1b1d2e&gt; (a java.lang.Object)
+      at com.icedtealabs.anrdemo.MainActivity$onCreate$1$1.run(MainActivity.kt:17)
+      at java.lang.Thread.run(Thread.java:919)
+</code></pre><p>By reading the bug report, you can easily specify the lock detention root cause and resolve it! 🎉</p><h3 id="slow-broadcastreceiver">Slow BroadcastReceiver</h3><div class="language-kotlin highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre><td class="rouge-code"><pre>    <span class="k">private</span> <span class="kd">val</span> <span class="py">broadcastReceiver</span> <span class="p">=</span> <span class="kd">object</span> <span class="err">: </span><span class="nc">BroadcastReceiver</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">override</span> <span class="k">fun</span> <span class="nf">onReceive</span><span class="p">(</span><span class="n">context</span><span class="p">:</span> <span class="nc">Context</span><span class="p">,</span> <span class="n">intent</span><span class="p">:</span> <span class="nc">Intent</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nc">LongRunningTask</span><span class="p">().</span><span class="nf">execute</span><span class="p">()</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="n">btn_execute</span><span class="p">.</span><span class="nf">setOnClickListener</span> <span class="p">{</span>
+        <span class="n">broadcastManager</span><span class="p">.</span><span class="nf">sendBroadcast</span><span class="p">(</span><span class="nc">Intent</span><span class="p">(</span><span class="s">"custom-action"</span><span class="p">))</span>
+        <span class="n">tv_status</span><span class="p">.</span><span class="n">text</span> <span class="p">=</span> <span class="s">"Finish Execution"</span>
+    <span class="p">}</span>
+</pre></table></code></div></div><p>In order to find the slow BroadcastReceiver, you can analyze the trace/bug report:</p><pre><code class="language-log">    ------ **VM TRACES AT LAST ANR** (/data/anr/anr_2020-02-24-12-02-02-111: 2020-02-24 12:02:03) ------
+
+    DALVIK THREADS (13):
+    "main" prio=5 tid=1 Runnable
+      | group="main" sCount=0 dsCount=0 flags=0 obj=0x714c91f0 self=0xee537800
+      | sysTid=17793 nice=-10 cgrp=default sched=0/0 handle=0xeebb8dc8
+      | state=R schedstat=( 11977233726 2817242624 14105 ) utm=871 stm=325 core=1 HZ=100
+      | stack=0xff086000-0xff088000 stackSize=8192KB
+      | held mutexes= "mutator lock"(shared held)
+      at java.lang.Integer.stringSize(Integer.java:507)
+      at java.lang.Integer.toString(Integer.java:431)
+      at java.lang.String.valueOf(String.java:3032)
+      at **com.icedtealabs.anrdemo.MainActivity$LongRunningTask.execute(MainActivity.kt:39)
+      at com.icedtealabs.anrdemo.MainActivity$broadcastReceiver$1.onReceive(MainActivity.kt:18)
+      at androidx.localbroadcastmanager.content.LocalBroadcastManager.execute**PendingBroadcasts(LocalBroadcastManager.java:313)
+      at androidx.localbroadcastmanager.content.LocalBroadcastManager$1.handleMessage(LocalBroadcastManager.java:121)
+      at android.os.Handler.dispatchMessage(Handler.java:107)
+      at android.os.Looper.loop(Looper.java:214)
+      at android.app.ActivityThread.main(ActivityThread.java:7356)
+</code></pre><p>To resolve this, you can simply move all the heavy execution code in the BroadcastReceiver to an <strong>IntentService</strong>:</p><div class="language-kotlin highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre><td class="rouge-code"><pre>    <span class="k">private</span> <span class="kd">val</span> <span class="py">broadcastReceiver</span> <span class="p">=</span> <span class="kd">object</span> <span class="err">: </span><span class="nc">BroadcastReceiver</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">override</span> <span class="k">fun</span> <span class="nf">onReceive</span><span class="p">(</span><span class="n">context</span><span class="p">:</span> <span class="nc">Context</span><span class="p">,</span> <span class="n">intent</span><span class="p">:</span> <span class="nc">Intent</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nf">startService</span><span class="p">(</span><span class="nc">Intent</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="nc">MyIntentService</span><span class="o">::</span><span class="k">class</span><span class="p">.</span><span class="n">java</span><span class="p">))</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="n">btn_execute</span><span class="p">.</span><span class="nf">setOnClickListener</span> <span class="p">{</span>
+        <span class="n">broadcastManager</span><span class="p">.</span><span class="nf">sendBroadcast</span><span class="p">(</span><span class="nc">Intent</span><span class="p">(</span><span class="s">"custom-action"</span><span class="p">))</span>
+        <span class="n">tv_status</span><span class="p">.</span><span class="n">text</span> <span class="p">=</span> <span class="s">"Finish Execution"</span>
+    <span class="p">}</span>
+
+    <span class="kd">class</span> <span class="nc">MyIntentService</span> <span class="p">:</span> <span class="nc">IntentService</span><span class="p">(</span><span class="s">"MyIntentService"</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">override</span> <span class="k">fun</span> <span class="nf">onHandleIntent</span><span class="p">(</span><span class="n">intent</span><span class="p">:</span> <span class="nc">Intent</span><span class="p">?)</span> <span class="p">{</span>
+            <span class="nc">LongRunningTask</span><span class="p">().</span><span class="nf">execute</span><span class="p">()</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</pre></table></code></div></div><p>If you have any feedback/corrections, please feel free to leave a comment below.</p><p>Thanks for reading and happy coding! 💻</p></div><div class="post-tail-wrapper text-muted"><div class="post-meta mb-3"> <i class="far fa-folder-open fa-fw mr-1"></i> <a href='/categories/android/'>android</a></div><div class="post-tags"> <i class="fa fa-tags fa-fw mr-1"></i> <a href="/tags/anr/" class="post-tag no-text-decoration" >ANR</a> <a href="/tags/android-performance/" class="post-tag no-text-decoration" >Android Performance</a></div><div class="post-tail-bottom d-flex justify-content-between align-items-center mt-3 pt-5 pb-2"><div class="license-wrapper"> This post is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> by the author.</div><div class="share-wrapper"> <span class="share-label text-muted mr-1">Share</span> <span class="share-icons"> <a href="https://twitter.com/intent/tweet?text=How to deal with ANRs? - Iced Tea Labs&url=https://icedtealabs.com//android/android-how-to-deal-with-anrs/" data-toggle="tooltip" data-placement="top" title="Twitter" target="_blank" rel="noopener" aria-label="Twitter"> <i class="fa-fw fab fa-twitter"></i> </a> <a href="https://www.facebook.com/sharer/sharer.php?title=How to deal with ANRs? - Iced Tea Labs&u=https://icedtealabs.com//android/android-how-to-deal-with-anrs/" data-toggle="tooltip" data-placement="top" title="Facebook" target="_blank" rel="noopener" aria-label="Facebook"> <i class="fa-fw fab fa-facebook-square"></i> </a> <a href="https://telegram.me/share?text=How to deal with ANRs? - Iced Tea Labs&url=https://icedtealabs.com//android/android-how-to-deal-with-anrs/" data-toggle="tooltip" data-placement="top" title="Telegram" target="_blank" rel="noopener" aria-label="Telegram"> <i class="fa-fw fab fa-telegram"></i> </a> <i class="fa-fw fas fa-link small" onclick="copyLink()" data-toggle="tooltip" data-placement="top" title="Copy link"></i> </span></div></div></div></div></div><div id="panel-wrapper" class="col-xl-3 pl-2 text-muted topbar-down"><div class="access"><div id="access-tags"> <span>Our Products</span><div class="d-flex flex-wrap mt-3 mb-1 mr-3"> <a class="post-tag" href="https://play.google.com/store/apps/details?id=com.icetea09.bucketlist"><div class="d-flex align-items-center"> <img src="/assets/images/buckist.png" width="50" height="50" /><div><strong>Buckist</strong> - Best bucket list app</div></div></a> <a class="post-tag" href="https://play.google.com/store/apps/details?id=com.icedtealabs.mymoney"><div class="d-flex align-items-center"> <img src="/assets/images/mymoney.png" width="50" height="50" /><div><strong>myMoney</strong> - Expense Manager</div></div></a> <a class="post-tag" href="https://play.google.com/store/apps/details?id=com.icedtealabs.moon"><div class="d-flex align-items-center"> <img src="https://play-lh.googleusercontent.com/fh1U3sqmhbWWRiS6fjh4caslBlE86ZlJBgucayR5wko743aM_U143sHPLTVZvJuHZA=s360-rw" width="50" height="50" /><div><strong>Moon</strong> - Blue light filter, night mode</div></div></a></div></div><div id="access-tags"> <span>Trending Tags</span><div class="d-flex flex-wrap mt-3 mb-1 mr-3"> <a class="post-tag" href="/tags/android-ui/">Android UI</a> <a class="post-tag" href="/tags/custom-view/">Custom View</a> <a class="post-tag" href="/tags/animation/">Animation</a> <a class="post-tag" href="/tags/android-database/">Android Database</a> <a class="post-tag" href="/tags/design-pattern/">Design Pattern</a> <a class="post-tag" href="/tags/dagger/">Dagger</a> <a class="post-tag" href="/tags/dependency-injection/">Dependency Injection</a> <a class="post-tag" href="/tags/facebook/">Facebook</a> <a class="post-tag" href="/tags/fragment/">Fragment</a> <a class="post-tag" href="/tags/hilt/">Hilt</a></div></div></div></div></div><div class="row"><div class="col-12 col-lg-11 col-xl-8"><div id="post-extend-wrapper" class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><div id="related-posts" class="mt-5 mb-2 mb-sm-4"><h3 class="pt-2 mt-1 mb-4 ml-1" data-toc-skip>Further Reading</h3><div class="card-deck mb-4"><div class="card"> <a href="/android/migrate-from-dagger-to-hilt-a-step-by-step-guide/"><div class="card-body"> <span class="timeago small" > Aug 1, 2021 <i class="unloaded">2021-08-01T12:05:00+07:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>Migrate from Dagger to Hilt — A Step by Step Guide</h3><div class="text-muted small"><p> In the previous blog post, I shared the guide to use Hilt to implement dependency injection in Android. But there’s the fact that it’s not many chances for you to use Hilt in a project from the ...</p></div></div></a></div><div class="card"> <a href="/android/android-custom-dialog/"><div class="card-body"> <span class="timeago small" > Jan 21, 2014 <i class="unloaded">2014-01-21T23:57:00+07:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>Custom Dialog</h3><div class="text-muted small"><p> You are developing an Android app and you don’t want to use the default dialog like this: You want something is unique and customizable like this: This post will guide you how to create a cus...</p></div></div></a></div><div class="card"> <a href="/android/android-custom-toast/"><div class="card-body"> <span class="timeago small" > Jan 22, 2014 <i class="unloaded">2014-01-22T09:33:00+07:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>Custom Toast</h3><div class="text-muted small"><p> A toast is a view containing a quick little message for the user. It will never receive focus and will be dismiss after a specific time. By default, if you want to call a simple Toast, all you nee...</p></div></div></a></div></div></div><div class="post-navigation d-flex justify-content-between"> <a href="/privacy-policy/pixelated-quiz-privacy-policy/" class="btn btn-outline-primary" prompt="Older"><p>Pixelated Quiz Privacy Policy</p></a> <a href="/android/android-clean-architecture/" class="btn btn-outline-primary" prompt="Newer"><p>Clean Architecture for Android</p></a></div><div id="disqus" class="pt-2 pb-2"><p class="text-center text-muted small pb-5"> Comments powered by <a href="https://disqus.com/">Disqus</a>.</p></div><script src="/assets/js/lib/jquery.disqusloader.min.js"></script> <script> const options = { scriptUrl: '//icetea09.disqus.com/embed.js', disqusConfig: function() { this.page.title = 'How to deal with ANRs?'; this.page.url = 'https://icedtealabs.com//android/android-how-to-deal-with-anrs/'; this.page.identifier = '/android/android-how-to-deal-with-anrs/'; } }; $.disqusLoader('#disqus', options); </script></div></div></div><footer class="d-flex w-100 justify-content-center"><div class="d-flex justify-content-between align-items-center"><div class="footer-left"><p class="mb-0"> © 2025 <a href="https://twitter.com/trinhlbk1991">Trinh Le</a>. <span data-toggle="tooltip" data-placement="top" title="Except where otherwise noted, the blog posts on this site are licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author.">Some rights reserved.</span></p></div><div class="footer-right"><p class="mb-0"> Powered by <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a> with <a href="https://github.com/cotes2020/jekyll-theme-chirpy" target="_blank" rel="noopener">Chirpy</a> theme.</p></div></div></footer></div><div id="search-result-wrapper" class="d-flex justify-content-center unloaded"><div class="col-12 col-sm-11 post-content"><div id="search-hints"><h4 class="text-muted mb-4">Trending Tags</h4><a class="post-tag" href="/tags/android-ui/">Android UI</a> <a class="post-tag" href="/tags/custom-view/">Custom View</a> <a class="post-tag" href="/tags/animation/">Animation</a> <a class="post-tag" href="/tags/android-database/">Android Database</a> <a class="post-tag" href="/tags/design-pattern/">Design Pattern</a> <a class="post-tag" href="/tags/dagger/">Dagger</a> <a class="post-tag" href="/tags/dependency-injection/">Dependency Injection</a> <a class="post-tag" href="/tags/facebook/">Facebook</a> <a class="post-tag" href="/tags/fragment/">Fragment</a> <a class="post-tag" href="/tags/hilt/">Hilt</a></div><div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div></div></div></div><div id="mask"></div><a id="back-to-top" href="#" aria-label="back-to-top" class="btn btn-lg btn-box-shadow" role="button"> <i class="fas fa-angle-up"></i> </a> <script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@1.7.3/dest/simple-jekyll-search.min.js"></script> <script> SimpleJekyllSearch({ searchInput: document.getElementById('search-input'), resultsContainer: document.getElementById('search-results'), json: '/assets/js/data/search.json', searchResultTemplate: '<div class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-lg-4 pr-lg-4 pl-xl-0 pr-xl-0"> <a href="https://icedtealabs.com/{url}">{title}</a><div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1"> {categories} {tags}</div><p>{snippet}</p></div>', noResultsText: '<p class="mt-5">Oops! No result founds.</p>', templateMiddleware: function(prop, value, template) { if (prop === 'categories') { if (value === '') { return `${value}`; } else { return `<div class="mr-sm-4"><i class="far fa-folder fa-fw"></i>${value}</div>`; } } if (prop === 'tags') { if (value === '') { return `${value}`; } else { return `<div><i class="fa fa-tag fa-fw"></i>${value}</div>`; } } } }); </script>
