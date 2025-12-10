@@ -1,0 +1,211 @@
+---
+interface InstructionStep {
+  text: string;
+  timer?: number; // in seconds
+}
+
+interface InstructionGroup {
+  title: string;
+  steps: InstructionStep[];
+}
+
+interface Props {
+  instructions: InstructionGroup[];
+  recipeId: string;
+}
+
+const { instructions, recipeId } = Astro.props;
+
+// Generate unique IDs for each step
+function getStepId(groupIndex: number, stepIndex: number): string {
+  return `${recipeId}-${groupIndex}-${stepIndex}`;
+}
+
+function formatTime(seconds: number): string {
+  const mins = Math.floor(seconds / 60);
+  const secs = seconds % 60;
+  if (mins > 0) {
+    return secs > 0 ? `${mins} min ${secs} sec` : `${mins} min`;
+  }
+  return `${secs} sec`;
+}
+---
+
+<div class="recipe-instructions" data-recipe-id={recipeId}>
+  <div class="flex justify-end mb-6">
+    <button 
+      class="reset-instructions-btn inline-flex items-center gap-2 px-3 py-1.5 text-body-s font-medium text-content-muted hover:text-primary hover:bg-surface-2 rounded-lg transition-all"
+      aria-label="Reset all instructions"
+    >
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+      </svg>
+      Reset Progress
+    </button>
+  </div>
+  {instructions.map((group, groupIndex) => (
+    <div class="mb-8">
+      <h3 class="text-heading-m font-serif text-content mb-4">{group.title}</h3>
+      <ol class="space-y-3">
+        {group.steps.map((step, stepIndex) => {
+          const stepId = getStepId(groupIndex, stepIndex);
+          return (
+            <li 
+              class="instruction-step flex gap-4 p-4 bg-surface-1 border border-stone-100 rounded-xl transition-all hover:shadow-sm hover:border-stone-200"
+              data-step-id={stepId}
+            >
+              <div class="flex-shrink-0 pt-0.5">
+                <label class="relative flex items-center justify-center w-6 h-6 cursor-pointer group">
+                  <input 
+                    type="checkbox" 
+                    class="step-checkbox peer sr-only" 
+                    data-step-id={stepId}
+                  />
+                  <div class="w-6 h-6 border-2 border-stone-300 rounded-full peer-checked:border-primary peer-checked:bg-primary transition-all flex items-center justify-center group-hover:border-primary/50">
+                    <svg class="w-3.5 h-3.5 text-white opacity-0 peer-checked:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                </label>
+              </div>
+              <div class="flex-1 min-w-0">
+                <p class="step-text text-body-base text-content transition-colors leading-relaxed">
+                  <span class="text-primary font-bold mr-2">{stepIndex + 1}.</span>
+                  {step.text}
+                </p>
+                {step.timer && (
+                  <div class="mt-2 flex items-center gap-2">
+                    <button 
+                      class="timer-btn inline-flex items-center gap-1.5 px-3 py-1.5 bg-surface-3 hover:bg-stone-200 rounded text-body-s text-content-muted transition-colors"
+                      data-timer-seconds={step.timer}
+                      data-timer-label={`Step ${stepIndex + 1}: ${step.text.slice(0, 30)}...`}
+                      data-timer-id={`timer-${stepId}`}
+                    >
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      <span>Start timer ({formatTime(step.timer)})</span>
+                    </button>
+                  </div>
+                )}
+              </div>
+            </li>
+          );
+        })}
+      </ol>
+    </div>
+  ))}
+</div>
+
+<style>
+  .instruction-step:hover {
+    @apply bg-surface-3/50;
+  }
+
+  .instruction-step:has(.step-checkbox:checked) {
+    @apply bg-surface-3 opacity-75;
+  }
+
+  .instruction-step:has(.step-checkbox:checked) .step-text {
+    @apply text-content-subtle line-through;
+  }
+
+  /* Custom checkbox visual */
+  .instruction-step:has(.step-checkbox:checked) .w-6.h-6 {
+    @apply border-primary bg-primary;
+  }
+
+  .instruction-step:has(.step-checkbox:checked) svg {
+    @apply opacity-100;
+  }
+</style>
+
+<script>
+  import { setTimer, getTimers, type TimerState } from '../utils/timer-manager';
+
+  function initRecipeInstructions() {
+    const STORAGE_KEY_PREFIX = 'recipe_progress_';
+
+    document.querySelectorAll('.recipe-instructions').forEach((container) => {
+      const recipeId = container.getAttribute('data-recipe-id');
+      if (!recipeId) return;
+
+      const storageKey = `${STORAGE_KEY_PREFIX}${recipeId}`;
+
+      // Load saved progress
+      const savedProgress: string[] = JSON.parse(
+        localStorage.getItem(storageKey) || '[]'
+      );
+
+      // Restore checkbox states
+      container.querySelectorAll('.step-checkbox').forEach((checkbox) => {
+        const input = checkbox as HTMLInputElement;
+        const stepId = input.getAttribute('data-step-id');
+        if (stepId && savedProgress.includes(stepId)) {
+          input.checked = true;
+        }
+
+        // Save progress on change
+        input.addEventListener('change', () => {
+          const currentProgress: string[] = [];
+          container.querySelectorAll('.step-checkbox:checked').forEach((cb) => {
+            const id = cb.getAttribute('data-step-id');
+            if (id) currentProgress.push(id);
+          });
+          localStorage.setItem(storageKey, JSON.stringify(currentProgress));
+        });
+      });
+
+      // Handle reset button
+      const resetBtn = container.querySelector('.reset-instructions-btn');
+      if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+          // Clear local storage
+          localStorage.removeItem(storageKey);
+          
+          // Uncheck all boxes
+          container.querySelectorAll('.step-checkbox').forEach((checkbox) => {
+            (checkbox as HTMLInputElement).checked = false;
+          });
+        });
+      }
+
+      // Handle timer buttons
+      container.querySelectorAll('.timer-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const seconds = parseInt(btn.getAttribute('data-timer-seconds') || '0', 10);
+          const label = btn.getAttribute('data-timer-label') || 'Timer';
+          const id = btn.getAttribute('data-timer-id') || `timer-${Date.now()}`;
+
+          // Check if timer already exists
+          const existingTimers = getTimers();
+          const existing = existingTimers.find((t) => t.id === id);
+
+          if (existing) {
+            // Timer already running, don't create a new one
+            return;
+          }
+
+          // Create new timer with recipe URL
+          const timer: TimerState = {
+            id,
+            label,
+            recipeUrl: window.location.pathname,
+            totalSeconds: seconds,
+            remainingSeconds: seconds,
+            isRunning: true,
+            startedAt: Date.now(),
+          };
+
+          setTimer(timer);
+        });
+      });
+    });
+  }
+
+  // Initialize on page load
+  initRecipeInstructions();
+
+  // Re-initialize on client-side navigation (for View Transitions)
+  document.addEventListener('astro:page-load', initRecipeInstructions);
+</script>

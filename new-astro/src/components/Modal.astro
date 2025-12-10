@@ -1,0 +1,47 @@
+---
+interface Props {
+  id: string;
+  title?: string;
+}
+
+const { id, title } = Astro.props;
+---
+
+<dialog id={id} class="group fixed inset-0 z-50 w-full h-full p-0 bg-transparent backdrop:bg-stone-900/50 backdrop:backdrop-blur-sm open:animate-fade-in closed:animate-fade-out">
+  <div class="fixed inset-0 w-full h-full flex items-center justify-center p-4" onclick={`document.getElementById('${id}').close()`}>
+    <div 
+      class="bg-white rounded-2xl shadow-xl w-full max-w-md relative overflow-hidden transform transition-all scale-95 opacity-0 group-open:scale-100 group-open:opacity-100 duration-300 ease-out"
+      onclick="event.stopPropagation()"
+    >
+      <div class="p-6">
+        <div class="flex items-center justify-between mb-4">
+          {title && <h3 class="text-heading-s text-content font-serif">{title}</h3>}
+          <button 
+            onclick={`document.getElementById('${id}').close()`}
+            class="text-content-muted hover:text-primary transition-colors p-1 rounded-full hover:bg-stone-100"
+            aria-label="Close modal"
+          >
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        
+        <div class="mt-2">
+          <slot />
+        </div>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<style>
+  dialog::backdrop {
+    background: rgba(28, 25, 23, 0.5);
+    backdrop-filter: blur(4px);
+  }
+  
+  dialog[open] {
+    display: block;
+  }
+</style>
