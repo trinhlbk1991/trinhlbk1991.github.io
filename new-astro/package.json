@@ -8,6 +8,7 @@
     "build": "astro build",
     "preview": "wrangler pages dev ./dist",
     "deploy": "astro build && wrangler pages deploy dist",
+    "migrate": "node scripts/migrate-content.js",
     "astro": "astro"
   },
   "dependencies": {
