@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Search from '../components/Search.astro';
+import { SITE } from '../config';
+
+const pageTitle = `Search | ${SITE.title}`;
+const pageDescription = 'Search all blog posts';
+---
+
+<BaseLayout 
+  title={pageTitle}
+  description={pageDescription}
+>
+  <div class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <h1 class="text-4xl font-bold text-gray-900 mb-4">
+        Search Blog Posts
+      </h1>
+      <p class="text-lg text-gray-600">
+        Find articles by title, description, categories, or tags
+      </p>
+    </header>
+    
+    <Search />
+  </div>
+</BaseLayout>

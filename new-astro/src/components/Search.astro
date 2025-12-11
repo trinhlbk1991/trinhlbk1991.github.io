@@ -1,0 +1,164 @@
+---
+// Search component using Fuse.js
+---
+
+<div class="search-container">
+  <div class="relative">
+    <input
+      type="text"
+      id="searchInput"
+      placeholder="Search posts..."
+      class="w-full px-4 py-3 pl-12 text-gray-900 bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
+    />
+    <svg 
+      class="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400"
+      fill="none" 
+      stroke="currentColor" 
+      viewBox="0 0 24 24"
+    >
+      <path 
+        stroke-linecap="round" 
+        stroke-linejoin="round" 
+        stroke-width="2" 
+        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+      />
+    </svg>
+  </div>
+  
+  <div id="searchResults" class="mt-6"></div>
+  <div id="searchLoading" class="hidden mt-6 text-center text-gray-600">
+    <div class="animate-spin inline-block w-6 h-6 border-2 border-blue-600 border-t-transparent rounded-full"></div>
+    <p class="mt-2">Searching...</p>
+  </div>
+</div>
+
+<script>
+  import Fuse from 'fuse.js';
+  
+  let fuse: Fuse<any> | null = null;
+  let posts: any[] = [];
+  
+  // Fetch and initialize search index
+  async function initSearch() {
+    try {
+      const response = await fetch('/api/search.json');
+      posts = await response.json();
+      
+      const options = {
+        keys: [
+          { name: 'title', weight: 2 },
+          { name: 'description', weight: 1.5 },
+          { name: 'categories', weight: 1 },
+          { name: 'tags', weight: 0.5 },
+        ],
+        threshold: 0.3,
+        minMatchCharLength: 2,
+        includeScore: true,
+      };
+      
+      fuse = new Fuse(posts, options);
+    } catch (error) {
+      console.error('Failed to load search index:', error);
+    }
+  }
+  
+  // Perform search
+  function performSearch(query: string) {
+    const searchResults = document.getElementById('searchResults');
+    if (!searchResults) return;
+    
+    if (!query || query.length < 2) {
+      searchResults.innerHTML = '';
+      return;
+    }
+    
+    if (!fuse) {
+      searchResults.innerHTML = '<p class="text-gray-600">Search index not loaded. Please refresh the page.</p>';
+      return;
+    }
+    
+    const results = fuse.search(query);
+    
+    if (results.length === 0) {
+      searchResults.innerHTML = `
+        <div class="text-center py-12">
+          <p class="text-gray-600 text-lg">No results found for "${query}"</p>
+          <p class="text-gray-500 mt-2">Try different keywords or check your spelling</p>
+        </div>
+      `;
+      return;
+    }
+    
+    searchResults.innerHTML = `
+      <div>
+        <p class="text-gray-600 mb-6">
+          Found <strong>${results.length}</strong> ${results.length === 1 ? 'result' : 'results'} for "<strong>${query}</strong>"
+        </p>
+        <div class="space-y-6">
+          ${results.map(result => {
+            const post = result.item;
+            return `
+              <article class="border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow duration-200">
+                <a href="${post.url}" class="block">
+                  <h2 class="text-2xl font-bold text-blue-600 hover:text-blue-700 mb-2">
+                    ${post.title}
+                  </h2>
+                  ${post.description ? `
+                    <p class="text-gray-600 mb-3">${post.description}</p>
+                  ` : ''}
+                  <div class="flex flex-wrap items-center gap-3 text-sm text-gray-500">
+                    <time>${new Date(post.date).toLocaleDateString('en-US', { 
+                      year: 'numeric', 
+                      month: 'long', 
+                      day: 'numeric' 
+                    })}</time>
+                    ${post.categories && post.categories.length > 0 ? `
+                      <span>•</span>
+                      <div class="flex gap-2">
+                        ${post.categories.map((cat: string) => `
+                          <span class="px-2 py-1 bg-blue-100 text-blue-700 rounded text-xs capitalize">
+                            ${cat}
+                          </span>
+                        `).join('')}
+                      </div>
+                    ` : ''}
+                  </div>
+                </a>
+              </article>
+            `;
+          }).join('')}
+        </div>
+      </div>
+    `;
+  }
+  
+  // Debounce function
+  function debounce<T extends (...args: any[]) => any>(
+    func: T,
+    wait: number
+  ): (...args: Parameters<T>) => void {
+    let timeout: ReturnType<typeof setTimeout> | null = null;
+    return function(...args: Parameters<T>) {
+      if (timeout) clearTimeout(timeout);
+      timeout = setTimeout(() => func(...args), wait);
+    };
+  }
+  
+  // Initialize search on page load
+  document.addEventListener('DOMContentLoaded', () => {
+    initSearch();
+    
+    const searchInput = document.getElementById('searchInput') as HTMLInputElement;
+    if (searchInput) {
+      const debouncedSearch = debounce(performSearch, 300);
+      searchInput.addEventListener('input', (e) => {
+        debouncedSearch((e.target as HTMLInputElement).value);
+      });
+    }
+  });
+  
+  // Re-initialize after Astro view transitions
+  document.addEventListener('astro:after-swap', () => {
+    initSearch();
+  });
+</script>
