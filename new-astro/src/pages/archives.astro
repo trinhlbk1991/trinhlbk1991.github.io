@@ -1,0 +1,134 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { SITE } from '../config';
+
+const posts = await getCollection('blog');
+
+// Group posts by year
+const postsByYear = posts
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .reduce((acc, post) => {
+    const year = post.data.date.getFullYear();
+    if (!acc[year]) {
+      acc[year] = [];
+    }
+    acc[year].push(post);
+    return acc;
+  }, {} as Record<number, typeof posts>);
+
+const years = Object.keys(postsByYear).map(Number).sort((a, b) => b - a);
+---
+
+<BaseLayout 
+  title={`Archives | ${SITE.title}`}
+  description="Complete archive of all blog posts organized by year"
+>
+  <div class="max-w-4xl mx-auto px-6 py-12">
+    <header class="text-center mb-12">
+      <h1 class="text-4xl font-bold text-gray-900 mb-4">Archives</h1>
+      <p class="text-lg text-gray-600">A complete chronological record of all {posts.length} posts</p>
+      <div class="w-24 h-1 bg-blue-600 mx-auto mt-6"></div>
+    </header>
+
+    <div class="space-y-12">
+      {years.map(year => (
+        <section class="relative">
+          <div class="sticky top-20 z-10 mb-8">
+            <h2 class="text-3xl font-bold text-gray-900 bg-white/80 backdrop-blur-sm py-2 border-b-2 border-blue-600">
+              {year}
+              <span class="ml-3 text-lg font-normal text-gray-500">
+                ({postsByYear[year].length} {postsByYear[year].length === 1 ? 'post' : 'posts'})
+              </span>
+            </h2>
+          </div>
+          
+          <div class="space-y-4">
+            {postsByYear[year].map(post => {
+              const category = post.id.split('/')[0];
+              const filename = post.id.split('/')[1];
+              const slug = filename.replace(/^\d{4}-\d{2}-\d{2}-/, '').replace(/\.md$/, '');
+              const postUrl = `/${category}/${slug}/`;
+              
+              return (
+                <article class="flex gap-6 p-4 rounded-lg border border-gray-200 hover:shadow-md hover:border-blue-300 transition-all duration-200 group">
+                  <div class="flex-shrink-0 w-16 text-center">
+                    <time 
+                      datetime={post.data.date.toISOString()}
+                      class="text-sm text-gray-500 font-medium"
+                    >
+                      <div class="text-lg font-bold text-blue-600">
+                        {post.data.date.getDate().toString().padStart(2, '0')}
+                      </div>
+                      <div class="text-xs uppercase tracking-wide">
+                        {post.data.date.toLocaleDateString('en-US', { month: 'short' })}
+                      </div>
+                    </time>
+                  </div>
+                  
+                  <div class="flex-grow min-w-0">
+                    <div class="flex items-start justify-between gap-4 mb-2">
+                      <a 
+                        href={postUrl}
+                        class="text-lg font-semibold text-gray-900 hover:text-blue-600 transition-colors group-hover:text-blue-600"
+                      >
+                        {post.data.title}
+                      </a>
+                      {post.data.categories && post.data.categories.length > 0 && (
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 shrink-0">
+                          {post.data.categories[0]}
+                        </span>
+                      )}
+                    </div>
+                    
+                    {post.data.description && (
+                      <p class="text-gray-600 text-sm leading-relaxed line-clamp-2">
+                        {post.data.description}
+                      </p>
+                    )}
+                    
+                    {post.data.tags && post.data.tags.length > 0 && (
+                      <div class="flex flex-wrap gap-1 mt-2">
+                        {post.data.tags.slice(0, 4).map(tag => (
+                          <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-700">
+                            #{tag}
+                          </span>
+                        ))}
+                        {post.data.tags.length > 4 && (
+                          <span class="text-xs text-gray-500 px-2 py-0.5">
+                            +{post.data.tags.length - 4} more
+                          </span>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+        </section>
+      ))}
+    </div>
+
+    {posts.length === 0 && (
+      <div class="text-center py-12">
+        <div class="text-gray-400 mb-4">
+          <svg class="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          </svg>
+        </div>
+        <h3 class="text-lg font-medium text-gray-900 mb-2">No posts found</h3>
+        <p class="text-gray-500">Check back later for new content!</p>
+      </div>
+    )}
+  </div>
+</BaseLayout>
+
+<style>
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+</style>

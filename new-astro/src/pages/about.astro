@@ -1,67 +1,108 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../config';
 ---
 
-<BaseLayout title="About Us" description="Learn more about Gastronaut and our culinary journey">
-  <div class="max-w-3xl mx-auto px-6 py-24">
-    <section class="text-center mb-16">
-      <span class="text-primary font-medium tracking-wider uppercase text-sm mb-4 block">Our Story</span>
-      <h1 class="text-display-l md:text-display-xl text-content mb-6 font-serif">
-        We are <span class="italic text-primary">Gastronaut</span>
-      </h1>
-      <p class="text-body-l text-content-muted">
-        Exploring the universe of flavors, one recipe at a time.
-      </p>
-    </section>
+<BaseLayout 
+  title={`About | ${SITE.title}`}
+  description="Learn about Trinh Le - Software Engineer at Lazada and creator of Iced Tea Labs"
+>
+  <div class="max-w-4xl mx-auto px-6 py-12">
+    <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-8 lg:p-12">
+      <header class="text-center mb-12">
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">About</h1>
+        <div class="w-24 h-1 bg-blue-600 mx-auto"></div>
+      </header>
 
-    <div class="prose prose-stone prose-lg mx-auto text-content-muted">
-      <p>
-        Welcome to Gastronaut, a digital sanctuary for food lovers, home cooks, and culinary explorers. 
-        We believe that cooking is more than just preparation—it's an adventure, a science, and an art form combined.
-      </p>
-      
-      <h2 class="text-heading-m text-content font-serif mt-12 mb-6">Our Mission</h2>
-      <p>
-        Our mission is simple: to inspire you to step into the kitchen with confidence and curiosity. 
-        Whether you're a seasoned chef or just starting to boil water, we want to provide you with 
-        recipes that work, techniques that elevate your skills, and stories that connect us all through food.
-      </p>
+      <div class="prose prose-lg max-w-none">
+        <p class="text-xl text-gray-700 leading-relaxed mb-8">
+          Hi there!
+        </p>
 
-      <h2 class="text-heading-m text-content font-serif mt-12 mb-6">What We Offer</h2>
-      <ul class="list-disc pl-6 space-y-2">
-        <li><strong>Reliable Recipes:</strong> Every recipe is tested to ensure success in your home kitchen.</li>
-        <li><strong>In-depth Guides:</strong> We break down complex techniques into manageable steps.</li>
-        <li><strong>Culinary Stories:</strong> We explore the history and culture behind the dishes we love.</li>
-      </ul>
+        <p class="text-gray-700 leading-relaxed mb-6">
+          My name is <strong>Trinh Le</strong> - a software engineer who is currently working at 
+          <a href="https://www.lazada.vn/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-700 font-medium">@Lazada</a>.
+        </p>
+        
+        <p class="text-gray-700 leading-relaxed mb-6">
+          This blog is a space where I share my thoughts on anything (mostly technical, duh!).
+        </p>
 
-      <div class="mt-24 relative">
-        <div class="absolute inset-0 bg-stone-900 rounded-3xl -rotate-1"></div>
-        <div class="relative bg-stone-950 rounded-3xl px-8 py-16 md:px-16 md:py-20 text-center border border-stone-800 shadow-2xl overflow-hidden">
-          <!-- Subtle grain texture overlay could go here -->
-          <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-50"></div>
+        <p class="text-gray-700 leading-relaxed mb-8">
+          The name "Iced Tea Labs" is inspired by memories of my university time. I was part of a team named "Iced Tea 09" and we participated in many competitions together. That's such a good time though.
+        </p>
+
+        <p class="text-gray-700 leading-relaxed mb-6">
+          I also have a Google Play store also named 
+          <a href="https://play.google.com/store/apps/dev?id=7059334999797832434" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-700 font-medium">"Iced Tea Labs"</a> 
+          to publish some of my side projects:
+        </p>
+
+        <div class="bg-gray-50 rounded-lg p-6 my-8">
+          <h3 class="text-lg font-semibold text-gray-900 mb-6">My Published Apps</h3>
           
-          <span class="text-caption text-primary mb-6 block tracking-widest">Newsletter</span>
-          
-          <h3 class="text-display-m font-serif text-white mb-6">
-            Join the <span class="italic text-primary-light">Culinary Conversation</span>
-          </h3>
-          
-          <p class="text-lg text-stone-400 max-w-lg mx-auto mb-10 leading-relaxed">
-            Elevate your kitchen game. Receive our curated weekly digest of recipes, techniques, and stories.
-          </p>
-          
-          <button 
-            onclick="document.getElementById('subscribe-modal').showModal()" 
-            class="group relative inline-flex items-center gap-3 px-8 py-4 bg-white text-stone-950 rounded-full font-medium transition-transform hover:-translate-y-1"
-          >
-            <span>Subscribe Now</span>
-            <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </button>
+          <div class="space-y-4">
+            <a href="https://play.google.com/store/apps/details?id=com.icetea09.bucketlist" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               class="flex items-center gap-4 p-4 bg-white rounded-lg border border-gray-200 hover:shadow-md transition-shadow">
+              <img src="/assets/images/buckist.png" 
+                   alt="Buckist app icon" 
+                   width="50" 
+                   height="50" 
+                   class="rounded-lg" />
+              <div>
+                <div class="font-semibold text-gray-900">Buckist</div>
+                <div class="text-gray-600">Best bucket list app</div>
+              </div>
+            </a>
+
+            <a href="https://play.google.com/store/apps/details?id=com.icedtealabs.mymoney" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               class="flex items-center gap-4 p-4 bg-white rounded-lg border border-gray-200 hover:shadow-md transition-shadow">
+              <img src="/assets/images/mymoney.png" 
+                   alt="myMoney app icon" 
+                   width="50" 
+                   height="50" 
+                   class="rounded-lg" />
+              <div>
+                <div class="font-semibold text-gray-900">myMoney</div>
+                <div class="text-gray-600">Expense Manager</div>
+              </div>
+            </a>
+
+            <a href="https://play.google.com/store/apps/details?id=com.icedtealabs.moon" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               class="flex items-center gap-4 p-4 bg-white rounded-lg border border-gray-200 hover:shadow-md transition-shadow">
+              <img src="https://play-lh.googleusercontent.com/fh1U3sqmhbWWRiS6fjh4caslBlE86ZlJBgucayR5wko743aM_U143sHPLTVZvJuHZA=s360-rw" 
+                   alt="Moon app icon" 
+                   width="50" 
+                   height="50" 
+                   class="rounded-lg" />
+              <div>
+                <div class="font-semibold text-gray-900">Moon</div>
+                <div class="text-gray-600">Blue light filter, night mode</div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <p class="text-gray-700 leading-relaxed mb-6">
+          I'm also really really into climbing recently. So there might be some post of me flexing with my climbing skill in the future then. 
+        </p>
+
+        <p class="text-gray-700 leading-relaxed mb-8">
+          If you want to find out more about my professional experiences, you can check out my 
+          <a href="https://www.linkedin.com/in/trinhlbk1991/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-700 font-medium">linkedin</a> 
+          account.
+        </p>
+
+        <div class="text-center">
+          <p class="text-xl font-medium text-gray-900">Happy coding! 💻</p>
         </div>
       </div>
     </div>
   </div>
-
 </BaseLayout>

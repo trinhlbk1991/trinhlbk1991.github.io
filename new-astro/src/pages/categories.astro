@@ -1,0 +1,215 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { SITE } from '../config';
+
+const posts = await getCollection('blog');
+
+// Extract and group categories
+const categoryData = {};
+posts.forEach(post => {
+  if (post.data.categories && post.data.categories.length > 0) {
+    const primaryCategory = post.data.categories[0];
+    const secondaryCategory = post.data.categories[1] || null;
+    
+    if (!categoryData[primaryCategory]) {
+      categoryData[primaryCategory] = {
+        count: 0,
+        subcategories: {},
+        posts: []
+      };
+    }
+    
+    if (secondaryCategory) {
+      if (!categoryData[primaryCategory].subcategories[secondaryCategory]) {
+        categoryData[primaryCategory].subcategories[secondaryCategory] = {
+          count: 0,
+          posts: []
+        };
+      }
+      categoryData[primaryCategory].subcategories[secondaryCategory].count++;
+      categoryData[primaryCategory].subcategories[secondaryCategory].posts.push(post);
+    } else {
+      categoryData[primaryCategory].posts.push(post);
+    }
+    
+    categoryData[primaryCategory].count++;
+  }
+});
+
+const categories = Object.keys(categoryData).sort();
+const totalPosts = posts.length;
+---
+
+<BaseLayout 
+  title={`Categories | ${SITE.title}`}
+  description="Browse blog posts organized by categories and topics"
+>
+  <div class="max-w-4xl mx-auto px-6 py-12">
+    <header class="text-center mb-12">
+      <h1 class="text-4xl font-bold text-gray-900 mb-4">Categories</h1>
+      <p class="text-lg text-gray-600">
+        Explore {totalPosts} posts across {categories.length} categories
+      </p>
+      <div class="w-24 h-1 bg-blue-600 mx-auto mt-6"></div>
+    </header>
+
+    <div class="space-y-4">
+      {categories.map(category => {
+        const data = categoryData[category];
+        const hasSubcategories = Object.keys(data.subcategories).length > 0;
+        const subcategoryNames = Object.keys(data.subcategories).sort();
+        
+        return (
+          <div class="border border-gray-200 rounded-lg overflow-hidden">
+            <div class="bg-white">
+              {hasSubcategories ? (
+                <button 
+                  class="category-toggle w-full px-6 py-4 text-left hover:bg-gray-50 transition-colors flex items-center justify-between group"
+                  data-target={`category-${category.replace(/\s+/g, '-').toLowerCase()}`}
+                >
+                  <div class="flex items-center gap-3">
+                    <div class="flex-shrink-0 w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                      <svg class="category-icon w-5 h-5 text-blue-600 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 class="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
+                        {category}
+                      </h3>
+                      <p class="text-sm text-gray-500">
+                        {data.count} {data.count === 1 ? 'post' : 'posts'} 
+                        • {subcategoryNames.length} subcategories
+                      </p>
+                    </div>
+                  </div>
+                  <div class="text-right">
+                    <div class="text-sm font-medium text-blue-600">{data.count}</div>
+                  </div>
+                </button>
+              ) : (
+                <div class="px-6 py-4 flex items-center justify-between">
+                  <div class="flex items-center gap-3">
+                    <div class="flex-shrink-0 w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center">
+                      <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 7 4-4 4 4" />
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 class="text-lg font-semibold text-gray-900">{category}</h3>
+                      <p class="text-sm text-gray-500">
+                        {data.count} {data.count === 1 ? 'post' : 'posts'}
+                      </p>
+                    </div>
+                  </div>
+                  <div class="text-right">
+                    <div class="text-sm font-medium text-blue-600">{data.count}</div>
+                  </div>
+                </div>
+              )}
+            </div>
+            
+            {hasSubcategories && (
+              <div 
+                id={`category-${category.replace(/\s+/g, '-').toLowerCase()}`}
+                class="category-content hidden bg-gray-50 border-t border-gray-200"
+              >
+                <div class="px-6 py-4 space-y-3">
+                  {subcategoryNames.map(subcategory => {
+                    const subData = data.subcategories[subcategory];
+                    return (
+                      <div class="flex items-center justify-between py-2 px-4 bg-white rounded border border-gray-200 hover:shadow-sm transition-shadow">
+                        <div class="flex items-center gap-3">
+                          <div class="w-2 h-2 bg-blue-400 rounded-full"></div>
+                          <span class="font-medium text-gray-900">{subcategory}</span>
+                        </div>
+                        <span class="text-sm font-medium text-gray-500">
+                          {subData.count} {subData.count === 1 ? 'post' : 'posts'}
+                        </span>
+                      </div>
+                    );
+                  })}
+                  
+                  {data.posts.length > 0 && (
+                    <div class="mt-4 pt-4 border-t border-gray-200">
+                      <h4 class="text-sm font-medium text-gray-700 mb-3">Other posts in {category}:</h4>
+                      <div class="space-y-2">
+                        {data.posts.map(post => {
+                          const category = post.id.split('/')[0];
+                          const filename = post.id.split('/')[1];
+                          const slug = filename.replace(/^\d{4}-\d{2}-\d{2}-/, '').replace(/\.md$/, '');
+                          const postUrl = `/${category}/${slug}/`;
+                          
+                          return (
+                            <a 
+                              href={postUrl}
+                              class="block py-2 px-4 bg-white rounded border border-gray-200 hover:shadow-sm hover:border-blue-300 transition-all"
+                            >
+                              <div class="flex items-center justify-between">
+                                <span class="font-medium text-gray-900 hover:text-blue-600 transition-colors">
+                                  {post.data.title}
+                                </span>
+                                <span class="text-xs text-gray-500">
+                                  {post.data.date.toLocaleDateString('en-US', { 
+                                    year: 'numeric', 
+                                    month: 'short', 
+                                    day: 'numeric' 
+                                  })}
+                                </span>
+                              </div>
+                            </a>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+          </div>
+        );
+      })}
+    </div>
+
+    {categories.length === 0 && (
+      <div class="text-center py-12">
+        <div class="text-gray-400 mb-4">
+          <svg class="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+          </svg>
+        </div>
+        <h3 class="text-lg font-medium text-gray-900 mb-2">No categories found</h3>
+        <p class="text-gray-500">Posts will appear here when categories are added.</p>
+      </div>
+    )}
+  </div>
+
+  <script>
+    // Add collapsible functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const toggleButtons = document.querySelectorAll('.category-toggle');
+      
+      toggleButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          const targetId = this.getAttribute('data-target');
+          const target = document.getElementById(targetId);
+          const icon = this.querySelector('.category-icon');
+          
+          if (target && icon) {
+            const isHidden = target.classList.contains('hidden');
+            
+            if (isHidden) {
+              target.classList.remove('hidden');
+              icon.style.transform = 'rotate(180deg)';
+            } else {
+              target.classList.add('hidden');
+              icon.style.transform = 'rotate(0deg)';
+            }
+          }
+        });
+      });
+    });
+  </script>
+</BaseLayout>
