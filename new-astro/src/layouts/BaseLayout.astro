@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import Modal from '../components/Modal.astro';
+import ThemeToggle from '../components/ThemeToggle.astro';
 import { SITE } from '../config';
 
 interface Props {
@@ -19,12 +20,21 @@ const {
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
+    
+    <!-- Prevent flash of unstyled content (FOUC) for dark mode -->
+    <script is:inline>
+      // Check for saved theme preference or default to 'light'
+      const theme = localStorage.getItem('theme') || 'light';
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark');
+      }
+    </script>
     
     <!-- SEO Meta Tags -->
     <title>{title}</title>
@@ -60,8 +70,8 @@ const {
       </>
     )}
   </head>
-  <body class="min-h-screen flex flex-col">
-    <header class="sticky top-0 z-50 w-full border-b border-stone-100 bg-white/80 backdrop-blur-md transition-all">
+  <body class="min-h-screen flex flex-col bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors">
+    <header class="sticky top-0 z-50 w-full border-b border-stone-100 dark:border-gray-800 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md transition-all">
       <nav class="max-w-5xl mx-auto px-6 h-20 flex items-center justify-between">
         <a href="/" class="text-heading-m font-bold text-content hover:text-primary transition-colors">
           {SITE.title}
@@ -88,6 +98,7 @@ const {
           <a href="/about" class="text-body-base font-medium text-content-muted hover:text-primary transition-colors">
             About
           </a>
+          <ThemeToggle />
         </div>
       </nav>
     </header>
@@ -96,7 +107,7 @@ const {
       <slot />
     </main>
 
-    <footer class="bg-surface-2 border-t border-stone-200 mt-24">
+    <footer class="bg-gray-50 dark:bg-gray-800 border-t border-stone-200 dark:border-gray-700 mt-24">
       <div class="max-w-5xl mx-auto px-6 py-12 flex flex-col md:flex-row justify-between items-center gap-6">
         <div class="text-center md:text-left">
           <span class="text-heading-s font-bold text-content block mb-2">{SITE.title}</span>
