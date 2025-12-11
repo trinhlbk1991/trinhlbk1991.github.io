@@ -1,13 +1,21 @@
 ---
 import '../styles/global.css';
 import Modal from '../components/Modal.astro';
+import { SITE } from '../config';
 
 interface Props {
   title: string;
   description?: string;
+  image?: string;
+  canonicalURL?: string;
 }
 
-const { title, description = 'Gastronaut - Food Blog' } = Astro.props;
+const { 
+  title, 
+  description = SITE.description,
+  image = `${SITE.url}/og-image.png`,
+  canonicalURL = new URL(Astro.url.pathname, SITE.url).toString()
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -16,29 +24,64 @@ const { title, description = 'Gastronaut - Food Blog' } = Astro.props;
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
-    <title>{title} | Gastronaut</title>
+    
+    <!-- SEO Meta Tags -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content={SITE.author} />
+    <link rel="canonical" href={canonicalURL} />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:site_name" content={SITE.title} />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalURL} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+    
+    <!-- Google Analytics -->
+    {SITE.googleAnalyticsId && (
+      <>
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${SITE.googleAnalyticsId}`}></script>
+        <script define:vars={{ gaId: SITE.googleAnalyticsId }}>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', gaId);
+        </script>
+      </>
+    )}
   </head>
   <body class="min-h-screen flex flex-col">
     <header class="sticky top-0 z-50 w-full border-b border-stone-100 bg-white/80 backdrop-blur-md transition-all">
       <nav class="max-w-5xl mx-auto px-6 h-20 flex items-center justify-between">
-        <a href="/" class="text-heading-m font-serif font-bold text-content hover:text-primary transition-colors">
-          Gastronaut
+        <a href="/" class="text-heading-m font-bold text-content hover:text-primary transition-colors">
+          {SITE.title}
         </a>
         <div class="flex items-center gap-8">
-          <a href="/blog" class="text-body-base font-medium text-content-muted hover:text-primary transition-colors">
-            Recipes
+          <a href="/" class="text-body-base font-medium text-content-muted hover:text-primary transition-colors">
+            Home
           </a>
-          <a href="/gallery" class="text-body-base font-medium text-content-muted hover:text-primary transition-colors">
-            Gallery
+          <a href="/archives" class="text-body-base font-medium text-content-muted hover:text-primary transition-colors">
+            Archives
+          </a>
+          <a href="/categories" class="text-body-base font-medium text-content-muted hover:text-primary transition-colors">
+            Categories
+          </a>
+          <a href="/tags" class="text-body-base font-medium text-content-muted hover:text-primary transition-colors">
+            Tags
           </a>
           <a href="/about" class="text-body-base font-medium text-content-muted hover:text-primary transition-colors">
             About
           </a>
-          <button onclick="document.getElementById('subscribe-modal').showModal()" class="btn-primary text-body-s py-2 px-4">
-            Subscribe
-          </button>
         </div>
       </nav>
     </header>
@@ -50,52 +93,19 @@ const { title, description = 'Gastronaut - Food Blog' } = Astro.props;
     <footer class="bg-surface-2 border-t border-stone-200 mt-24">
       <div class="max-w-5xl mx-auto px-6 py-12 flex flex-col md:flex-row justify-between items-center gap-6">
         <div class="text-center md:text-left">
-          <span class="text-heading-s font-serif font-bold text-content block mb-2">Gastronaut</span>
-          <p class="text-body-s text-content-muted">Culinary adventures for the modern cook.</p>
+          <span class="text-heading-s font-bold text-content block mb-2">{SITE.title}</span>
+          <p class="text-body-s text-content-muted">{SITE.description}</p>
         </div>
         <div class="flex gap-6">
-          <a href="#" class="text-content-muted hover:text-primary transition-colors">Instagram</a>
-          <a href="#" class="text-content-muted hover:text-primary transition-colors">Twitter</a>
-          <a href="#" class="text-content-muted hover:text-primary transition-colors">Pinterest</a>
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="text-content-muted hover:text-primary transition-colors">GitHub</a>
+          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="text-content-muted hover:text-primary transition-colors">Twitter</a>
+          <a href="/rss.xml" class="text-content-muted hover:text-primary transition-colors">RSS</a>
         </div>
         <p class="text-caption text-content-subtle">
-          © {new Date().getFullYear()} Gastronaut. All rights reserved.
+          © {new Date().getFullYear()} {SITE.author}. All rights reserved.
         </p>
       </div>
     </footer>
 
-    <!-- Global timer persistence script -->
-    <div id="timer-overlay" class="fixed bottom-4 right-4 z-50"></div>
-    
-    <Modal id="subscribe-modal" title="Subscribe to Gastronaut">
-      <p class="text-body-base text-content-muted mb-6">
-        Join 10,000+ food lovers. No spam, just delicious content.
-      </p>
-      <form class="space-y-4" onsubmit="event.preventDefault(); document.getElementById('subscribe-modal').close(); alert('Thanks for subscribing!');">
-        <div>
-          <label for="email" class="block text-sm font-medium text-content mb-1">Email Address</label>
-          <input 
-            type="email" 
-            id="email" 
-            name="email" 
-            placeholder="you@example.com" 
-            required
-            class="w-full px-4 py-2 rounded-lg border border-stone-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
-          />
-        </div>
-        <button type="submit" class="w-full btn-primary justify-center">
-          Sign Up Free
-        </button>
-        <p class="text-caption text-center text-content-subtle mt-4">
-          By subscribing, you agree to our Terms of Service and Privacy Policy.
-        </p>
-      </form>
-    </Modal>
-
-    <script>
-      // Timer persistence across page navigation
-      import { initTimerManager } from '../utils/timer-manager';
-      initTimerManager();
-    </script>
   </body>
 </html>
