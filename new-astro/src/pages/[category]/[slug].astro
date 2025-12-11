@@ -58,6 +58,39 @@ const pageTitle = `${entry.data.title} | ${SITE.title}`;
 const pageDescription = entry.data.description || entry.data.title;
 const pageImage = entry.data.image || `${SITE.url}/og-image.png`;
 const canonicalURL = `${SITE.url}/${category}/${slug}/`;
+
+// JSON-LD structured data for SEO
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: entry.data.title,
+  description: pageDescription,
+  image: pageImage,
+  datePublished: entry.data.date.toISOString(),
+  dateModified: entry.data.date.toISOString(),
+  author: {
+    '@type': 'Person',
+    name: SITE.author,
+    url: SITE.url,
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: SITE.title,
+    logo: {
+      '@type': 'ImageObject',
+      url: `${SITE.url}/logo.png`,
+    },
+  },
+  url: canonicalURL,
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': canonicalURL,
+  },
+  keywords: entry.data.tags?.join(', ') || '',
+  articleSection: entry.data.categories?.[0] || category,
+  wordCount: entry.body.split(/\s+/).length,
+  timeRequired: `PT${readTime}M`,
+};
 ---
 
 <BaseLayout 
@@ -66,6 +99,9 @@ const canonicalURL = `${SITE.url}/${category}/${slug}/`;
   image={pageImage}
   canonicalURL={canonicalURL}
 >
+  <!-- JSON-LD Structured Data for SEO -->
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} slot="head" />
+  
   <div class="max-w-7xl mx-auto px-4 py-8">
     <div class="flex flex-col lg:flex-row gap-8">
       <!-- Main Content -->
