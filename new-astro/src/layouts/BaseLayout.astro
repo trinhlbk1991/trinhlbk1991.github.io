@@ -1,0 +1,128 @@
+---
+import '../styles/global.css';
+import Modal from '../components/Modal.astro';
+import ThemeToggle from '../components/ThemeToggle.astro';
+import { SITE } from '../config';
+
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+  canonicalURL?: string;
+}
+
+const { 
+  title, 
+  description = SITE.description,
+  image = `${SITE.url}/og-image.png`,
+  canonicalURL = new URL(Astro.url.pathname, SITE.url).toString()
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- Prevent flash of unstyled content (FOUC) for dark mode -->
+    <script is:inline>
+      // Check for saved theme preference or default to 'light'
+      const theme = localStorage.getItem('theme') || 'light';
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark');
+      }
+    </script>
+    
+    <!-- SEO Meta Tags -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content={SITE.author} />
+    <link rel="canonical" href={canonicalURL} />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:site_name" content={SITE.title} />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalURL} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+    
+    <!-- Google Analytics -->
+    {SITE.googleAnalyticsId && (
+      <>
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${SITE.googleAnalyticsId}`}></script>
+        <script define:vars={{ gaId: SITE.googleAnalyticsId }}>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', gaId);
+        </script>
+      </>
+    )}
+  </head>
+  <body class="min-h-screen flex flex-col bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors">
+    <header class="sticky top-0 z-50 w-full border-b border-stone-100 dark:border-gray-800 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md transition-all">
+      <nav class="max-w-5xl mx-auto px-6 h-20 flex items-center justify-between">
+        <a href="/" class="text-heading-m font-bold text-content hover:text-primary transition-colors">
+          {SITE.title}
+        </a>
+        <div class="flex items-center gap-8">
+          <a href="/" class="text-body-base font-medium text-content-muted hover:text-primary transition-colors">
+            Home
+          </a>
+          <a href="/archives" class="text-body-base font-medium text-content-muted hover:text-primary transition-colors">
+            Archives
+          </a>
+          <a href="/categories" class="text-body-base font-medium text-content-muted hover:text-primary transition-colors">
+            Categories
+          </a>
+          <a href="/tags" class="text-body-base font-medium text-content-muted hover:text-primary transition-colors">
+            Tags
+          </a>
+          <a href="/search" class="text-body-base font-medium text-content-muted hover:text-primary transition-colors inline-flex items-center gap-1">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+            Search
+          </a>
+          <a href="/about" class="text-body-base font-medium text-content-muted hover:text-primary transition-colors">
+            About
+          </a>
+          <ThemeToggle />
+        </div>
+      </nav>
+    </header>
+
+    <main class="flex-grow">
+      <slot />
+    </main>
+
+    <footer class="bg-gray-50 dark:bg-gray-800 border-t border-stone-200 dark:border-gray-700 mt-24">
+      <div class="max-w-5xl mx-auto px-6 py-12 flex flex-col md:flex-row justify-between items-center gap-6">
+        <div class="text-center md:text-left">
+          <span class="text-heading-s font-bold text-content block mb-2">{SITE.title}</span>
+          <p class="text-body-s text-content-muted">{SITE.description}</p>
+        </div>
+        <div class="flex gap-6">
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="text-content-muted hover:text-primary transition-colors">GitHub</a>
+          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="text-content-muted hover:text-primary transition-colors">Twitter</a>
+          <a href="/rss.xml" class="text-content-muted hover:text-primary transition-colors">RSS</a>
+        </div>
+        <p class="text-caption text-content-subtle">
+          © {new Date().getFullYear()} {SITE.author}. All rights reserved.
+        </p>
+      </div>
+    </footer>
+
+  </body>
+</html>

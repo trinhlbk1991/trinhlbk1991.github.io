@@ -1,0 +1,4 @@
+# Cloudflare Pages Configuration
+name = "gastronaut"
+compatibility_date = "2025-12-04"
+pages_build_output_dir = "dist"

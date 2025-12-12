@@ -1,0 +1,108 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../config';
+---
+
+<BaseLayout 
+  title={`About | ${SITE.title}`}
+  description="Learn about Trinh Le - Software Engineer at Lazada and creator of Iced Tea Labs"
+>
+  <div class="max-w-4xl mx-auto px-6 py-12">
+    <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-8 lg:p-12">
+      <header class="text-center mb-12">
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">About</h1>
+        <div class="w-24 h-1 bg-blue-600 mx-auto"></div>
+      </header>
+
+      <div class="prose prose-lg max-w-none">
+        <p class="text-xl text-gray-700 leading-relaxed mb-8">
+          Hi there!
+        </p>
+
+        <p class="text-gray-700 leading-relaxed mb-6">
+          My name is <strong>Trinh Le</strong> - a software engineer who is currently working at 
+          <a href="https://www.lazada.vn/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-700 font-medium">@Lazada</a>.
+        </p>
+        
+        <p class="text-gray-700 leading-relaxed mb-6">
+          This blog is a space where I share my thoughts on anything (mostly technical, duh!).
+        </p>
+
+        <p class="text-gray-700 leading-relaxed mb-8">
+          The name "Iced Tea Labs" is inspired by memories of my university time. I was part of a team named "Iced Tea 09" and we participated in many competitions together. That's such a good time though.
+        </p>
+
+        <p class="text-gray-700 leading-relaxed mb-6">
+          I also have a Google Play store also named 
+          <a href="https://play.google.com/store/apps/dev?id=7059334999797832434" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-700 font-medium">"Iced Tea Labs"</a> 
+          to publish some of my side projects:
+        </p>
+
+        <div class="bg-gray-50 rounded-lg p-6 my-8">
+          <h3 class="text-lg font-semibold text-gray-900 mb-6">My Published Apps</h3>
+          
+          <div class="space-y-4">
+            <a href="https://play.google.com/store/apps/details?id=com.icetea09.bucketlist" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               class="flex items-center gap-4 p-4 bg-white rounded-lg border border-gray-200 hover:shadow-md transition-shadow">
+              <img src="/assets/images/buckist.png" 
+                   alt="Buckist app icon" 
+                   width="50" 
+                   height="50" 
+                   class="rounded-lg" />
+              <div>
+                <div class="font-semibold text-gray-900">Buckist</div>
+                <div class="text-gray-600">Best bucket list app</div>
+              </div>
+            </a>
+
+            <a href="https://play.google.com/store/apps/details?id=com.icedtealabs.mymoney" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               class="flex items-center gap-4 p-4 bg-white rounded-lg border border-gray-200 hover:shadow-md transition-shadow">
+              <img src="/assets/images/mymoney.png" 
+                   alt="myMoney app icon" 
+                   width="50" 
+                   height="50" 
+                   class="rounded-lg" />
+              <div>
+                <div class="font-semibold text-gray-900">myMoney</div>
+                <div class="text-gray-600">Expense Manager</div>
+              </div>
+            </a>
+
+            <a href="https://play.google.com/store/apps/details?id=com.icedtealabs.moon" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               class="flex items-center gap-4 p-4 bg-white rounded-lg border border-gray-200 hover:shadow-md transition-shadow">
+              <img src="https://play-lh.googleusercontent.com/fh1U3sqmhbWWRiS6fjh4caslBlE86ZlJBgucayR5wko743aM_U143sHPLTVZvJuHZA=s360-rw" 
+                   alt="Moon app icon" 
+                   width="50" 
+                   height="50" 
+                   class="rounded-lg" />
+              <div>
+                <div class="font-semibold text-gray-900">Moon</div>
+                <div class="text-gray-600">Blue light filter, night mode</div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <p class="text-gray-700 leading-relaxed mb-6">
+          I'm also really really into climbing recently. So there might be some post of me flexing with my climbing skill in the future then. 
+        </p>
+
+        <p class="text-gray-700 leading-relaxed mb-8">
+          If you want to find out more about my professional experiences, you can check out my 
+          <a href="https://www.linkedin.com/in/trinhlbk1991/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-700 font-medium">linkedin</a> 
+          account.
+        </p>
+
+        <div class="text-center">
+          <p class="text-xl font-medium text-gray-900">Happy coding! 💻</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

@@ -1,0 +1,267 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import RecipeInstructions from '../../components/RecipeInstructions.astro';
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+function formatDate(date: Date): string {
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+}
+
+function getDifficultyLabel(difficulty?: 'easy' | 'medium' | 'hard'): string {
+  const labels = { easy: 'Easy', medium: 'Medium', hard: 'Hard' };
+  return difficulty ? labels[difficulty] : '';
+}
+
+function formatTime(minutes: number): string {
+  if (minutes < 60) return `${minutes} min`;
+  const hours = Math.floor(minutes / 60);
+  const mins = minutes % 60;
+  return mins > 0 ? `${hours}h ${mins}min` : `${hours}h`;
+}
+---
+
+<BaseLayout title={post.data.title} description={post.data.description}>
+  <article class="max-w-6xl mx-auto px-6 py-12">
+    <header class="text-center max-w-3xl mx-auto mb-12">
+      <div class="mb-6">
+        <a href="/blog" class="inline-flex items-center gap-2 text-body-s font-medium text-content-muted hover:text-primary transition-colors group">
+          <span class="group-hover:-translate-x-1 transition-transform duration-300">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
+          </span>
+          Back to Recipes
+        </a>
+      </div>
+      
+      <div class="flex items-center justify-center gap-3 mb-6">
+        <span class="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold tracking-widest uppercase border border-primary/20">{post.data.category}</span>
+        {post.data.difficulty && (
+          <span class="px-3 py-1 rounded-full bg-surface-3 text-content-muted text-xs font-bold tracking-widest uppercase border border-stone-200">{getDifficultyLabel(post.data.difficulty)}</span>
+        )}
+      </div>
+      
+      <h1 class="text-4xl md:text-6xl text-content mb-6 font-serif font-medium leading-tight tracking-tight">{post.data.title}</h1>
+      <p class="text-xl text-content-muted mb-8 leading-relaxed max-w-2xl mx-auto">{post.data.description}</p>
+      
+      <div class="flex items-center justify-center gap-8 text-sm text-content-subtle border-y border-stone-100 py-4 max-w-lg mx-auto">
+        <div class="flex items-center gap-2">
+          <svg class="w-4 h-4 text-primary/70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+          <time datetime={post.data.publishedAt.toISOString()} class="font-medium">
+            {formatDate(post.data.publishedAt)}
+          </time>
+        </div>
+        <div class="flex items-center gap-2">
+          <svg class="w-4 h-4 text-primary/70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
+          <span class="font-medium">By Gastronaut</span>
+        </div>
+      </div>
+    </header>
+
+    {post.data.image && (
+      <div class="mb-16 rounded-2xl overflow-hidden shadow-xl shadow-stone-200/50 ring-1 ring-stone-900/5">
+        <img 
+          src={post.data.image} 
+          alt={post.data.imageAlt || post.data.title}
+          class="w-full h-auto object-cover max-h-[600px] hover:scale-[1.02] transition-transform duration-700 ease-in-out"
+        />
+      </div>
+    )}
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
+      <aside class="lg:col-span-4 space-y-10">
+        {(post.data.prepTime || post.data.cookTime || post.data.servings) && (
+          <div class="bg-surface-2/50 backdrop-blur-sm rounded-xl p-8 border border-stone-200/60 shadow-sm">
+            <h3 class="text-lg font-serif font-bold mb-6 text-content flex items-center gap-2">
+              <span class="w-1 h-6 bg-primary rounded-full"></span>
+              Details
+            </h3>
+            <div class="space-y-4">
+              {post.data.prepTime && (
+                <div class="flex justify-between items-center pb-3 border-b border-stone-200/50">
+                  <span class="text-sm text-content-muted font-medium">Prep Time</span>
+                  <span class="text-base font-bold text-content font-mono">{formatTime(post.data.prepTime)}</span>
+                </div>
+              )}
+              {post.data.cookTime && (
+                <div class="flex justify-between items-center pb-3 border-b border-stone-200/50">
+                  <span class="text-sm text-content-muted font-medium">Cook Time</span>
+                  <span class="text-base font-bold text-content font-mono">{formatTime(post.data.cookTime)}</span>
+                </div>
+              )}
+              {(post.data.prepTime || post.data.cookTime) && (
+                <div class="flex justify-between items-center pb-3 border-b border-stone-200/50">
+                  <span class="text-sm text-content-muted font-medium">Total Time</span>
+                  <span class="text-base font-bold text-primary font-mono">
+                    {formatTime((post.data.prepTime || 0) + (post.data.cookTime || 0))}
+                  </span>
+                </div>
+              )}
+              {post.data.servings && (
+                <div class="flex justify-between items-center pt-1">
+                  <span class="text-sm text-content-muted font-medium">Servings</span>
+                  <span class="text-base font-bold text-content font-mono">{post.data.servings} ppl</span>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+
+        {post.data.ingredients && post.data.ingredients.length > 0 && (
+          <div class="sticky top-24">
+            <h2 class="text-2xl font-serif text-content mb-6 font-medium">Ingredients</h2>
+            <ul class="space-y-4">
+              {post.data.ingredients.map((ingredient) => (
+                <li class="flex items-start gap-4 text-base text-content-muted group p-2 hover:bg-surface-2 rounded-lg transition-colors cursor-default">
+                  <span class="mt-2 w-2 h-2 rounded-full border-2 border-primary/40 group-hover:bg-primary group-hover:border-primary transition-all flex-shrink-0"></span>
+                  <span class="group-hover:text-content transition-colors leading-relaxed">{ingredient}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </aside>
+
+      <div class="lg:col-span-8">
+        {post.data.instructions && post.data.instructions.length > 0 ? (
+          <div class="tabs-container">
+            <div class="flex gap-8 border-b border-stone-200 mb-10 relative" role="tablist">
+              <button
+                id="tab-btn-story"
+                class="tab-btn pb-4 text-lg font-serif font-medium text-primary border-b-2 border-primary transition-all relative z-10"
+                role="tab"
+                aria-selected="true"
+                aria-controls="tab-story"
+              >
+                The Story
+              </button>
+              <button
+                id="tab-btn-instructions"
+                class="tab-btn pb-4 text-lg font-serif font-medium text-content-muted/60 border-b-2 border-transparent hover:text-content transition-all relative z-10"
+                role="tab"
+                aria-selected="false"
+                aria-controls="tab-instructions"
+              >
+                Instructions
+              </button>
+            </div>
+
+            <div id="tab-story" role="tabpanel" aria-labelledby="tab-btn-story" class="tab-content animate-fade-in">
+              <div class="prose prose-lg prose-stone max-w-none 
+                prose-headings:font-serif prose-headings:text-content prose-headings:font-medium
+                prose-p:text-content-muted prose-p:leading-8
+                prose-a:text-primary prose-a:no-underline prose-a:border-b prose-a:border-primary/30 hover:prose-a:border-primary prose-a:transition-all
+                prose-strong:text-content prose-strong:font-bold
+                prose-li:text-content-muted
+                prose-img:rounded-xl prose-img:shadow-lg prose-img:my-8
+                prose-blockquote:border-l-primary prose-blockquote:bg-surface-2/50 prose-blockquote:py-2 prose-blockquote:px-6 prose-blockquote:not-italic prose-blockquote:rounded-r-lg
+                first-letter:float-left first-letter:text-6xl first-letter:pr-4 first-letter:font-serif first-letter:text-primary first-letter:font-bold">
+                <Content />
+              </div>
+            </div>
+
+            <div id="tab-instructions" role="tabpanel" aria-labelledby="tab-btn-instructions" class="tab-content hidden animate-fade-in">
+              <RecipeInstructions 
+                instructions={post.data.instructions} 
+                recipeId={post.slug} 
+              />
+            </div>
+          </div>
+        ) : (
+          <div class="prose prose-lg prose-stone max-w-none 
+            prose-headings:font-serif prose-headings:text-content
+            prose-p:text-content-muted prose-p:leading-8
+            prose-a:text-primary 
+            prose-img:rounded-xl prose-img:shadow-lg
+            first-letter:float-left first-letter:text-6xl first-letter:pr-4 first-letter:font-serif first-letter:text-primary first-letter:font-bold">
+            <Content />
+          </div>
+        )}
+
+        {post.data.tags && post.data.tags.length > 0 && (
+          <footer class="mt-16 pt-8 border-t border-stone-200">
+            <div class="flex flex-wrap gap-2">
+              {post.data.tags.map((tag) => (
+                <span class="px-4 py-1.5 bg-surface-2 hover:bg-surface-3 text-sm font-medium text-content-muted rounded-full transition-colors cursor-default border border-transparent hover:border-stone-200">
+                  #{tag}
+                </span>
+              ))}
+            </div>
+          </footer>
+        )}
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .animate-fade-in {
+    animation: fadeIn 0.4s ease-out forwards;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+
+<script>
+  function initTabs() {
+    const container = document.querySelector('.tabs-container');
+    if (!container) return;
+
+    const btnStory = container.querySelector('#tab-btn-story') as HTMLButtonElement | null;
+    const btnInstructions = container.querySelector('#tab-btn-instructions') as HTMLButtonElement | null;
+    const tabStory = container.querySelector('#tab-story') as HTMLElement | null;
+    const tabInstructions = container.querySelector('#tab-instructions') as HTMLElement | null;
+
+    if (!btnStory || !btnInstructions || !tabStory || !tabInstructions) return;
+
+    function switchTab(tab: 'story' | 'instructions') {
+      if (tab === 'story') {
+        btnStory!.classList.add('text-primary', 'border-primary');
+        btnStory!.classList.remove('text-content-muted/60', 'border-transparent');
+        
+        btnInstructions!.classList.remove('text-primary', 'border-primary');
+        btnInstructions!.classList.add('text-content-muted/60', 'border-transparent');
+
+        tabStory!.classList.remove('hidden');
+        tabInstructions!.classList.add('hidden');
+      } else {
+        btnInstructions!.classList.add('text-primary', 'border-primary');
+        btnInstructions!.classList.remove('text-content-muted/60', 'border-transparent');
+
+        btnStory!.classList.remove('text-primary', 'border-primary');
+        btnStory!.classList.add('text-content-muted/60', 'border-transparent');
+
+        tabInstructions!.classList.remove('hidden');
+        tabStory!.classList.add('hidden');
+      }
+    }
+
+    btnStory.addEventListener('click', () => switchTab('story'));
+    btnInstructions.addEventListener('click', () => switchTab('instructions'));
+  }
+
+  initTabs();
+  document.addEventListener('astro:page-load', initTabs);
+</script>

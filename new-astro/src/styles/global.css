@@ -1,0 +1,44 @@
+/* Google Fonts Import */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-surface-root text-content font-sans selection:bg-primary-light selection:text-primary;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif text-content;
+  }
+}
+
+@layer components {
+  /* Primary Button: Orange with white text */
+  .btn-primary {
+    @apply bg-primary text-white px-6 py-3 rounded-full font-medium transition-all duration-300 hover:bg-primary-hover hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  /* Secondary Button: White with subtle border/shadow */
+  .btn-secondary {
+    @apply bg-white text-content border border-stone-200 px-6 py-3 rounded-full font-medium transition-all duration-300 hover:border-stone-300 hover:shadow-md hover:-translate-y-0.5;
+  }
+
+  /* Ghost Button */
+  .btn-ghost {
+    @apply text-content-muted px-4 py-2 rounded-full font-medium transition-colors hover:text-primary hover:bg-primary-light/50;
+  }
+  
+  /* Card Base */
+  .card {
+    @apply bg-white rounded-2xl border border-stone-100 shadow-soft transition-all duration-300 hover:shadow-soft-hover hover:-translate-y-1;
+  }
+}

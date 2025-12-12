@@ -1,0 +1,10 @@
+# Allow all search engines
+User-agent: *
+Allow: /
+
+# Disallow admin and private paths (if any in the future)
+Disallow: /admin/
+Disallow: /private/
+
+# Sitemap location
+Sitemap: https://icedtealabs.com/sitemap.xml

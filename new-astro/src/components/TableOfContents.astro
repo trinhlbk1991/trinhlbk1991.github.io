@@ -1,0 +1,154 @@
+---
+export interface Heading {
+  depth: number;
+  text: string;
+  slug: string;
+}
+
+export interface Props {
+  headings: Heading[];
+  maxDepth?: number;
+}
+
+const { headings, maxDepth = 3 } = Astro.props;
+
+// Filter headings based on max depth
+const filteredHeadings = headings.filter(h => h.depth <= maxDepth && h.depth >= 2);
+
+// Skip TOC if there are no headings
+if (filteredHeadings.length === 0) {
+  return null;
+}
+---
+
+<nav class="toc-container" aria-label="Table of Contents">
+  <h2 class="text-sm font-semibold text-gray-900 uppercase tracking-wide mb-4">
+    On This Page
+  </h2>
+  <ul class="space-y-1 text-sm">
+    {filteredHeadings.map((heading) => (
+      <li class={`toc-item depth-${heading.depth}`}>
+        <a 
+          href={`#${heading.slug}`}
+          class="toc-link block py-1 text-gray-600 hover:text-blue-600 transition-colors duration-200"
+          data-heading-id={heading.slug}
+        >
+          {heading.text}
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>
+
+<style>
+  .toc-container {
+    position: sticky;
+    top: 6rem;
+    max-height: calc(100vh - 8rem);
+    overflow-y: auto;
+    padding: 1rem;
+    border-left: 2px solid #e5e7eb;
+  }
+  
+  .toc-container::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  .toc-container::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .toc-container::-webkit-scrollbar-thumb {
+    background-color: #cbd5e1;
+    border-radius: 2px;
+  }
+  
+  .toc-link {
+    border-left: 2px solid transparent;
+    padding-left: 0.75rem;
+  }
+  
+  .toc-link.active {
+    color: #3b82f6;
+    font-weight: 500;
+    border-left-color: #3b82f6;
+  }
+  
+  .depth-3 {
+    padding-left: 1rem;
+  }
+  
+  .depth-4 {
+    padding-left: 2rem;
+  }
+  
+  @media (max-width: 1024px) {
+    .toc-container {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  // Scroll spy functionality
+  function initScrollSpy() {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const id = entry.target.getAttribute('id');
+          const tocLink = document.querySelector(`.toc-link[data-heading-id="${id}"]`);
+          
+          if (entry.isIntersecting) {
+            // Remove active class from all links
+            document.querySelectorAll('.toc-link').forEach(link => {
+              link.classList.remove('active');
+            });
+            // Add active class to current link
+            if (tocLink) {
+              tocLink.classList.add('active');
+            }
+          }
+        });
+      },
+      {
+        rootMargin: '-80px 0px -80% 0px',
+        threshold: 1.0
+      }
+    );
+    
+    // Observe all headings in the article
+    document.querySelectorAll('article h2, article h3, article h4').forEach((heading) => {
+      observer.observe(heading);
+    });
+  }
+  
+  // Smooth scroll to heading
+  function initSmoothScroll() {
+    document.querySelectorAll('.toc-link').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = link.getAttribute('href');
+        if (target) {
+          const element = document.querySelector(target);
+          if (element) {
+            const yOffset = -80; // Account for sticky header
+            const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+            window.scrollTo({ top: y, behavior: 'smooth' });
+          }
+        }
+      });
+    });
+  }
+  
+  // Initialize on page load
+  document.addEventListener('DOMContentLoaded', () => {
+    initScrollSpy();
+    initSmoothScroll();
+  });
+  
+  // Re-initialize after Astro view transitions
+  document.addEventListener('astro:after-swap', () => {
+    initScrollSpy();
+    initSmoothScroll();
+  });
+</script>
