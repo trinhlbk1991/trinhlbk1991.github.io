@@ -1,6 +1,7 @@
 ---
 title: "Activity Fade Transition"
 date: 2014-06-15
+categories: ["android"]
 tags: ["Android UI","Animation","Transition"]
 toc: true
 comments: true

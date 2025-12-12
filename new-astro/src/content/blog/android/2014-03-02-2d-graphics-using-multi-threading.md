@@ -1,6 +1,7 @@
 ---
 title: "2D Graphics using Multi-threading"
 date: 2014-03-02
+categories: ["android"]
 tags: ["Custom View","Android UI","Thread"]
 toc: true
 comments: true

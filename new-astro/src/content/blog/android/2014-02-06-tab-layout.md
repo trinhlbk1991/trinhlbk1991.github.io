@@ -1,6 +1,7 @@
 ---
 title: "Tab Layout"
 date: 2014-02-06
+categories: ["android"]
 tags: ["Tab Layout"]
 toc: true
 comments: true

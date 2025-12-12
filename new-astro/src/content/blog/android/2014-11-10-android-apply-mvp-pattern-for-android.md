@@ -1,6 +1,7 @@
 ---
 title: "Apply MVP Pattern for Android"
 date: 2014-11-10
+categories: ["android"]
 tags: ["MVP","Design Pattern"]
 toc: true
 comments: true

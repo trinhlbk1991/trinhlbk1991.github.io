@@ -1,6 +1,7 @@
 ---
 title: "Apply Material Design to Pre-Lollipop Devices using AppCompat v21"
 date: 2014-12-09
+categories: ["android"]
 tags: ["Android UI","Material Design"]
 image: "/images/posts/24164029984_b3f2200484_h.jpg"
 toc: true

@@ -1,6 +1,7 @@
 ---
 title: "Floating View like Facebook Chatheads"
 date: 2015-03-16
+categories: ["android"]
 tags: ["Facebook","Android UI"]
 image: "assets/images/android/facebook.jpg"
 toc: true

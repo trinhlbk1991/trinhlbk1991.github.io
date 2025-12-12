@@ -1,6 +1,7 @@
 ---
 title: "Card Flip Animation"
 date: 2014-10-21
+categories: ["android"]
 tags: ["Android UI","Animation"]
 toc: true
 comments: true

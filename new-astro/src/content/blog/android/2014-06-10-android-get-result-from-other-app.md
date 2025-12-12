@@ -1,6 +1,7 @@
 ---
 title: "Get Result From Other App"
 date: 2014-06-10
+categories: ["android"]
 tags: ["Intent"]
 toc: true
 comments: true

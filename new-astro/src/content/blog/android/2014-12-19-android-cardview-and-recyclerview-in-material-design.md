@@ -1,6 +1,7 @@
 ---
 title: "CardView and RecyclerView in Material Design"
 date: 2014-12-19
+categories: ["android"]
 tags: ["Android UI","Material Design"]
 toc: true
 comments: true

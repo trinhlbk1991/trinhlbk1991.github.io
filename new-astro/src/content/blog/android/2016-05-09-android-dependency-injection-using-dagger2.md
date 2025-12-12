@@ -1,6 +1,7 @@
 ---
 title: "Android Dependency Injection using Dagger2"
 date: 2016-05-09
+categories: ["android"]
 tags: ["Dagger2","Design Pattern"]
 image: "assets/images/android/dagger2.jpeg"
 toc: true

@@ -1,6 +1,7 @@
 ---
 title: "Create Dynamic UI with Fragment"
 date: 2014-05-05
+categories: ["android"]
 tags: ["Android UI","Fragment"]
 toc: true
 comments: true

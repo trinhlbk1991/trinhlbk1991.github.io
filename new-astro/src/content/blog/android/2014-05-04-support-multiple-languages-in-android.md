@@ -1,6 +1,7 @@
 ---
 title: "Support Multiple Languages in Android"
 date: 2014-05-04
+categories: ["android"]
 tags: ["Localization"]
 toc: true
 comments: true

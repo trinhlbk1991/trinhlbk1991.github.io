@@ -1,6 +1,7 @@
 ---
 title: "Property Animation in Android"
 date: 2015-07-31
+categories: ["android"]
 tags: ["Android UI","Animation"]
 image: "assets/images/android/animation.jpg"
 toc: true

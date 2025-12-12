@@ -1,6 +1,7 @@
 ---
 title: "Basic Regular Expression in Java"
 date: 2014-11-24
+categories: ["android"]
 tags: ["Regex","Regular Expression"]
 toc: true
 comments: true

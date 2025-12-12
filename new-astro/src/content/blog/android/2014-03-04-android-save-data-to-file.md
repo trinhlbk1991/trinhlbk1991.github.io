@@ -1,6 +1,7 @@
 ---
 title: "Save Data To File"
 date: 2014-03-04
+categories: ["android"]
 tags: ["Android Database"]
 toc: true
 comments: true

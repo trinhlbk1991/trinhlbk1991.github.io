@@ -1,6 +1,7 @@
 ---
 title: "Facebook SDK Integration in Android"
 date: 2014-10-07
+categories: ["android"]
 tags: ["Facebook"]
 toc: true
 comments: true

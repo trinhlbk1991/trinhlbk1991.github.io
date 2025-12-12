@@ -1,6 +1,7 @@
 ---
 title: "Use Dropbox as SVN Repository"
 date: 2014-10-11
+categories: ["android"]
 tags: ["SVN","Dropbox"]
 toc: true
 comments: true

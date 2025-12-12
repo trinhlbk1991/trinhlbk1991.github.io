@@ -1,6 +1,7 @@
 ---
 title: "Hilt — A Standard Way to Implement Dependency Injection in Android"
 date: 2021-06-04
+categories: ["android"]
 tags: ["Hilt","Dagger","Dependency Injection"]
 toc: true
 comments: true

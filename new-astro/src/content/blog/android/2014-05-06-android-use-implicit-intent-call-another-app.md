@@ -1,6 +1,7 @@
 ---
 title: "Use Implicit Intent to Call Another App"
 date: 2014-05-06
+categories: ["android"]
 tags: ["Intent"]
 toc: true
 comments: true

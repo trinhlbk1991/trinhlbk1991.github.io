@@ -1,6 +1,7 @@
 ---
 title: "File Storage in Android"
 date: 2015-07-19
+categories: ["android"]
 tags: ["Android Database"]
 image: "assets/images/android/storage.jpg"
 toc: true

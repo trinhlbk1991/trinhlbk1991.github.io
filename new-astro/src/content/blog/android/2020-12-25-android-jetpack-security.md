@@ -1,6 +1,7 @@
 ---
 title: "Android Data Encryption using Jetpack Security"
 date: 2020-12-25
+categories: ["android"]
 tags: ["Jetpack","Jetpack Security"]
 toc: true
 comments: true

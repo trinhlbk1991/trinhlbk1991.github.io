@@ -1,6 +1,7 @@
 ---
 title: "Parse JSON Request using Volley and GSON"
 date: 2014-11-02
+categories: ["android"]
 tags: ["Json","Volley","GSON"]
 toc: true
 comments: true

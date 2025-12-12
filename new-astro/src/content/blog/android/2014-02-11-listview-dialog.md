@@ -1,6 +1,7 @@
 ---
 title: "ListView Dialog"
 date: 2014-02-11
+categories: ["android"]
 tags: ["Custom View","Android UI","Dialog"]
 toc: true
 comments: true

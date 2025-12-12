@@ -1,6 +1,7 @@
 ---
 title: "Custom Radio Button & Custom Checkbox"
 date: 2014-01-22
+categories: ["android"]
 tags: ["Custom View","Android UI"]
 toc: true
 comments: true

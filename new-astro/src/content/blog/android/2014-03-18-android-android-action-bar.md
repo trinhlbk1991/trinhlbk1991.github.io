@@ -1,6 +1,7 @@
 ---
 title: "Android Action Bar"
 date: 2014-03-18
+categories: ["android"]
 tags: ["Android UI"]
 toc: true
 comments: true

@@ -1,6 +1,7 @@
 ---
 title: "Singleton Implementation"
 date: 2014-05-12
+categories: ["android"]
 tags: ["Design Pattern","Singleton"]
 toc: true
 comments: true

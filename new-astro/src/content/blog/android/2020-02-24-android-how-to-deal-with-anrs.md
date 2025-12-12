@@ -1,6 +1,7 @@
 ---
 title: "How to deal with ANRs?"
 date: 2020-02-24
+categories: ["android"]
 description: "Application Not Responding 🤦‍♂️"
 tags: ["ANR","Android Performance"]
 image: "assets/images/android/anr.jpg"

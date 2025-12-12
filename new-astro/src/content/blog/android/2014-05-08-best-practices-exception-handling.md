@@ -1,6 +1,7 @@
 ---
 title: "Best Practices for Exception Handling"
 date: 2014-05-08
+categories: ["android"]
 tags: ["Exception Handling"]
 toc: true
 comments: true

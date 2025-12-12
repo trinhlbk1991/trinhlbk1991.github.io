@@ -1,6 +1,7 @@
 ---
 title: "Fragment"
 date: 2014-01-22
+categories: ["android"]
 tags: ["Fragment"]
 toc: true
 comments: true

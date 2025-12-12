@@ -1,6 +1,7 @@
 ---
 title: "Use Existing SQLite Database in Android App"
 date: 2014-01-22
+categories: ["android"]
 tags: ["SQLite","Android Database"]
 toc: true
 comments: true

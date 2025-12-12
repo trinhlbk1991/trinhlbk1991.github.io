@@ -1,6 +1,7 @@
 ---
 title: "Android Instrumentation Test Using Espresso"
 date: 2016-04-08
+categories: ["android"]
 tags: ["Espresso","Testing"]
 image: "assets/images/android/espresso.jpg"
 toc: true

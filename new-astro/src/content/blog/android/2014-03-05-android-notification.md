@@ -1,6 +1,7 @@
 ---
 title: "Notification"
 date: 2014-03-05
+categories: ["android"]
 tags: ["Notification"]
 toc: true
 comments: true
