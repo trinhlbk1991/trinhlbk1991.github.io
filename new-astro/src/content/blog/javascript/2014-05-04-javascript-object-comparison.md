@@ -1,6 +1,7 @@
 ---
 title: "Object Comparison"
 date: 2014-05-04
+categories: ["javascript"]
 tags: [""]
 toc: true
 comments: true

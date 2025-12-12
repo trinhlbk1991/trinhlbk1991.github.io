@@ -1,6 +1,7 @@
 ---
 title: "RxJava Introduction"
 date: 2017-07-27
+categories: ["android"]
 description: "RxJava is cool! 😎"
 tags: ["RxJava","Design Pattern"]
 image: "assets/images/android/rxjava.jpg"

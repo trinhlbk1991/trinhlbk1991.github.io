@@ -1,6 +1,7 @@
 ---
 title: "Parse JSON in JavaScript"
 date: 2014-04-30
+categories: ["javascript"]
 tags: [""]
 toc: true
 comments: true

@@ -1,6 +1,7 @@
 ---
 title: "Flutter - Sqflite Query Values Match Any Values In List"
 date: 2021-08-11
+categories: ["til"]
 tags: ["Flutter","Sqflite","Database"]
 toc: true
 comments: true

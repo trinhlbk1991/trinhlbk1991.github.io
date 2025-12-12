@@ -1,6 +1,7 @@
 ---
 title: "2D Graphic in Android"
 date: 2014-01-28
+categories: ["android"]
 tags: ["Animation","Custom View","Android UI"]
 toc: true
 comments: true

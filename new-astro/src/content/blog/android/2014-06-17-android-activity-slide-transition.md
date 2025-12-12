@@ -1,6 +1,7 @@
 ---
 title: "Activity Slide Transition"
 date: 2014-06-17
+categories: ["android"]
 tags: ["Android UI","Animation","Transtition"]
 toc: true
 comments: true

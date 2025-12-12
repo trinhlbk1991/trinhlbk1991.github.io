@@ -1,6 +1,7 @@
 ---
 title: "Xcode Error: 'No such module' when using CocoaPods"
 date: 2024-11-20
+categories: ["ios"]
 tags: ["iOS","Xcode"]
 toc: true
 comments: true
@@ -25,7 +26,7 @@ None of it worked.
 
 But then, buried in one thread, I found a random answer (not even the accepted one, seriously?). It sounded simple enough, so I gave it a try—and it actually worked.
 
-Turns out, the issue was that the Pods framework wasn’t being built before my project. Here’s how I fixed it:
+Turn out, the issue was that the Pods framework wasn’t being built before my project. Here’s how I fixed it:
 
 1. **Add Pods to Your Schemes:**
 

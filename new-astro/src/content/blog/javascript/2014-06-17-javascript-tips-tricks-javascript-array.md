@@ -1,6 +1,7 @@
 ---
 title: "Tips and Tricks for JavaScript Array"
 date: 2014-06-17
+categories: ["javascript"]
 tags: [""]
 toc: true
 comments: true

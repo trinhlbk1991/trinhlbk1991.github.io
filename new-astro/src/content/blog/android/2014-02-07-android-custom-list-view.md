@@ -1,6 +1,7 @@
 ---
 title: "Custom List View"
 date: 2014-02-07
+categories: ["android"]
 tags: ["Custom View","Android UI"]
 toc: true
 comments: true

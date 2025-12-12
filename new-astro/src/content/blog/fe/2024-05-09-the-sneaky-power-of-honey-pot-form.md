@@ -1,6 +1,7 @@
 ---
 title: "Stop Spam in its Tracks: The Sneaky Power of Honeypot Forms"
 date: 2024-05-09
+categories: ["fe"]
 tags: [""]
 toc: true
 comments: true

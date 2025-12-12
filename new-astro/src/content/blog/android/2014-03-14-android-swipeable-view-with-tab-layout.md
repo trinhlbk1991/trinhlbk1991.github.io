@@ -1,6 +1,7 @@
 ---
 title: "Android Swipe View with Tab Layout"
 date: 2014-03-14
+categories: ["android"]
 tags: ["Custom View","Android UI"]
 toc: true
 comments: true

@@ -1,6 +1,7 @@
 ---
 title: "Android Sliding Menu using Navigation Drawer"
 date: 2014-03-17
+categories: ["android"]
 tags: ["Menu","Navigation Drawer","Android UI"]
 toc: true
 comments: true

@@ -1,6 +1,7 @@
 ---
 title: "String.Format in JavaScript"
 date: 2014-05-01
+categories: ["javascript"]
 tags: [""]
 toc: true
 comments: true

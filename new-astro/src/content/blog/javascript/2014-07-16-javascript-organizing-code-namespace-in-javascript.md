@@ -1,6 +1,7 @@
 ---
 title: "Organizing code with namespace in JavaScript"
 date: 2014-07-16
+categories: ["javascript"]
 tags: [""]
 toc: true
 comments: true

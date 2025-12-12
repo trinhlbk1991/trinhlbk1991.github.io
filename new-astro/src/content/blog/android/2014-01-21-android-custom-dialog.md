@@ -1,6 +1,7 @@
 ---
 title: "Custom Dialog"
 date: 2014-01-21
+categories: ["android"]
 tags: ["Custom View","Android UI"]
 toc: true
 comments: true
