@@ -14,9 +14,9 @@ export default {
           inverse: '#0f172a', // slate-900
         },
         primary: {
-          DEFAULT: '#3b82f6', // blue-500
-          hover: '#2563eb', // blue-600
-          light: '#dbeafe', // blue-100
+          DEFAULT: '#19A485', // old green primary
+          hover: '#0e5546', // darker green
+          light: '#d4f4ed', // light green
         },
         content: {
           DEFAULT: '#0f172a', // slate-900
@@ -25,7 +25,8 @@ export default {
         },
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        serif: ['"Playfair Display"', 'Georgia', 'serif'],
+        sans: ['"Plus Jakarta Sans"', 'Inter', 'system-ui', 'sans-serif'],
         mono: ['"JetBrains Mono"', '"Fira Code"', 'Consolas', 'monospace'],
       },
       fontSize: {

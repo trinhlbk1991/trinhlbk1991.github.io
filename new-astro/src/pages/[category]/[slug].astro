@@ -110,9 +110,9 @@ const jsonLd = {
       <article class={showTOC ? "lg:w-3/4" : "max-w-4xl mx-auto w-full"}>
         <!-- Breadcrumb -->
         <nav class="text-sm mb-6 text-gray-600">
-          <a href="/" class="hover:text-blue-600">Home</a>
+          <a href="/" class="hover:text-primary">Home</a>
           <span class="mx-2">/</span>
-          <a href={`/category/${category}`} class="hover:text-blue-600 capitalize">{category}</a>
+          <a href={`/category/${category}`} class="hover:text-primary capitalize">{category}</a>
           <span class="mx-2">/</span>
           <span class="text-gray-900">{entry.data.title}</span>
         </nav>
@@ -137,7 +137,7 @@ const jsonLd = {
                   {entry.data.categories.map((cat: string) => (
                     <a 
                       href={`/category/${cat}`}
-                      class="px-2 py-1 bg-blue-100 text-blue-700 rounded hover:bg-blue-200 capitalize"
+                      class="px-2 py-1 bg-primary-light text-primary-hover rounded hover:bg-primary-light capitalize"
                     >
                       {cat}
                     </a>
@@ -187,7 +187,7 @@ const jsonLd = {
             href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(entry.data.title)}&url=${encodeURIComponent(canonicalURL)}`}
             target="_blank"
             rel="noopener noreferrer"
-            class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+            class="px-4 py-2 bg-primary text-white rounded hover:bg-primary"
           >
             Twitter
           </a>
@@ -195,7 +195,7 @@ const jsonLd = {
             href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(canonicalURL)}`}
             target="_blank"
             rel="noopener noreferrer"
-            class="px-4 py-2 bg-blue-700 text-white rounded hover:bg-blue-800"
+            class="px-4 py-2 bg-primary-hover text-white rounded hover:bg-primary-hover"
           >
             Facebook
           </a>
@@ -203,7 +203,7 @@ const jsonLd = {
             href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(canonicalURL)}&title=${encodeURIComponent(entry.data.title)}`}
             target="_blank"
             rel="noopener noreferrer"
-            class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+            class="px-4 py-2 bg-primary text-white rounded hover:bg-primary-hover"
           >
             LinkedIn
           </a>
@@ -221,7 +221,7 @@ const jsonLd = {
               return (
                 <article class="border rounded-lg p-4 hover:shadow-lg transition-shadow">
                   <a href={`/${postCategory}/${postSlug}/`}>
-                    <h4 class="font-semibold text-gray-900 mb-2 hover:text-blue-600">
+                    <h4 class="font-semibold text-gray-900 mb-2 hover:text-primary">
                       {post.data.title}
                     </h4>
                     <p class="text-sm text-gray-600">
