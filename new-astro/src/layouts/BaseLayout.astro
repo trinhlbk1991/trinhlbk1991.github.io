@@ -2,6 +2,8 @@
 import '../styles/global.css';
 import Modal from '../components/Modal.astro';
 import ThemeToggle from '../components/ThemeToggle.astro';
+import SearchButton from '../components/SearchButton.astro';
+import SearchModal from '../components/SearchModal.astro';
 import { SITE } from '../config';
 
 interface Props {
@@ -101,19 +103,17 @@ const {
           <a href="/tags" class="text-body-base font-medium text-content-muted hover:text-primary transition-colors">
             Tags
           </a>
-          <a href="/search" class="text-body-base font-medium text-content-muted hover:text-primary transition-colors inline-flex items-center gap-1">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
-            Search
-          </a>
           <a href="/about" class="text-body-base font-medium text-content-muted hover:text-primary transition-colors">
             About
           </a>
+          <SearchButton />
           <ThemeToggle />
         </div>
       </nav>
     </header>
+
+    <!-- Search Modal (outside header to avoid stacking context issues) -->
+    <SearchModal />
 
     <main class="flex-grow">
       <slot />
