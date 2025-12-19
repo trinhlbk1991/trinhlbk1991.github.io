@@ -1,0 +1,185 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { SITE } from '../../config';
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  const blogEntries = await getCollection('blog');
+  
+  // Get all unique categories
+  const categories = new Set<string>();
+  blogEntries.forEach((entry) => {
+    const category = entry.id.split('/')[0];
+    categories.add(category);
+  });
+  
+  // Generate a path for each category
+  return Array.from(categories).map((category) => {
+    const categoryPosts = blogEntries.filter((entry) => {
+      return entry.id.split('/')[0] === category;
+    });
+    
+    // Sort by date (newest first)
+    const sortedPosts = categoryPosts.sort((a, b) => 
+      b.data.date.valueOf() - a.data.date.valueOf()
+    );
+    
+    return {
+      params: { category },
+      props: { 
+        posts: sortedPosts,
+        category,
+      },
+    };
+  });
+}
+
+interface Props {
+  posts: any[];
+  category: string;
+}
+
+const { posts, category } = Astro.props;
+
+// SEO metadata
+const pageTitle = `${category.charAt(0).toUpperCase() + category.slice(1)} | ${SITE.title}`;
+const pageDescription = `Browse all ${category} articles and tutorials`;
+const canonicalURL = `${SITE.url}/category/${category}/`;
+
+// Get post count
+const postCount = posts.length;
+
+// Group posts by year
+const postsByYear = posts.reduce((acc, post) => {
+  const year = post.data.date.getFullYear();
+  if (!acc[year]) {
+    acc[year] = [];
+  }
+  acc[year].push(post);
+  return acc;
+}, {} as Record<number, typeof posts>);
+
+const years = Object.keys(postsByYear).map(Number).sort((a, b) => b - a);
+---
+
+<BaseLayout 
+  title={pageTitle}
+  description={pageDescription}
+  canonicalURL={canonicalURL}
+>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <!-- Page Header -->
+    <header class="mb-12">
+      <nav class="text-sm mb-6 text-gray-600">
+        <a href="/" class="hover:text-primary">Home</a>
+        <span class="mx-2">/</span>
+        <a href="/categories" class="hover:text-primary">Categories</a>
+        <span class="mx-2">/</span>
+        <span class="text-gray-900 capitalize">{category}</span>
+      </nav>
+
+      <h1 class="text-4xl font-bold mb-4 text-gray-900 capitalize">
+        {category}
+      </h1>
+      <p class="text-lg text-gray-600">
+        {postCount} {postCount === 1 ? 'article' : 'articles'} in this category
+      </p>
+    </header>
+
+    <!-- Posts List -->
+    <div class="space-y-12">
+      {years.map(year => (
+        <section class="relative">
+          <div class="sticky top-20 z-10 mb-8">
+            <h2 class="text-3xl font-bold text-gray-900 bg-white/80 backdrop-blur-sm py-2 border-b-2 border-primary">
+              {year}
+              <span class="ml-3 text-lg font-normal text-gray-500">
+                ({postsByYear[year].length} {postsByYear[year].length === 1 ? 'post' : 'posts'})
+              </span>
+            </h2>
+          </div>
+          
+          <div class="space-y-4">
+            {postsByYear[year].map((post) => {
+              const filename = post.id.split('/')[1];
+              const slug = filename.replace(/^\d{4}-\d{2}-\d{2}-/, '').replace(/\.md$/, '');
+              const postCategory = post.id.split('/')[0];
+              const postUrl = `/${postCategory}/${slug}/`;
+
+              return (
+                <article class="flex gap-6 p-4 rounded-lg border border-gray-200 hover:shadow-md hover:border-primary-light transition-all duration-200 group">
+                  <div class="flex-shrink-0 w-16 text-center">
+                    <time 
+                      datetime={post.data.date.toISOString()}
+                      class="text-sm text-gray-500 font-medium"
+                    >
+                      <div class="text-lg font-bold text-primary">
+                        {post.data.date.getDate().toString().padStart(2, '0')}
+                      </div>
+                      <div class="text-xs uppercase tracking-wide">
+                        {post.data.date.toLocaleDateString('en-US', { month: 'short' })}
+                      </div>
+                    </time>
+                  </div>
+                  
+                  <div class="flex-grow min-w-0">
+                    <div class="flex items-start justify-between gap-4 mb-2">
+                      <a 
+                        href={postUrl}
+                        class="text-lg font-semibold text-gray-900 hover:text-primary transition-colors group-hover:text-primary"
+                      >
+                        {post.data.title}
+                      </a>
+                      {post.data.categories && post.data.categories.length > 0 && (
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary-light text-primary-hover shrink-0">
+                          {post.data.categories[0]}
+                        </span>
+                      )}
+                    </div>
+                    
+                    {(post.data.summary || post.data.description) && (
+                      <p class="text-gray-600 text-sm leading-relaxed line-clamp-2">
+                        {post.data.summary || post.data.description}
+                      </p>
+                    )}
+                    
+                    {post.data.tags && post.data.tags.length > 0 && (
+                      <div class="flex flex-wrap gap-1 mt-2">
+                        {post.data.tags.slice(0, 4).map((tag: string) => (
+                          <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-700">
+                            #{tag}
+                          </span>
+                        ))}
+                        {post.data.tags.length > 4 && (
+                          <span class="text-xs text-gray-500 px-2 py-0.5">
+                            +{post.data.tags.length - 4} more
+                          </span>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+        </section>
+      ))}
+    </div>
+
+    <!-- Pagination could be added here if needed -->
+
+    <!-- Footer Navigation -->
+    <footer class="mt-12 pt-8 border-t">
+      <div class="flex justify-between items-center">
+        <a href="/categories" class="text-primary hover:underline">
+          ← View all categories
+        </a>
+        <a href="/archives" class="text-primary hover:underline">
+          View all posts →
+        </a>
+      </div>
+    </footer>
+  </div>
+</BaseLayout>

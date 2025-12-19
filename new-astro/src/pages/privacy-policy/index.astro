@@ -1,0 +1,116 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { SITE } from '../../config';
+
+export const prerender = true;
+
+// Get all privacy policy entries
+const privacyEntries = await getCollection('privacy-policy');
+
+// Sort by filename (which contains the date)
+const sortedEntries = privacyEntries.sort((a, b) => {
+  return b.id.localeCompare(a.id);
+});
+
+// Group entries by app name (extracted from filename)
+const groupedEntries = sortedEntries.reduce((acc, entry) => {
+  const slug = entry.id.replace(/^\d{4}-\d{2}-\d{2}-/, '').replace(/\.md$/, '');
+  const appName = slug.split('-')[0]; // Get first word (e.g., 'persona', 'sudoku', 'mymoney')
+  
+  if (!acc[appName]) {
+    acc[appName] = [];
+  }
+  acc[appName].push({
+    ...entry,
+    slug: slug,
+  });
+  
+  return acc;
+}, {} as Record<string, Array<any>>);
+
+// SEO metadata
+const pageTitle = `Privacy Policies & Terms | ${SITE.title}`;
+const pageDescription = 'Privacy policies and terms of service for all our mobile applications';
+const canonicalURL = `${SITE.url}/privacy-policy/`;
+---
+
+<BaseLayout 
+  title={pageTitle}
+  description={pageDescription}
+  canonicalURL={canonicalURL}
+>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <!-- Page Header -->
+    <header class="mb-12">
+      <nav class="text-sm mb-6 text-gray-600">
+        <a href="/" class="hover:text-primary">Home</a>
+        <span class="mx-2">/</span>
+        <span class="text-gray-900">Privacy Policies & Terms</span>
+      </nav>
+
+      <h1 class="text-4xl font-bold mb-4 text-gray-900">
+        Privacy Policies & Terms
+      </h1>
+      <p class="text-lg text-gray-600">
+        Privacy policies and terms of service for all our mobile applications
+      </p>
+    </header>
+
+    <!-- App List -->
+    <div class="space-y-8">
+      {Object.entries(groupedEntries).map(([appName, entries]) => (
+        <section class="border-b pb-8 last:border-b-0">
+          <h2 class="text-2xl font-bold mb-4 text-gray-900 capitalize">
+            {entries[0].data.title.split(' ')[0]}
+          </h2>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {entries.map((entry) => (
+              <article class="border rounded-lg p-4 hover:shadow-lg transition-shadow">
+                <a href={`/privacy-policy/${entry.slug}/`} class="group">
+                  {entry.data.image && (
+                    <div class="mb-3">
+                      <img 
+                        src={entry.data.image} 
+                        alt={entry.data.title}
+                        class="w-20 h-20 object-contain mx-auto"
+                      />
+                    </div>
+                  )}
+                  
+                  <h3 class="font-semibold text-gray-900 group-hover:text-primary transition-colors mb-2">
+                    {entry.data.title}
+                  </h3>
+                  
+                  {entry.data.description && (
+                    <p class="text-sm text-gray-600 line-clamp-2">
+                      {entry.data.description}
+                    </p>
+                  )}
+                  
+                  <div class="mt-3 text-sm text-primary font-medium">
+                    Read more →
+                  </div>
+                </a>
+              </article>
+            ))}
+          </div>
+        </section>
+      ))}
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-12 pt-8 border-t text-center text-gray-600">
+      <p>
+        For questions or concerns about our privacy policies, please contact us at 
+        <a href="mailto:trinhlbk1991@gmail.com" class="text-primary hover:underline">
+          trinhlbk1991@gmail.com
+        </a>
+      </p>
+      <p class="mt-4">
+        <a href="/" class="text-primary hover:underline">← Back to Home</a>
+      </p>
+    </footer>
+  </div>
+</BaseLayout>
