@@ -2,6 +2,7 @@
 title: "Android Dependency Injection using Dagger2"
 date: 2016-05-09
 categories: ["android"]
+summary: "Implement dependency injection in Android using Dagger2 framework for better code structure and testability."
 tags: ["Dagger2","Design Pattern"]
 image: "assets/images/android/dagger2.jpeg"
 toc: true

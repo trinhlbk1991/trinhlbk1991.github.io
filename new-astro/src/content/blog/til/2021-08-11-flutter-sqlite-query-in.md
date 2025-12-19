@@ -3,6 +3,7 @@ title: "Flutter - Sqflite Query Values Match Any Values In List"
 date: 2021-08-11
 categories: ["til"]
 tags: ["Flutter","Sqflite","Database"]
+summary: "Learn how to query values matching a list using the IN operator in Sqflite for Flutter databases."
 toc: true
 comments: true
 ---

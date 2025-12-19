@@ -3,6 +3,7 @@ title: "Migrate from Dagger to Hilt — A Step by Step Guide"
 date: 2021-08-01
 categories: ["android"]
 tags: ["Hilt","Dagger","Dependency Injection","Hilt Migration"]
+summary: "Learn how to gradually migrate your Android app from Dagger to Hilt with a step-by-step guide for dependency injection."
 toc: true
 comments: true
 ---

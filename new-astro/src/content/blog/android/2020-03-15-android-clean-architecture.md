@@ -3,6 +3,7 @@ title: "Clean Architecture for Android"
 date: 2020-03-15
 categories: ["android"]
 description: "An overview of Clean Architecture and how to adapt it to your Android project"
+summary: "Understand Clean Architecture principles and learn how to structure your Android app into testable, maintainable layers."
 tags: ["Clean Architecture","MVVM","Design Patterns"]
 image: "assets/images/android/clean-code.jpg"
 toc: true

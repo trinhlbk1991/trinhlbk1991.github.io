@@ -11,6 +11,7 @@ const blogCollection = defineCollection({
 
     // Optional SEO and metadata
     description: z.string().optional(),
+    summary: z.string().optional(), // Short summary for post cards
     image: z.string().optional(), // Preview image path
     imageAlt: z.string().optional(),
 

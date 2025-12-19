@@ -3,6 +3,7 @@ title: "Xcode Error: 'No such module' when using CocoaPods"
 date: 2024-11-20
 categories: ["ios"]
 tags: ["iOS","Xcode"]
+summary: "Fix the 'No such module' error in Xcode when using CocoaPods by ensuring Pods framework builds first."
 image: "/assets/images/ios/scheme.png"
 toc: true
 comments: true

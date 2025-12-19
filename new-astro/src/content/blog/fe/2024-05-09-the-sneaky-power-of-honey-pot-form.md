@@ -3,6 +3,7 @@ title: "Stop Spam in its Tracks: The Sneaky Power of Honeypot Forms"
 date: 2024-05-09
 categories: ["fe"]
 tags: [""]
+summary: "Protect your forms from spam bots using honeypot fields—hidden inputs that trap automated submissions while letting real users through."
 toc: true
 comments: true
 ---

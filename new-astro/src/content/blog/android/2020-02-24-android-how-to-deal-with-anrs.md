@@ -3,6 +3,7 @@ title: "How to deal with ANRs?"
 date: 2020-02-24
 categories: ["android"]
 description: "Application Not Responding 🤦‍♂️"
+summary: "Detect, diagnose, and fix Application Not Responding (ANR) errors in Android apps with practical solutions."
 tags: ["ANR","Android Performance"]
 image: "assets/images/android/anr.jpg"
 toc: true

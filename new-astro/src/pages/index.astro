@@ -94,9 +94,9 @@ const latestPosts = posts
                         {post.data.title}
                       </h3>
                     </a>
-                    {post.data.description && (
+                    {(post.data.summary || post.data.description) && (
                       <p class="text-gray-600 line-clamp-2">
-                        {post.data.description}
+                        {post.data.summary || post.data.description}
                       </p>
                     )}
                   </div>

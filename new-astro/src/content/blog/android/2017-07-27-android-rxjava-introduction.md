@@ -3,6 +3,7 @@ title: "RxJava Introduction"
 date: 2017-07-27
 categories: ["android"]
 description: "RxJava is cool! 😎"
+summary: "Master RxJava basics including Observables, Observers, and Schedulers for reactive programming in Android."
 tags: ["RxJava","Design Pattern"]
 image: "assets/images/android/rxjava.jpg"
 toc: true

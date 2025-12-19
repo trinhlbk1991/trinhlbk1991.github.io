@@ -3,6 +3,7 @@ title: "Hilt — A Standard Way to Implement Dependency Injection in Android"
 date: 2021-06-04
 categories: ["android"]
 tags: ["Hilt","Dagger","Dependency Injection"]
+summary: "Discover Hilt, a simplified dependency injection library built on top of Dagger for Android development."
 toc: true
 comments: true
 ---
