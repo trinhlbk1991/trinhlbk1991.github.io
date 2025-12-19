@@ -28,6 +28,22 @@ const blogCollection = defineCollection({
   }),
 });
 
+// Privacy policy and terms schema
+const privacyPolicyCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    // Required fields
+    title: z.string(),
+    description: z.string(),
+
+    // Optional fields
+    image: z.string().optional(),
+    author: z.string().optional(),
+    avatar: z.string().optional(),
+  }),
+});
+
 export const collections = {
   blog: blogCollection,
+  'privacy-policy': privacyPolicyCollection,
 };
