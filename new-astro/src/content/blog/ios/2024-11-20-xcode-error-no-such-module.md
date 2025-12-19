@@ -3,6 +3,7 @@ title: "Xcode Error: 'No such module' when using CocoaPods"
 date: 2024-11-20
 categories: ["ios"]
 tags: ["iOS","Xcode"]
+image: "/assets/images/ios/scheme.png"
 toc: true
 comments: true
 ---

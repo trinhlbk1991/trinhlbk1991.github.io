@@ -3,7 +3,6 @@ title: "Couchbase Lite"
 date: 2015-05-15
 categories: ["android"]
 tags: ["Couchbase","Android Database"]
-image: "https://c2.staticflickr.com/2/1672/24165316453_c57900dcc0_h.jpg"
 toc: true
 comments: true
 ---
