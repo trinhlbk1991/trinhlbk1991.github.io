@@ -6,22 +6,22 @@ export default {
     extend: {
       colors: {
         // Design System: Tech Blog - Clean & Professional
+        // Using CSS variables for theme support
         surface: {
-          root: '#f8fafc', // slate-50
-          1: '#ffffff',
-          2: '#f1f5f9', // slate-100
-          3: '#e2e8f0', // slate-200
-          inverse: '#0f172a', // slate-900
+          root: 'rgb(var(--color-surface-root) / <alpha-value>)',
+          1: 'rgb(var(--color-surface-1) / <alpha-value>)',
+          2: 'rgb(var(--color-surface-2) / <alpha-value>)',
+          3: 'rgb(var(--color-surface-3) / <alpha-value>)',
         },
         primary: {
-          DEFAULT: '#19A485', // old green primary
-          hover: '#0e5546', // darker green
-          light: '#d4f4ed', // light green
+          DEFAULT: 'rgb(var(--color-primary) / <alpha-value>)',
+          hover: 'rgb(var(--color-primary-hover) / <alpha-value>)',
+          light: 'rgb(var(--color-primary-light) / <alpha-value>)',
         },
         content: {
-          DEFAULT: '#0f172a', // slate-900
-          muted: '#475569', // slate-600
-          subtle: '#94a3b8', // slate-400
+          DEFAULT: 'rgb(var(--color-content) / <alpha-value>)',
+          muted: 'rgb(var(--color-content-muted) / <alpha-value>)',
+          subtle: 'rgb(var(--color-content-subtle) / <alpha-value>)',
         },
       },
       fontFamily: {

@@ -38,7 +38,7 @@ function getTotalTime(prepTime?: number, cookTime?: number): string {
   <div class="max-w-4xl mx-auto px-4 py-12">
     <header class="mb-12">
       <h1 class="text-display-l text-content mb-3 font-serif">Food Blog</h1>
-      <p class="text-body-base text-gray-600">
+      <p class="text-body-base text-content-muted">
         Discover our latest recipes, cooking tips, and culinary adventures.
       </p>
     </header>
@@ -51,9 +51,9 @@ function getTotalTime(prepTime?: number, cookTime?: number): string {
           type="text"
           id="search-input"
           placeholder="Search articles..."
-          class="w-full pl-11 pr-4 py-3 bg-white border border-gray-200 rounded-lg text-body-base focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all"
+          class="w-full pl-11 pr-4 py-3 bg-surface-1 border border-surface-3 rounded-lg text-body-base focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all"
         />
-        <svg class="absolute left-4 top-3.5 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg class="absolute left-4 top-3.5 w-5 h-5 text-content-subtle" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
         </svg>
       </div>
@@ -69,7 +69,7 @@ function getTotalTime(prepTime?: number, cookTime?: number): string {
           </button>
           {allCategories.map((category) => (
             <button 
-              class="category-btn px-4 py-1.5 rounded-full text-caption font-medium transition-colors bg-gray-100 text-gray-600 hover:bg-gray-200"
+              class="category-btn px-4 py-1.5 rounded-full text-caption font-medium transition-colors bg-surface-2 text-content-muted hover:bg-surface-2"
               data-value={category}
             >
               {category}
@@ -81,14 +81,14 @@ function getTotalTime(prepTime?: number, cookTime?: number): string {
         <div class="relative min-w-[200px]">
           <select 
             id="tag-filter"
-            class="w-full appearance-none bg-white border border-gray-200 text-gray-700 py-2 px-4 pr-8 rounded-lg leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+            class="w-full appearance-none bg-surface-1 border border-surface-3 text-content-muted py-2 px-4 pr-8 rounded-lg leading-tight focus:outline-none focus:bg-surface-1 focus:border-gray-500"
           >
             <option value="">All Tags</option>
             {allTags.map((tag) => (
               <option value={tag}>{tag}</option>
             ))}
           </select>
-          <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+          <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-content-muted">
             <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
               <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
             </svg>
@@ -99,7 +99,7 @@ function getTotalTime(prepTime?: number, cookTime?: number): string {
 
     {sortedPosts.length === 0 ? (
       <div class="text-center py-16">
-        <p class="text-body-base text-gray-400">No articles yet. Check back soon!</p>
+        <p class="text-body-base text-content-subtle">No articles yet. Check back soon!</p>
       </div>
     ) : (
       <div class="space-y-6" id="posts-grid">
@@ -126,27 +126,27 @@ function getTotalTime(prepTime?: number, cookTime?: number): string {
                 )}
                 <div class="flex-1 min-w-0">
                   <div class="flex items-center gap-2 mb-1">
-                    <span class="text-caption text-gray-400 uppercase">{post.data.category}</span>
+                    <span class="text-caption text-content-subtle uppercase">{post.data.category}</span>
                     {post.data.difficulty && (
                       <>
                         <span class="text-gray-300">•</span>
-                        <span class="text-caption text-gray-400">{getDifficultyLabel(post.data.difficulty)}</span>
+                        <span class="text-caption text-content-subtle">{getDifficultyLabel(post.data.difficulty)}</span>
                       </>
                     )}
                     {(post.data.prepTime || post.data.cookTime) && (
                       <>
                         <span class="text-gray-300">•</span>
-                        <span class="text-caption text-gray-400">{getTotalTime(post.data.prepTime, post.data.cookTime)}</span>
+                        <span class="text-caption text-content-subtle">{getTotalTime(post.data.prepTime, post.data.cookTime)}</span>
                       </>
                     )}
                   </div>
-                  <h2 class="text-heading-m text-gray-950 group-hover:text-gray-700 transition-colors mb-1 truncate">
+                  <h2 class="text-heading-m text-gray-950 group-hover:text-content-muted transition-colors mb-1 truncate">
                     {post.data.title}
                   </h2>
                   <p class="text-body-s text-content-muted line-clamp-2">
                     {post.data.description}
                   </p>
-                  <p class="text-caption text-gray-400 mt-2">
+                  <p class="text-caption text-content-subtle mt-2">
                     {formatDate(post.data.publishedAt)}
                   </p>
                 </div>
@@ -159,7 +159,7 @@ function getTotalTime(prepTime?: number, cookTime?: number): string {
     
     <!-- No Results Message -->
     <div id="no-results" class="hidden text-center py-16">
-      <p class="text-body-base text-gray-400">No articles found matching your criteria.</p>
+      <p class="text-body-base text-content-subtle">No articles found matching your criteria.</p>
     </div>
   </div>
 </BaseLayout>
@@ -212,10 +212,10 @@ function getTotalTime(prepTime?: number, cookTime?: number): string {
       // Update active state
       categoryButtons.forEach((b) => {
         b.classList.remove('bg-gray-900', 'text-white');
-        b.classList.add('bg-gray-100', 'text-gray-600');
+        b.classList.add('bg-surface-2', 'text-content-muted');
       });
       
-      btn.classList.remove('bg-gray-100', 'text-gray-600');
+      btn.classList.remove('bg-surface-2', 'text-content-muted');
       btn.classList.add('bg-gray-900', 'text-white');
 
       currentCategory = (btn as HTMLElement).dataset.value || 'all';

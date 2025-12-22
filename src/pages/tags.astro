@@ -45,7 +45,7 @@ function getTagColor(count) {
   if (ratio >= 0.75) return 'bg-primary text-white border-primary';
   if (ratio >= 0.5) return 'bg-primary text-white border-primary';
   if (ratio >= 0.25) return 'bg-primary-light text-primary-hover border-primary-light';
-  return 'bg-gray-100 text-gray-700 border-gray-200';
+  return 'bg-surface-2 text-content-muted border-surface-3';
 }
 ---
 
@@ -55,8 +55,8 @@ function getTagColor(count) {
 >
   <div class="max-w-5xl mx-auto px-6 py-12">
     <header class="text-center mb-12">
-      <h1 class="text-4xl font-bold text-gray-900 mb-4">Tags</h1>
-      <p class="text-lg text-gray-600">
+      <h1 class="text-4xl font-bold text-content mb-4">Tags</h1>
+      <p class="text-lg text-content-muted">
         Discover content through {totalTags} tags across {totalPosts} posts
       </p>
       <div class="w-24 h-1 bg-primary mx-auto mt-6"></div>
@@ -66,7 +66,7 @@ function getTagColor(count) {
       <div class="space-y-8">
         <!-- Tag Cloud -->
         <section>
-          <h2 class="text-2xl font-bold text-gray-900 mb-6">Tag Cloud</h2>
+          <h2 class="text-2xl font-bold text-content mb-6">Tag Cloud</h2>
           <div class="flex flex-wrap gap-3 justify-center">
             {tags.map(tag => {
               const data = tagData[tag];
@@ -87,12 +87,12 @@ function getTagColor(count) {
 
 <!-- Tag Details Modal/Section -->
         <section id="tag-details" class="hidden">
-          <div class="bg-white p-6">
+          <div class="bg-surface-1 p-6 rounded-lg border border-surface-3">
             <div class="flex items-center justify-between mb-6">
-              <h2 class="text-2xl font-bold text-gray-900">
+              <h2 class="text-2xl font-bold text-content">
                 Posts tagged with <span id="selected-tag" class="text-primary uppercase"></span>
               </h2>
-              <button id="close-tag-details" class="text-gray-500 hover:text-gray-700 transition-colors">
+              <button id="close-tag-details" class="text-content-muted hover:text-content transition-colors">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
@@ -107,13 +107,13 @@ function getTagColor(count) {
       </div>
     ) : (
       <div class="text-center py-12">
-        <div class="text-gray-400 mb-4">
+        <div class="text-content-subtle mb-4">
           <svg class="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
           </svg>
         </div>
-        <h3 class="text-lg font-medium text-gray-900 mb-2">No tags found</h3>
-        <p class="text-gray-500">Posts with tags will appear here.</p>
+        <h3 class="text-lg font-medium text-content mb-2">No tags found</h3>
+        <p class="text-content-muted">Posts with tags will appear here.</p>
       </div>
     )}
   </div>
@@ -141,7 +141,7 @@ function getTagColor(count) {
         // Create post elements
         sortedPosts.forEach(post => {
           const postElement = document.createElement('article');
-          postElement.className = 'flex gap-6 p-4 rounded-lg border border-gray-200 hover:shadow-md hover:border-primary-light transition-all duration-200 group';
+          postElement.className = 'flex gap-6 p-4 rounded-lg border border-surface-3 bg-surface-1 hover:shadow-md hover:border-primary-light transition-all duration-200 group';
           
           const category = post.id.split('/')[0];
           const filename = post.id.split('/')[1];
@@ -155,7 +155,7 @@ function getTagColor(count) {
           
           postElement.innerHTML = `
             <div class="flex-shrink-0 w-16 text-center">
-              <time datetime="${isoDate}" class="text-sm text-gray-500 font-medium">
+              <time datetime="${isoDate}" class="text-sm text-content-muted font-medium">
                 <div class="text-lg font-bold text-primary">${day}</div>
                 <div class="text-xs uppercase tracking-wide">${month}</div>
               </time>
@@ -163,7 +163,7 @@ function getTagColor(count) {
             
             <div class="flex-grow min-w-0">
               <div class="flex items-start justify-between gap-4 mb-2">
-                <a href="${postUrl}" class="text-lg font-semibold text-gray-900 hover:text-primary transition-colors group-hover:text-primary">
+                <a href="${postUrl}" class="text-lg font-semibold text-content hover:text-primary transition-colors group-hover:text-primary">
                   ${post.data.title}
                 </a>
                 ${post.data.categories && post.data.categories.length > 0 ? `
@@ -174,7 +174,7 @@ function getTagColor(count) {
               </div>
               
               ${(post.data.summary || post.data.description) ? `
-                <p class="text-gray-600 text-sm leading-relaxed line-clamp-2">
+                <p class="text-content-muted text-sm leading-relaxed line-clamp-2">
                   ${post.data.summary || post.data.description}
                 </p>
               ` : ''}
@@ -182,10 +182,10 @@ function getTagColor(count) {
               ${post.data.tags && post.data.tags.length > 0 ? `
                 <div class="flex flex-wrap gap-1 mt-2">
                   ${post.data.tags.slice(0, 4).map(t => 
-                    `<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-700">#${t}</span>`
+                    `<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-surface-2 text-content-muted">#${t}</span>`
                   ).join('')}
                   ${post.data.tags.length > 4 ? `
-                    <span class="text-xs text-gray-500 px-2 py-0.5">+${post.data.tags.length - 4} more</span>
+                    <span class="text-xs text-content-subtle px-2 py-0.5">+${post.data.tags.length - 4} more</span>
                   ` : ''}
                 </div>
               ` : ''}

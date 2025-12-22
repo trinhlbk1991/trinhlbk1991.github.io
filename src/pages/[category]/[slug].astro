@@ -109,21 +109,21 @@ const jsonLd = {
       <!-- Main Content -->
       <article class={showTOC ? "lg:w-3/4" : "max-w-4xl mx-auto w-full"}>
         <!-- Breadcrumb -->
-        <nav class="text-sm mb-6 text-gray-600">
+        <nav class="text-sm mb-6 text-content-muted">
           <a href="/" class="hover:text-primary">Home</a>
           <span class="mx-2">/</span>
           <a href={`/category/${category}`} class="hover:text-primary capitalize">{category}</a>
           <span class="mx-2">/</span>
-          <span class="text-gray-900">{entry.data.title}</span>
+          <span class="text-content">{entry.data.title}</span>
         </nav>
 
         <!-- Article Header -->
         <header class="mb-8">
-          <h1 class="text-4xl font-bold mb-4 text-gray-900">
+          <h1 class="text-4xl font-bold mb-4 text-content">
             {entry.data.title}
           </h1>
           
-          <div class="flex flex-wrap items-center gap-4 text-sm text-gray-600">
+          <div class="flex flex-wrap items-center gap-4 text-sm text-content-muted">
             <time datetime={entry.data.date.toISOString()}>
               {formattedDate}
             </time>
@@ -152,8 +152,7 @@ const jsonLd = {
               {entry.data.tags.map((tag: string) => (
                 <a 
                   href={`/tag/${tag}`}
-                  class="text-sm px-3 py-1 bg-gray-100 text-gray-700 rounded-full hover:bg-gray-200"
-                >
+                  class="text-sm px-3 py-1 bg-surface-2 text-content-muted rounded-full hover:bg-surface-3">
                   #{tag}
                 </a>
               ))}
@@ -219,12 +218,12 @@ const jsonLd = {
               const postSlug = post.id.split('/')[1].replace(/^\d{4}-\d{2}-\d{2}-/, '').replace(/\.md$/, '');
               const postCategory = post.id.split('/')[0];
               return (
-                <article class="border rounded-lg p-4 hover:shadow-lg transition-shadow">
+                <article class="border border-surface-3 rounded-lg p-4 hover:shadow-lg transition-shadow bg-surface-1">
                   <a href={`/${postCategory}/${postSlug}/`}>
-                    <h4 class="font-semibold text-gray-900 mb-2 hover:text-primary">
+                    <h4 class="font-semibold text-content mb-2 hover:text-primary">
                       {post.data.title}
                     </h4>
-                    <p class="text-sm text-gray-600">
+                    <p class="text-sm text-content-muted">
                       {new Date(post.data.date).toLocaleDateString('en-US', {
                         year: 'numeric',
                         month: 'short',

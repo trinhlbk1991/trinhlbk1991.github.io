@@ -23,11 +23,11 @@ const latestPosts = posts
         <span class="text-primary font-medium tracking-wider uppercase text-sm mb-4 block">
           Welcome to {SITE.title}
         </span>
-        <h1 class="text-5xl md:text-6xl text-gray-900 mb-6 font-bold">
+        <h1 class="text-5xl md:text-6xl text-content mb-6 font-bold">
           Technical <span class="text-primary">Insights</span><br />
           for Modern Developers
         </h1>
-        <p class="text-xl text-gray-600 max-w-2xl mx-auto mb-10">
+        <p class="text-xl text-content-muted max-w-2xl mx-auto mb-10">
           Exploring Android, iOS, frontend development, and everything in between. 
           A geek's journey through code, climbing, and continuous learning.
         </p>
@@ -45,7 +45,7 @@ const latestPosts = posts
       {latestPosts.length > 0 && (
         <section>
           <div class="flex items-end justify-between mb-10">
-            <h2 class="text-3xl font-bold text-gray-900">Latest Articles</h2>
+            <h2 class="text-3xl font-bold text-content">Latest Articles</h2>
             <a href="/archives" class="text-primary font-medium hover:text-primary-hover transition-colors flex items-center gap-1">
               View all 
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -61,9 +61,9 @@ const latestPosts = posts
               const slug = filename.replace(/^\d{4}-\d{2}-\d{2}-/, '').replace(/\.md$/, '');
               
               return (
-                <article class="border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-200 group">
+                <article class="border border-surface-3 rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-200 group bg-surface-1">
                   {post.data.image && (
-                    <div class="aspect-[16/9] bg-gray-200 relative overflow-hidden">
+                    <div class="aspect-[16/9] bg-surface-2 relative overflow-hidden">
                       <img 
                         src={post.data.image} 
                         alt={post.data.title}
@@ -72,7 +72,7 @@ const latestPosts = posts
                     </div>
                   )}
                   <div class="p-6">
-                    <div class="flex items-center gap-3 text-sm text-gray-600 mb-3">
+                    <div class="flex items-center gap-3 text-sm text-content-muted mb-3">
                       <time datetime={post.data.date.toISOString()}>
                         {post.data.date.toLocaleDateString('en-US', { 
                           year: 'numeric', 
@@ -90,12 +90,12 @@ const latestPosts = posts
                       )}
                     </div>
                     <a href={`/${category}/${slug}/`}>
-                      <h3 class="text-xl font-bold text-gray-900 group-hover:text-primary transition-colors mb-3">
+                      <h3 class="text-xl font-bold text-content group-hover:text-primary transition-colors mb-3">
                         {post.data.title}
                       </h3>
                     </a>
                     {(post.data.summary || post.data.description) && (
-                      <p class="text-gray-600 line-clamp-2">
+                      <p class="text-content-muted line-clamp-2">
                         {post.data.summary || post.data.description}
                       </p>
                     )}
