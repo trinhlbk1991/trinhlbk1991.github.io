@@ -41,7 +41,7 @@ export const SITE = {
 
   // Page Views
   pageViews: {
-    enabled: true, // Using Cloudflare Pages Functions + KV
+    enabled: false, // Temporarily disabled - KV namespace needs to be configured first
     provider: 'cloudflare-kv',
   },
 
