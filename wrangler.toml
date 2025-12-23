@@ -8,14 +8,14 @@ pages_build_output_dir = "./dist"
 # 2. Copy the ID from the output and paste it below
 # 3. Uncomment the kv_namespaces section
 
-# kv_namespaces = [
-#   { binding = "PAGEVIEWS", id = "YOUR_KV_NAMESPACE_ID_HERE" }
-# ]
+ kv_namespaces = [
+   { binding = "PAGEVIEWS", id = "e77e459a811c447da15794eb2475fbb6" }
+ ]
 
 # For local development, create a preview namespace:
 #    npx wrangler kv:namespace create PAGEVIEWS --preview
 # Then add preview_id:
-# kv_namespaces = [
+ kv_namespaces = [
 #   { 
 #     binding = "PAGEVIEWS", 
 #     id = "YOUR_PRODUCTION_KV_ID",
