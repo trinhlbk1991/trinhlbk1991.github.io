@@ -1,17 +1,15 @@
 ---
-// Page View Counter using CountAPI
-// Free and simple page view tracking
+// Page View Counter using Cloudflare Pages Functions + KV
+// Free and reliable page view tracking
 
 interface Props {
-  namespace?: string;
   pageKey: string;
 }
 
-const { namespace = 'icedtealabs', pageKey } = Astro.props;
+const { pageKey } = Astro.props;
 
 // Encode the key to make it URL-safe
 const encodedKey = encodeURIComponent(pageKey);
-const countApiUrl = `https://api.countapi.xyz/hit/${namespace}/${encodedKey}`;
 ---
 
 <div class="flex items-center gap-2 text-content-muted" id="pageview-counter">
@@ -23,18 +21,19 @@ const countApiUrl = `https://api.countapi.xyz/hit/${namespace}/${encodedKey}`;
   <span>views</span>
 </div>
 
-<script define:vars={{ countApiUrl }}>
-  // Fetch page view count
+<script define:vars={{ encodedKey }}>
+  // Fetch page view count from our Cloudflare Pages Function
   async function updatePageViews() {
     try {
-      const response = await fetch(countApiUrl);
+      const apiUrl = `/api/pageviews?page=${encodedKey}`;
+      const response = await fetch(apiUrl);
       const data = await response.json();
       
-      if (data && data.value !== undefined) {
+      if (data && data.views !== undefined) {
         const countElement = document.getElementById('pageview-count');
         if (countElement) {
           // Format number with commas
-          countElement.textContent = new Intl.NumberFormat().format(data.value);
+          countElement.textContent = new Intl.NumberFormat().format(data.views);
         }
       }
     } catch (error) {

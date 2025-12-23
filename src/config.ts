@@ -41,8 +41,8 @@ export const SITE = {
 
   // Page Views
   pageViews: {
-    enabled: false, // Disabled - CountAPI.xyz is no longer available
-    provider: 'countapi',
+    enabled: true, // Using Cloudflare Pages Functions + KV
+    provider: 'cloudflare-kv',
   },
 
   // Pagination
