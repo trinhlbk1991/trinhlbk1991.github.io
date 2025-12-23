@@ -1,0 +1,55 @@
+---
+// Page View Counter using CountAPI
+// Free and simple page view tracking
+
+interface Props {
+  namespace?: string;
+  pageKey: string;
+}
+
+const { namespace = 'icedtealabs', pageKey } = Astro.props;
+
+// Encode the key to make it URL-safe
+const encodedKey = encodeURIComponent(pageKey);
+const countApiUrl = `https://api.countapi.xyz/hit/${namespace}/${encodedKey}`;
+---
+
+<div class="flex items-center gap-2 text-content-muted" id="pageview-counter">
+  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+  </svg>
+  <span id="pageview-count">Loading...</span>
+  <span>views</span>
+</div>
+
+<script define:vars={{ countApiUrl }}>
+  // Fetch page view count
+  async function updatePageViews() {
+    try {
+      const response = await fetch(countApiUrl);
+      const data = await response.json();
+      
+      if (data && data.value !== undefined) {
+        const countElement = document.getElementById('pageview-count');
+        if (countElement) {
+          // Format number with commas
+          countElement.textContent = new Intl.NumberFormat().format(data.value);
+        }
+      }
+    } catch (error) {
+      console.error('Failed to fetch page views:', error);
+      const countElement = document.getElementById('pageview-count');
+      if (countElement) {
+        countElement.textContent = '--';
+      }
+    }
+  }
+
+  // Update page views when page loads
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', updatePageViews);
+  } else {
+    updatePageViews();
+  }
+</script>

@@ -70,8 +70,23 @@ const {
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={image} />
     
-    <!-- Google Analytics -->
-    {SITE.googleAnalyticsId && (
+    <!-- Google Analytics 4 -->
+    {SITE.ga4MeasurementId && (
+      <>
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${SITE.ga4MeasurementId}`}></script>
+        <script define:vars={{ ga4Id: SITE.ga4MeasurementId }}>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', ga4Id, {
+            page_path: window.location.pathname,
+          });
+        </script>
+      </>
+    )}
+    
+    <!-- Legacy Universal Analytics (will be removed once GA4 is fully set up) -->
+    {SITE.googleAnalyticsId && !SITE.ga4MeasurementId && (
       <>
         <script async src={`https://www.googletagmanager.com/gtag/js?id=${SITE.googleAnalyticsId}`}></script>
         <script define:vars={{ gaId: SITE.googleAnalyticsId }}>

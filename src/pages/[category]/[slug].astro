@@ -2,6 +2,7 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import TableOfContents from '../../components/TableOfContents.astro';
+import PageViewCounter from '../../components/PageViewCounter.astro';
 import { SITE } from '../../config';
 import { readingTime } from '../../utils/readingTime';
 
@@ -129,6 +130,12 @@ const jsonLd = {
             </time>
             <span>•</span>
             <span>{readTime} min read</span>
+            {SITE.pageViews?.enabled && (
+              <>
+                <span>•</span>
+                <PageViewCounter pageKey={`${category}/${slug}`} />
+              </>
+            )}
             
             {entry.data.categories && entry.data.categories.length > 0 && (
               <>
@@ -238,31 +245,26 @@ const jsonLd = {
         </div>
       )}
 
-      <!-- Disqus Comments -->
-      {entry.data.comments !== false && SITE.disqus && (
+      <!-- Giscus Comments -->
+      {entry.data.comments !== false && SITE.comments?.enabled && SITE.comments?.provider === 'giscus' && SITE.comments.giscus?.repoId && SITE.comments.giscus?.categoryId && (
         <div class="mt-12">
-          <h3 class="text-2xl font-bold mb-6">Comments</h3>
-          <div id="disqus_thread"></div>
-          <script define:vars={{ 
-            disqusShortname: SITE.disqus.shortname,
-            pageUrl: canonicalURL,
-            pageId: slug 
-          }}>
-            var disqus_config = function () {
-              this.page.url = pageUrl;
-              this.page.identifier = pageId;
-            };
-            (function() {
-              var d = document, s = d.createElement('script');
-              s.src = `https://${disqusShortname}.disqus.com/embed.js`;
-              s.setAttribute('data-timestamp', +new Date());
-              (d.head || d.body).appendChild(s);
-            })();
+          <h3 class="text-2xl font-bold mb-6 text-content">Comments</h3>
+          <script 
+            src="https://giscus.app/client.js"
+            data-repo={SITE.comments.giscus.repo}
+            data-repo-id={SITE.comments.giscus.repoId}
+            data-category={SITE.comments.giscus.category}
+            data-category-id={SITE.comments.giscus.categoryId}
+            data-mapping={SITE.comments.giscus.mapping}
+            data-strict="0"
+            data-reactions-enabled={SITE.comments.giscus.reactionsEnabled ? "1" : "0"}
+            data-emit-metadata={SITE.comments.giscus.emitMetadata ? "1" : "0"}
+            data-input-position={SITE.comments.giscus.inputPosition}
+            data-theme={SITE.comments.giscus.theme}
+            data-lang={SITE.comments.giscus.lang}
+            crossorigin="anonymous"
+            async>
           </script>
-          <noscript>
-            Please enable JavaScript to view the 
-            <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-          </noscript>
         </div>
       )}
         </footer>

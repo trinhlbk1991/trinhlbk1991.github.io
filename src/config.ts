@@ -13,11 +13,36 @@ export const SITE = {
   },
 
   // Analytics
-  googleAnalyticsId: 'UA-48722139-1',
+  googleAnalyticsId: 'UA-48722139-1', // Legacy Universal Analytics (deprecated)
+  ga4MeasurementId: 'G-1QY9E6KEP6', // TODO: Add your GA4 Measurement ID (format: G-XXXXXXXXXX)
 
   // Comments
+  comments: {
+    enabled: true,
+    provider: 'giscus', // Using Giscus (GitHub Discussions)
+    giscus: {
+      repo: 'trinhlbk1991/trinhlbk1991.github.io',
+      repoId: 'MDEwOlJlcG9zaXRvcnk0ODQ0MzU1Mw==',
+      category: 'Announcements', // Or your chosen category name
+      categoryId: 'DIC_kwDOAuMwoc4C0Ji9', // TODO: Get from https://giscus.app
+      mapping: 'pathname',
+      reactionsEnabled: true,
+      emitMetadata: false,
+      inputPosition: 'bottom',
+      theme: 'preferred_color_scheme', // Supports dark mode
+      lang: 'en',
+    },
+  },
+
+  // Legacy Disqus config (kept for reference, not used)
   disqus: {
     shortname: 'icetea09',
+  },
+
+  // Page Views
+  pageViews: {
+    enabled: true,
+    provider: 'countapi', // Free and simple
   },
 
   // Pagination
