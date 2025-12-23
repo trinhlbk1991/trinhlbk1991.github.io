@@ -41,8 +41,8 @@ export const SITE = {
 
   // Page Views
   pageViews: {
-    enabled: true,
-    provider: 'countapi', // Free and simple
+    enabled: false, // Disabled - CountAPI.xyz is no longer available
+    provider: 'countapi',
   },
 
   // Pagination
