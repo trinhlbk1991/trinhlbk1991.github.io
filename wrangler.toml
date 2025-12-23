@@ -2,5 +2,23 @@ name = "icedtealabs"
 compatibility_date = "2024-12-01"
 pages_build_output_dir = "./dist"
 
-# Note: KV bindings for Cloudflare Pages are configured in the dashboard
-# Settings > Functions > KV namespace bindings
+# KV Namespace for Page Views
+# 1. First, create the KV namespace:
+#    npx wrangler kv:namespace create PAGEVIEWS
+# 2. Copy the ID from the output and paste it below
+# 3. Uncomment the kv_namespaces section
+
+# kv_namespaces = [
+#   { binding = "PAGEVIEWS", id = "YOUR_KV_NAMESPACE_ID_HERE" }
+# ]
+
+# For local development, create a preview namespace:
+#    npx wrangler kv:namespace create PAGEVIEWS --preview
+# Then add preview_id:
+# kv_namespaces = [
+#   { 
+#     binding = "PAGEVIEWS", 
+#     id = "YOUR_PRODUCTION_KV_ID",
+#     preview_id = "YOUR_PREVIEW_KV_ID"
+#   }
+# ]
