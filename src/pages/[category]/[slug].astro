@@ -317,16 +317,16 @@ const jsonLd = {
 
     /* Landscape images - full width */
     .image-wrapper.landscape img {
-      width: 100%;
-      max-width: 100%;
-      height: auto;
+      width: 100% !important;
+      max-width: 100% !important;
+      height: auto !important;
     }
 
     /* Portrait images - 40% width */
     .image-wrapper.portrait img {
-      width: 40%;
-      max-width: 40%;
-      height: auto;
+      width: 40% !important;
+      max-width: 40% !important;
+      height: auto !important;
     }
 
     /* Ensure images don't exceed their natural size */
@@ -334,12 +334,18 @@ const jsonLd = {
       object-fit: contain;
     }
 
+    /* Override any prose default image styling */
+    .prose .image-wrapper img {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
     /* Mobile responsiveness */
     @media (max-width: 768px) {
       /* On mobile, portrait images take 70% width for better visibility */
       .image-wrapper.portrait img {
-        width: 70%;
-        max-width: 70%;
+        width: 70% !important;
+        max-width: 70% !important;
       }
     }
   </style>
