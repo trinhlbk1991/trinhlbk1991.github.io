@@ -35,7 +35,7 @@ Turn out, the issue was that the Pods framework wasn’t being built before my p
     - Go to `Product` > `Scheme` > `Manage Schemes...`.
     - In the list, find `Pods` and check the box next to it.
 
-<img src="/assets/images/ios/scheme.png" width="250"/>
+<img src="/assets/images/ios/scheme.png"/>
 
 2. **Select the Pods Scheme:**
 

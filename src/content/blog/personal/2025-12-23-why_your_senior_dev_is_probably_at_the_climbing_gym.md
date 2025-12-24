@@ -6,6 +6,7 @@ tags: ["Personal", "Climbing"]
 summary: "Bouldering isn't just a sport—it's physical programming. Here's why so many software engineers are obsessed with climbing gyms."
 toc: true
 comments: true
+image: "/assets/images/personal/me-climbing.jpg"
 ---
 
 It's been a while since my last post on [Iced Tea Labs](https://icedtealabs.com).
@@ -16,7 +17,7 @@ At first, I was curious why. But the more I climbed (and fell off the wall), the
 
 Here is why your Senior Dev is probably at the climbing gym right now.
 
-<img src="/assets/images/personal/me-climbing.jpg" width="250" alt="Me climbing at Vertical District to run away from my actual problems"/>
+<img src="/assets/images/personal/me-climbing.jpg"  alt="Me climbing at Vertical District to run away from my actual problems"/>
 
 ## The "Problems"
 
@@ -27,7 +28,7 @@ Just like in software, a problem is defined clearly with a set of requirements a
 *   **Finish position:** Both hands controlled on the top hold.
 *   **Constraints:** You can only use holds of a specific color.
 
-<img src="/assets/images/personal/ifsc.jpg" width="250" alt="Tapes on hold to indicate how many limbs climber have to use on specific holds for the starting position"/>
+<img src="/assets/images/personal/ifsc.jpg"  alt="Tapes on hold to indicate how many limbs climber have to use on specific holds for the starting position"/>
 
 When you're new to bouldering, you might look at a problem and try to muscle through it—like a Junior Dev trying to brute-force a solution. But a Senior Dev knows that brute force burns your resources (your muscles) in no time. You have to find the algorithm.
 
@@ -44,7 +45,7 @@ Surprisingly, the steps to solving a boulder problem are nearly identical to deb
 
 And when you can't figure out why you can't send the route? The climbing community is always there to share the beta with you—just like looking for help on StackOverflow.
 
-<img src="/assets/images/personal/community.webp" width="250" alt="The supportive and destructive community in climbing is one of the best"/>
+<img src="/assets/images/personal/community.webp"  alt="The supportive and destructive community in climbing is one of the best"/>
 
 ## The "Optimal" Solution
 
@@ -52,7 +53,7 @@ In bouldering, reaching the top isn't the only goal. The more you climb, the mor
 
 Sometimes, just a little twist of your hips or straightening your arms can make a huge difference. It's like improving your code from an **O(n²)** to an **O(n)** approach. It's the physical manifestation of "clean code."
 
-<img src="/assets/images/personal/dropknee.jpg" width="250" alt="Dropknee is one of the core techniques help you to climb more efficiently"/>
+<img src="/assets/images/personal/dropknee.jpg"  alt="Dropknee is one of the core techniques help you to climb more efficiently"/>
 
 ## Why do Software Engineers love Climbing?
 
