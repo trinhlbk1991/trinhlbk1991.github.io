@@ -305,16 +305,47 @@ const jsonLd = {
 
     /* Wrapper for image and caption */
     .image-wrapper {
-      margin: 1.5rem 0;
+      margin: 1.5rem auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .image-wrapper img {
       margin-bottom: 0.5rem;
     }
+
+    /* Landscape images - full width */
+    .image-wrapper.landscape img {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Portrait images - 40% width */
+    .image-wrapper.portrait img {
+      width: 40%;
+      max-width: 40%;
+      height: auto;
+    }
+
+    /* Ensure images don't exceed their natural size */
+    .image-wrapper img {
+      object-fit: contain;
+    }
+
+    /* Mobile responsiveness */
+    @media (max-width: 768px) {
+      /* On mobile, portrait images take 70% width for better visibility */
+      .image-wrapper.portrait img {
+        width: 70%;
+        max-width: 70%;
+      }
+    }
   </style>
 
   <script>
-    // Add captions to images based on their alt text
+    // Add captions to images and apply orientation-based sizing
     document.addEventListener('DOMContentLoaded', () => {
       // Find all images in the article content
       const articleContent = document.querySelector('.prose');
@@ -323,13 +354,25 @@ const jsonLd = {
       const images = articleContent.querySelectorAll('img');
       
       images.forEach((img) => {
-        const altText = img.getAttribute('alt');
-        
-        // Only add caption if alt text exists and is not empty
-        if (altText && altText.trim()) {
+        // Function to process image after it's loaded
+        const processImage = () => {
+          const altText = img.getAttribute('alt');
+          
           // Create a wrapper div for the image and caption
           const wrapper = document.createElement('div');
           wrapper.className = 'image-wrapper';
+          
+          // Determine image orientation
+          const width = img.naturalWidth;
+          const height = img.naturalHeight;
+          
+          if (width > height) {
+            // Landscape orientation
+            wrapper.classList.add('landscape');
+          } else {
+            // Portrait orientation
+            wrapper.classList.add('portrait');
+          }
           
           // Insert wrapper before the image
           img.parentNode.insertBefore(wrapper, img);
@@ -337,13 +380,21 @@ const jsonLd = {
           // Move image into wrapper
           wrapper.appendChild(img);
           
-          // Create caption element
-          const caption = document.createElement('p');
-          caption.className = 'image-caption';
-          caption.textContent = altText;
-          
-          // Add caption after image
-          wrapper.appendChild(caption);
+          // Add caption if alt text exists
+          if (altText && altText.trim()) {
+            const caption = document.createElement('p');
+            caption.className = 'image-caption';
+            caption.textContent = altText;
+            wrapper.appendChild(caption);
+          }
+        };
+
+        // Check if image is already loaded
+        if (img.complete && img.naturalWidth > 0) {
+          processImage();
+        } else {
+          // Wait for image to load
+          img.addEventListener('load', processImage);
         }
       });
     });
