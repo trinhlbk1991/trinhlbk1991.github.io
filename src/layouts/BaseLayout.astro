@@ -100,12 +100,15 @@ const {
   </head>
   <body class="min-h-screen flex flex-col bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors">
     <header class="sticky top-0 z-50 w-full border-b border-stone-100 dark:border-gray-800 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md transition-all">
-      <nav class="max-w-5xl mx-auto px-6 h-20 flex items-center justify-between">
-        <a href="/" class="flex items-center gap-3 text-heading-m font-bold text-content hover:text-primary transition-colors">
-          <img src="/logo.png" alt="Iced Tea Labs Logo" class="h-10 w-10 object-contain" />
-          {SITE.title}
+      <nav class="max-w-5xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
+        <!-- Logo -->
+        <a href="/" class="flex items-center gap-2 sm:gap-3 text-lg sm:text-heading-m font-bold text-content hover:text-primary transition-colors">
+          <img src="/logo.png" alt="Iced Tea Labs Logo" class="h-8 w-8 sm:h-10 sm:w-10 object-contain" />
+          <span class="hidden sm:inline">{SITE.title}</span>
         </a>
-        <div class="flex items-center gap-8">
+
+        <!-- Desktop Navigation -->
+        <div class="hidden md:flex items-center gap-6 lg:gap-8">
           <a href="/" class="text-body-base font-medium text-content-muted hover:text-primary transition-colors">
             Home
           </a>
@@ -124,8 +127,83 @@ const {
           <SearchButton />
           <ThemeToggle />
         </div>
+
+        <!-- Mobile Navigation -->
+        <div class="flex md:hidden items-center gap-3">
+          <SearchButton />
+          <ThemeToggle />
+          <!-- Mobile Menu Button -->
+          <button 
+            id="mobile-menu-button"
+            class="p-2 text-content-muted hover:text-primary transition-colors"
+            aria-label="Toggle menu"
+          >
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
       </nav>
+
+      <!-- Mobile Menu Overlay -->
+      <div 
+        id="mobile-menu" 
+        class="hidden md:hidden fixed inset-0 top-16 sm:top-20 bg-white dark:bg-gray-900 z-40 overflow-y-auto"
+      >
+        <div class="flex flex-col p-6 gap-4">
+          <a href="/" class="text-lg font-medium text-content-muted hover:text-primary transition-colors py-2 border-b border-stone-100 dark:border-gray-800">
+            Home
+          </a>
+          <a href="/archives" class="text-lg font-medium text-content-muted hover:text-primary transition-colors py-2 border-b border-stone-100 dark:border-gray-800">
+            Archives
+          </a>
+          <a href="/categories" class="text-lg font-medium text-content-muted hover:text-primary transition-colors py-2 border-b border-stone-100 dark:border-gray-800">
+            Categories
+          </a>
+          <a href="/tags" class="text-lg font-medium text-content-muted hover:text-primary transition-colors py-2 border-b border-stone-100 dark:border-gray-800">
+            Tags
+          </a>
+          <a href="/about" class="text-lg font-medium text-content-muted hover:text-primary transition-colors py-2 border-b border-stone-100 dark:border-gray-800">
+            About
+          </a>
+        </div>
+      </div>
     </header>
+
+    <!-- Mobile Menu Script -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const menuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        if (menuButton && mobileMenu) {
+          menuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            // Toggle icon between hamburger and X
+            const svg = menuButton.querySelector('svg path');
+            if (svg) {
+              const isOpen = !mobileMenu.classList.contains('hidden');
+              if (isOpen) {
+                svg.setAttribute('d', 'M6 18L18 6M6 6l12 12'); // X icon
+              } else {
+                svg.setAttribute('d', 'M4 6h16M4 12h16M4 18h16'); // Hamburger icon
+              }
+            }
+          });
+
+          // Close menu when clicking on a link
+          mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+              mobileMenu.classList.add('hidden');
+              const svg = menuButton.querySelector('svg path');
+              if (svg) {
+                svg.setAttribute('d', 'M4 6h16M4 12h16M4 18h16'); // Reset to hamburger
+              }
+            });
+          });
+        }
+      });
+    </script>
 
     <!-- Search Modal (outside header to avoid stacking context issues) -->
     <SearchModal />
