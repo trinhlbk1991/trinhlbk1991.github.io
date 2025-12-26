@@ -18,7 +18,7 @@ interface Props {
 
 const { 
   title, 
-  description = SITE.description,
+  description = t('site.description'),
   image = `${SITE.url}/og-image.png`,
   canonicalURL = new URL(Astro.url.pathname, SITE.url).toString(),
   lang = 'en'
@@ -119,9 +119,6 @@ const langPrefix = lang === 'en' ? '' : `/${lang}`;
           <a href={`${langPrefix}/`} class="text-body-base font-medium text-content-muted hover:text-primary transition-colors">
             {t('nav.home')}
           </a>
-          <a href={`${langPrefix}/archives`} class="text-body-base font-medium text-content-muted hover:text-primary transition-colors">
-            {t('nav.archives')}
-          </a>
           <a href={`${langPrefix}/categories`} class="text-body-base font-medium text-content-muted hover:text-primary transition-colors">
             {t('nav.categories')}
           </a>
@@ -162,9 +159,6 @@ const langPrefix = lang === 'en' ? '' : `/${lang}`;
         <div class="flex flex-col p-6 gap-4">
           <a href={`${langPrefix}/`} class="text-lg font-medium text-content-muted hover:text-primary transition-colors py-2 border-b border-stone-100 dark:border-gray-800">
             {t('nav.home')}
-          </a>
-          <a href={`${langPrefix}/archives`} class="text-lg font-medium text-content-muted hover:text-primary transition-colors py-2 border-b border-stone-100 dark:border-gray-800">
-            {t('nav.archives')}
           </a>
           <a href={`${langPrefix}/categories`} class="text-lg font-medium text-content-muted hover:text-primary transition-colors py-2 border-b border-stone-100 dark:border-gray-800">
             {t('nav.categories')}
@@ -225,7 +219,7 @@ const langPrefix = lang === 'en' ? '' : `/${lang}`;
       <div class="max-w-5xl mx-auto px-6 py-12 flex flex-col md:flex-row justify-between items-center gap-6">
         <div class="text-center md:text-left">
           <span class="text-heading-s font-bold text-content block mb-2">{SITE.title}</span>
-          <p class="text-body-s text-content-muted">{SITE.description}</p>
+          <p class="text-body-s text-content-muted">{t('site.description')}</p>
         </div>
         <div class="flex gap-6">
           <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="text-content-muted hover:text-primary transition-colors">GitHub</a>

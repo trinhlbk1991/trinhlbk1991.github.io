@@ -35,16 +35,15 @@ const langPrefix = lang === 'en' ? '' : `/${lang}`;
           {t('home.welcome')} {SITE.title}
         </span>
         <h1 class="text-5xl md:text-6xl text-content mb-6 font-bold">
-          Technical <span class="text-primary">Insights</span><br />
-          for Modern Developers
+          {t('home.hero.title')} <span class="text-primary">{t('home.hero.titleHighlight')}</span><br />
+          {t('home.hero.subtitle')}
         </h1>
         <p class="text-xl text-content-muted max-w-2xl mx-auto mb-10">
-          Exploring Android, iOS, frontend development, and everything in between. 
-          A geek's journey through code, climbing, and continuous learning.
+          {t('home.hero.description')}
         </p>
         <div class="flex justify-center gap-4 flex-wrap">
           <a href={`${langPrefix}/archives`} class="px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary-hover transition-colors inline-flex items-center gap-2 font-medium">
-            Browse Articles
+            {t('home.hero.browseArticles')}
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>

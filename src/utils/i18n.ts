@@ -7,6 +7,7 @@ export const defaultLang = 'en';
 
 export const ui = {
   en: {
+    'site.description': 'A technical blog managed by a geek who loves climbing',
     'nav.home': 'Home',
     'nav.archives': 'Archives',
     'nav.categories': 'Categories',
@@ -15,6 +16,11 @@ export const ui = {
     'home.welcome': 'Welcome to',
     'home.latest': 'Latest Articles',
     'home.viewAll': 'View all',
+    'home.hero.title': 'Technical',
+    'home.hero.titleHighlight': 'Sharing',
+    'home.hero.subtitle': 'from Another Indie Hacker',
+    'home.hero.description': 'Exploring Android, iOS, frontend development, and everything in between. A geek\'s journey through code, climbing, and continuous learning.',
+    'home.hero.browseArticles': 'Browse Articles',
     'post.readTime': 'min read',
     'post.share': 'Share this article',
     'post.related': 'Related Posts',
@@ -32,6 +38,7 @@ export const ui = {
     'category.viewAllPosts': 'View all posts',
   },
   vi: {
+    'site.description': 'Blog công nghệ của một geek yêu thích leo núi',
     'nav.home': 'Trang chủ',
     'nav.archives': 'Lưu trữ',
     'nav.categories': 'Danh mục',
@@ -40,6 +47,11 @@ export const ui = {
     'home.welcome': 'Chào mừng đến với',
     'home.latest': 'Bài viết mới nhất',
     'home.viewAll': 'Xem tất cả',
+    'home.hero.title': 'Technial',
+    'home.hero.titleHighlight': 'Sharing',
+    'home.hero.subtitle': 'Từ Góc Nhìn Của Một Indie Hacker',
+    'home.hero.description': 'Nơi mình lưu lại và chia sẻ kiến thức và trải nghiệm của bản thân. Hành trình của một geek qua code, leo núi và học hỏi.',
+    'home.hero.browseArticles': 'Xem Bài Viết',
     'post.readTime': 'phút đọc',
     'post.share': 'Chia sẻ bài viết này',
     'post.related': 'Bài viết liên quan',

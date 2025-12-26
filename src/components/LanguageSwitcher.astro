@@ -7,26 +7,31 @@ const { lang } = Astro.props;
 const currentPath = Astro.url.pathname;
 
 let targetPath = '';
-let label = '';
+let flag = '';
+let ariaLabel = '';
 
 if (lang === 'en') {
   // Switch to Vietnamese
-  // If root, go to /vi/
   if (currentPath === '/') {
     targetPath = '/vi/';
   } else {
-    // Otherwise prepend /vi
     targetPath = `/vi${currentPath}`;
   }
-  label = 'VI';
+  flag = '🇻🇳';
+  ariaLabel = 'Switch to Vietnamese';
 } else {
   // Switch to English
-  // Remove /vi prefix
   targetPath = currentPath.replace(/^\/vi/, '') || '/';
-  label = 'EN';
+  flag = '🇺🇸';
+  ariaLabel = 'Switch to English';
 }
 ---
 
-<a href={targetPath} class="text-body-base font-medium text-content-muted hover:text-primary transition-colors uppercase">
-  {label}
+<a 
+  href={targetPath} 
+  class="p-2 rounded-lg text-content-muted hover:text-primary hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors flex items-center justify-center"
+  aria-label={ariaLabel}
+  title={ariaLabel}
+>
+  <span class="text-2xl leading-none">{flag}</span>
 </a>
