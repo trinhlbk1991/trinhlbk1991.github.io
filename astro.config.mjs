@@ -9,6 +9,13 @@ import rehypeSlug from 'rehype-slug';
 export default defineConfig({
   site: 'https://icedtealabs.com',
   output: 'server',
+  i18n: {
+    defaultLocale: "en",
+    locales: ["en", "vi"],
+    routing: {
+      prefixDefaultLocale: false
+    }
+  },
   adapter: cloudflare({
     imageService: 'cloudflare',
     platformProxy: {

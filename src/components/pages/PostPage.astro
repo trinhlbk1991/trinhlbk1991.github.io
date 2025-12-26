@@ -1,0 +1,258 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageViewCounter from '../../components/PageViewCounter.astro';
+import TableOfContents from '../../components/TableOfContents.astro';
+import { SITE } from '../../config';
+import { readingTime } from '../../utils/readingTime';
+import { useTranslations } from '../../utils/i18n';
+import { getPostsByLang, parsePostId } from '../../utils/content';
+
+interface Props {
+  entry: CollectionEntry<'blog'>;
+  lang: 'en' | 'vi';
+}
+
+const { entry, lang } = Astro.props;
+const { Content, headings } = await entry.render();
+const { category, slug } = parsePostId(entry.id);
+const t = useTranslations(lang);
+
+// Check if TOC should be shown
+const showTOC = entry.data.toc !== false && headings.length > 0;
+
+// Calculate reading time
+const readTime = readingTime(entry.body);
+
+// Format date
+const formattedDate = new Date(entry.data.date).toLocaleDateString(lang === 'vi' ? 'vi-VN' : 'en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+
+// Get related posts from same category
+const allPosts = await getPostsByLang(lang);
+const relatedPosts = allPosts
+  .filter((post) => {
+    const { category: postCategory } = parsePostId(post.id);
+    return postCategory === category && post.id !== entry.id;
+  })
+  .slice(0, 3);
+
+// SEO metadata
+const pageTitle = `${entry.data.title} | ${SITE.title}`;
+const pageDescription = entry.data.description || entry.data.title;
+const pageImage = entry.data.image || `${SITE.url}/og-image.png`;
+const langPrefix = lang === 'en' ? '' : `/${lang}`;
+const canonicalURL = `${SITE.url}${langPrefix}/${category}/${slug}/`;
+
+// JSON-LD structured data for SEO
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: entry.data.title,
+  description: pageDescription,
+  image: pageImage,
+  datePublished: entry.data.date.toISOString(),
+  dateModified: entry.data.date.toISOString(),
+  author: {
+    '@type': 'Person',
+    name: SITE.author,
+    url: SITE.url,
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: SITE.title,
+    logo: {
+      '@type': 'ImageObject',
+      url: `${SITE.url}/logo.png`,
+    },
+  },
+  url: canonicalURL,
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': canonicalURL,
+  },
+  keywords: entry.data.tags?.join(', ') || '',
+  articleSection: entry.data.categories?.[0] || category,
+  wordCount: entry.body.split(/\s+/).length,
+  timeRequired: `PT${readTime}M`,
+};
+---
+
+<BaseLayout 
+  title={pageTitle}
+  description={pageDescription}
+  image={pageImage}
+  canonicalURL={canonicalURL}
+  lang={lang}
+>
+  <!-- JSON-LD Structured Data for SEO -->
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} slot="head" />
+  
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Main Content -->
+      <article class={showTOC ? "lg:w-3/4" : "max-w-4xl mx-auto w-full"}>
+        <!-- Breadcrumb -->
+        <nav class="text-sm mb-6 text-content-muted">
+          <a href={`${langPrefix}/`} class="hover:text-primary">{t('nav.home')}</a>
+          <span class="mx-2">/</span>
+          <a href={`${langPrefix}/category/${category}`} class="hover:text-primary capitalize">{category}</a>
+          <span class="mx-2">/</span>
+          <span class="text-content">{entry.data.title}</span>
+        </nav>
+
+        <!-- Article Header -->
+        <header class="mb-8">
+          <h1 class="text-4xl font-bold mb-4 text-content">
+            {entry.data.title}
+          </h1>
+          
+          <div class="flex flex-wrap items-center gap-4 text-sm text-content-muted">
+            <time datetime={entry.data.date.toISOString()}>
+              {formattedDate}
+            </time>
+            <span>•</span>
+            <span>{readTime} {t('post.readTime')}</span>
+            {SITE.pageViews?.enabled && (
+              <>
+                <span>•</span>
+                <PageViewCounter pageKey={`${category}/${slug}`} />
+              </>
+            )}
+            
+            {entry.data.categories && entry.data.categories.length > 0 && (
+              <>
+                <span>•</span>
+                <div class="flex gap-2">
+                  {entry.data.categories.map((cat: string) => (
+                    <a 
+                      href={`${langPrefix}/category/${cat}`}
+                      class="px-2 py-1 bg-primary-light text-primary-hover rounded hover:bg-primary-light capitalize"
+                    >
+                      {cat}
+                    </a>
+                  ))}
+                </div>
+              </>
+            )}
+          </div>
+
+          {entry.data.tags && entry.data.tags.length > 0 && (
+            <div class="mt-4 flex flex-wrap gap-2">
+              {entry.data.tags.map((tag: string) => (
+                <a 
+                  href={`${langPrefix}/tag/${tag}`}
+                  class="text-sm px-3 py-1 bg-surface-2 text-content-muted rounded-full hover:bg-surface-3">
+                  #{tag}
+                </a>
+              ))}
+            </div>
+          )}
+        </header>
+
+        <!-- Article Content -->
+        <div class="prose prose-lg max-w-none mb-12">
+          <Content />
+        </div>
+
+            <!-- Article Footer -->
+        <footer class="border-t pt-8 mt-12">
+      <!-- Share Buttons -->
+      <div class="mb-8">
+        <h3 class="text-lg font-semibold mb-4">{t('post.share')}</h3>
+        <div class="flex gap-4">
+          <a
+            href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(entry.data.title)}&url=${encodeURIComponent(canonicalURL)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-4 py-2 bg-primary text-white rounded hover:bg-primary"
+          >
+            Twitter
+          </a>
+          <a
+            href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(canonicalURL)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-4 py-2 bg-primary-hover text-white rounded hover:bg-primary-hover"
+          >
+            Facebook
+          </a>
+          <a
+            href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(canonicalURL)}&title=${encodeURIComponent(entry.data.title)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-4 py-2 bg-primary text-white rounded hover:bg-primary-hover"
+          >
+            LinkedIn
+          </a>
+        </div>
+      </div>
+
+      <!-- Related Posts -->
+      {relatedPosts.length > 0 && (
+        <div class="mt-12">
+          <h3 class="text-2xl font-bold mb-6">{t('post.related')}</h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {relatedPosts.map((post) => {
+              const { category: postCategory, slug: postSlug } = parsePostId(post.id);
+              return (
+                <article class="border border-surface-3 rounded-lg p-4 hover:shadow-lg transition-shadow bg-surface-1">
+                  <a href={`${langPrefix}/${postCategory}/${postSlug}/`}>
+                    <h4 class="font-semibold text-content mb-2 hover:text-primary">
+                      {post.data.title}
+                    </h4>
+                    <p class="text-sm text-content-muted">
+                      {new Date(post.data.date).toLocaleDateString(lang === 'vi' ? 'vi-VN' : 'en-US', {
+                        year: 'numeric',
+                        month: 'short',
+                        day: 'numeric',
+                      })}
+                    </p>
+                  </a>
+                </article>
+              );
+            })}
+          </div>
+        </div>
+      )}
+
+      <!-- Giscus Comments -->
+      {entry.data.comments !== false && SITE.comments?.enabled && SITE.comments?.provider === 'giscus' && SITE.comments.giscus?.repoId && SITE.comments.giscus?.categoryId && (
+        <div class="mt-12">
+          <h3 class="text-2xl font-bold mb-6 text-content">{t('post.comments')}</h3>
+          <script 
+            src="https://giscus.app/client.js"
+            data-repo={SITE.comments.giscus.repo}
+            data-repo-id={SITE.comments.giscus.repoId}
+            data-category={SITE.comments.giscus.category}
+            data-category-id={SITE.comments.giscus.categoryId}
+            data-mapping={SITE.comments.giscus.mapping}
+            data-strict="0"
+            data-reactions-enabled={SITE.comments.giscus.reactionsEnabled ? "1" : "0"}
+            data-emit-metadata={SITE.comments.giscus.emitMetadata ? "1" : "0"}
+            data-input-position="top"
+            data-theme="preferred_color_scheme"
+            data-lang={lang}
+            crossorigin="anonymous"
+            async
+          >
+          </script>
+        </div>
+      )}
+        </footer>
+      </article>
+
+      <!-- Table of Contents Sidebar -->
+      {showTOC && (
+        <aside class="hidden lg:block lg:w-1/4">
+          <div class="sticky top-24">
+            <TableOfContents headings={headings} />
+          </div>
+        </aside>
+      )}
+    </div>
+  </div>
+</BaseLayout>

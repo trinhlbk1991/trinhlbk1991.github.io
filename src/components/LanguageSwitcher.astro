@@ -1,0 +1,32 @@
+---
+interface Props {
+  lang: 'en' | 'vi';
+}
+
+const { lang } = Astro.props;
+const currentPath = Astro.url.pathname;
+
+let targetPath = '';
+let label = '';
+
+if (lang === 'en') {
+  // Switch to Vietnamese
+  // If root, go to /vi/
+  if (currentPath === '/') {
+    targetPath = '/vi/';
+  } else {
+    // Otherwise prepend /vi
+    targetPath = `/vi${currentPath}`;
+  }
+  label = 'VI';
+} else {
+  // Switch to English
+  // Remove /vi prefix
+  targetPath = currentPath.replace(/^\/vi/, '') || '/';
+  label = 'EN';
+}
+---
+
+<a href={targetPath} class="text-body-base font-medium text-content-muted hover:text-primary transition-colors uppercase">
+  {label}
+</a>

@@ -1,11 +1,11 @@
 ---
-import { getPostsByLang, parsePostId } from '../../utils/content';
-import PostPage from '../../components/pages/PostPage.astro';
+import PostPage from '../../../components/pages/PostPage.astro';
+import { getPostsByLang, parsePostId } from '../../../utils/content';
 
 export const prerender = true;
 
 export async function getStaticPaths() {
-  const blogEntries = await getPostsByLang('en');
+  const blogEntries = await getPostsByLang('vi');
   
   return blogEntries.map((entry) => {
     const { category, slug } = parsePostId(entry.id);
@@ -20,4 +20,4 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 ---
 
-<PostPage entry={entry} lang="en" />
+<PostPage entry={entry} lang="vi" />

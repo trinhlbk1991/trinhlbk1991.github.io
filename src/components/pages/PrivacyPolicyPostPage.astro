@@ -1,0 +1,106 @@
+---
+import { type CollectionEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { SITE } from '../../config';
+import { useTranslations } from '../../utils/i18n';
+
+interface Props {
+  entry: CollectionEntry<'privacy-policy'>;
+  lang: 'en' | 'vi';
+}
+
+const { entry, lang } = Astro.props;
+const { Content } = await entry.render();
+const t = useTranslations(lang);
+const langPrefix = lang === 'en' ? '' : `/${lang}`;
+
+// Extract slug from filename
+const slug = entry.id.replace(/^\d{4}-\d{2}-\d{2}-/, '').replace(/\.md$/, '');
+
+// SEO metadata
+const pageTitle = `${entry.data.title} | ${SITE.title}`;
+const pageDescription = entry.data.description || entry.data.title;
+const pageImage = entry.data.image || `${SITE.url}/og-image.png`;
+const canonicalURL = `${SITE.url}${langPrefix}/privacy-policy/${slug}/`;
+
+// JSON-LD structured data for SEO
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: entry.data.title,
+  description: pageDescription,
+  url: canonicalURL,
+  publisher: {
+    '@type': 'Organization',
+    name: SITE.title,
+    url: SITE.url,
+  },
+};
+---
+
+<BaseLayout 
+  title={pageTitle}
+  description={pageDescription}
+  image={pageImage}
+  canonicalURL={canonicalURL}
+  lang={lang}
+>
+  <!-- JSON-LD Structured Data for SEO -->
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} slot="head" />
+  
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <!-- Main Content -->
+    <article>
+      <!-- Breadcrumb -->
+      <nav class="text-sm mb-6 text-gray-600">
+        <a href={`${langPrefix}/`} class="hover:text-primary">{t('nav.home')}</a>
+        <span class="mx-2">/</span>
+        <a href={`${langPrefix}/privacy-policy`} class="hover:text-primary">Privacy Policy</a>
+        <span class="mx-2">/</span>
+        <span class="text-gray-900">{entry.data.title}</span>
+      </nav>
+
+      <!-- Article Header -->
+      <header class="mb-8">
+        <h1 class="text-4xl font-bold mb-4 text-gray-900">
+          {entry.data.title}
+        </h1>
+        
+        {entry.data.description && (
+          <p class="text-lg text-gray-600">
+            {entry.data.description}
+          </p>
+        )}
+      </header>
+
+      <!-- Featured Image -->
+      {entry.data.image && (
+        <div class="mb-8">
+          <img 
+            src={entry.data.image} 
+            alt={entry.data.title}
+            class="w-full h-auto rounded-lg shadow-lg max-w-md mx-auto"
+          />
+        </div>
+      )}
+
+      <!-- Article Content -->
+      <div class="prose prose-lg max-w-none mb-12">
+        <Content />
+      </div>
+
+      <!-- Footer -->
+      <footer class="border-t pt-8 mt-12 text-center text-gray-600">
+        <p>
+          For questions or concerns, please contact us at 
+          <a href="mailto:trinhlbk1991@gmail.com" class="text-primary hover:underline">
+            trinhlbk1991@gmail.com
+          </a>
+        </p>
+        <p class="mt-4">
+          <a href={`${langPrefix}/`} class="text-primary hover:underline">← Back to Home</a>
+        </p>
+      </footer>
+    </article>
+  </div>
+</BaseLayout>

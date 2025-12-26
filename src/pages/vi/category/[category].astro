@@ -1,11 +1,11 @@
 ---
-import { getPostsByLang, parsePostId } from '../../utils/content';
-import CategoryPage from '../../components/pages/CategoryPage.astro';
+import CategoryPage from '../../../components/pages/CategoryPage.astro';
+import { getPostsByLang, parsePostId } from '../../../utils/content';
 
 export const prerender = true;
 
 export async function getStaticPaths() {
-  const blogEntries = await getPostsByLang('en');
+  const blogEntries = await getPostsByLang('vi');
   
   // Get all unique categories
   const categories = new Set<string>();
@@ -39,4 +39,4 @@ export async function getStaticPaths() {
 const { posts, category } = Astro.props;
 ---
 
-<CategoryPage posts={posts} category={category} lang="en" />
+<CategoryPage posts={posts} category={category} lang="vi" />

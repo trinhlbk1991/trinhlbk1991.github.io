@@ -1,0 +1,24 @@
+---
+import { getCollection } from 'astro:content';
+import PrivacyPolicyPostPage from '../../../components/pages/PrivacyPolicyPostPage.astro';
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  const privacyEntries = await getCollection('privacy-policy');
+  
+  return privacyEntries.map((entry) => {
+    // Extract slug from filename (e.g., '2024-07-24-persona-peek-privacy-policy.md' -> 'persona-peek-privacy-policy')
+    const slug = entry.id.replace(/^\d{4}-\d{2}-\d{2}-/, '').replace(/\.md$/, '');
+    
+    return {
+      params: { slug },
+      props: { entry },
+    };
+  });
+}
+
+const { entry } = Astro.props;
+---
+
+<PrivacyPolicyPostPage entry={entry} lang="vi" />

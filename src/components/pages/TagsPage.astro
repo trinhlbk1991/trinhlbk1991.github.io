@@ -1,0 +1,243 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { SITE } from '../../config';
+import { getPostsByLang, parsePostId } from '../../utils/content';
+import { useTranslations } from '../../utils/i18n';
+
+interface Props {
+  lang: 'en' | 'vi';
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const posts = await getPostsByLang(lang);
+
+// Extract and count tags
+const tagData: Record<string, { count: number; posts: typeof posts }> = {};
+posts.forEach(post => {
+  if (post.data.tags && post.data.tags.length > 0) {
+    post.data.tags.forEach(tag => {
+      if (!tagData[tag]) {
+        tagData[tag] = {
+          count: 0,
+          posts: []
+        };
+      }
+      tagData[tag].count++;
+      tagData[tag].posts.push(post);
+    });
+  }
+});
+
+const tags = Object.keys(tagData).sort();
+const totalPosts = posts.length;
+const totalTags = tags.length;
+
+// Calculate tag popularity for sizing
+const counts = Object.values(tagData).map(tag => tag.count);
+const maxCount = counts.length > 0 ? Math.max(...counts) : 0;
+const minCount = counts.length > 0 ? Math.min(...counts) : 0;
+
+function getTagSize(count: number) {
+  if (maxCount === minCount) return 'text-base';
+  const ratio = (count - minCount) / (maxCount - minCount);
+  if (ratio >= 0.75) return 'text-xl font-bold';
+  if (ratio >= 0.5) return 'text-lg font-semibold';
+  if (ratio >= 0.25) return 'text-base font-medium';
+  return 'text-sm';
+}
+
+function getTagColor(count: number) {
+  if (maxCount === minCount) return 'bg-primary-light text-primary-hover border-primary-light';
+  const ratio = (count - minCount) / (maxCount - minCount);
+  if (ratio >= 0.75) return 'bg-primary text-white border-primary';
+  if (ratio >= 0.5) return 'bg-primary text-white border-primary';
+  if (ratio >= 0.25) return 'bg-primary-light text-primary-hover border-primary-light';
+  return 'bg-surface-2 text-content-muted border-surface-3';
+}
+
+const langPrefix = lang === 'en' ? '' : `/${lang}`;
+---
+
+<BaseLayout 
+  title={`Tags | ${SITE.title}`}
+  description="Explore blog posts by tags and topics"
+  lang={lang}
+>
+  <div class="max-w-5xl mx-auto px-6 py-12">
+    <header class="text-center mb-12">
+      <h1 class="text-4xl font-bold text-content mb-4">{t('nav.tags')}</h1>
+      <p class="text-lg text-content-muted">
+        Discover content through {totalTags} tags across {totalPosts} posts
+      </p>
+      <div class="w-24 h-1 bg-primary mx-auto mt-6"></div>
+    </header>
+
+    {tags.length > 0 ? (
+      <div class="space-y-8">
+        <!-- Tag Cloud -->
+        <section>
+          <h2 class="text-2xl font-bold text-content mb-6">Tag Cloud</h2>
+          <div class="flex flex-wrap gap-3 justify-center">
+            {tags.map(tag => {
+              const data = tagData[tag];
+              return (
+                <button 
+                  class={`tag-pill inline-flex items-center gap-2 px-4 py-2 rounded-full border transition-all hover:shadow-md ${getTagColor(data.count)} ${getTagSize(data.count)}`}
+                  data-tag={tag}
+                >
+                  <span class="uppercase">#{tag}</span>
+                  <span class="text-xs opacity-75">
+                    {data.count}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+        </section>
+
+<!-- Tag Details Modal/Section -->
+        <section id="tag-details" class="hidden">
+          <div class="bg-surface-1 p-6 rounded-lg border border-surface-3">
+            <div class="flex items-center justify-between mb-6">
+              <h2 class="text-2xl font-bold text-content">
+                Posts tagged with <span id="selected-tag" class="text-primary uppercase"></span>
+              </h2>
+              <button id="close-tag-details" class="text-content-muted hover:text-content transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            
+            <div id="tag-posts" class="space-y-4">
+              <!-- Posts will be inserted here by JavaScript -->
+            </div>
+          </div>
+        </section>
+      </div>
+    ) : (
+      <div class="text-center py-12">
+        <div class="text-content-subtle mb-4">
+          <svg class="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
+          </svg>
+        </div>
+        <h3 class="text-lg font-medium text-content mb-2">No tags found</h3>
+        <p class="text-content-muted">Posts with tags will appear here.</p>
+      </div>
+    )}
+  </div>
+
+  <script define:vars={{ tagData, langPrefix, lang }}>
+    document.addEventListener('DOMContentLoaded', function() {
+      const tagPills = document.querySelectorAll('.tag-pill');
+      const tagDetails = document.getElementById('tag-details');
+      const selectedTagElement = document.getElementById('selected-tag');
+      const tagPostsContainer = document.getElementById('tag-posts');
+      const closeButton = document.getElementById('close-tag-details');
+      
+      function showTagDetails(tag) {
+        const data = tagData[tag];
+        if (!data) return;
+        
+        selectedTagElement.textContent = `#${tag}`;
+        
+        // Clear previous posts
+        tagPostsContainer.innerHTML = '';
+        
+        // Sort posts by date (newest first)
+        const sortedPosts = data.posts.sort((a, b) => new Date(b.data.date) - new Date(a.data.date));
+        
+        // Create post elements
+        sortedPosts.forEach(post => {
+          const postElement = document.createElement('article');
+          postElement.className = 'flex gap-6 p-4 rounded-lg border border-surface-3 bg-surface-1 hover:shadow-md hover:border-primary-light transition-all duration-200 group';
+          
+          // Parse ID manually since we are in client-side script
+          const parts = post.id.split('/');
+          let category, slug;
+          if (parts.length >= 3) {
+             category = parts[1];
+             slug = parts.slice(2).join('/').replace(/\.md$/, '');
+          } else {
+             category = parts[0];
+             slug = parts.slice(1).join('/').replace(/\.md$/, '');
+          }
+
+          const postUrl = `${langPrefix}/${category}/${slug}/`;
+          
+          const postDate = new Date(post.data.date);
+          const day = postDate.getDate().toString().padStart(2, '0');
+          const month = postDate.toLocaleDateString(lang === 'vi' ? 'vi-VN' : 'en-US', { month: 'short' });
+          const isoDate = postDate.toISOString();
+          
+          postElement.innerHTML = `
+            <div class="flex-shrink-0 w-16 text-center">
+              <time datetime="${isoDate}" class="text-sm text-content-muted font-medium">
+                <div class="text-lg font-bold text-primary">${day}</div>
+                <div class="text-xs uppercase tracking-wide">${month}</div>
+              </time>
+            </div>
+            
+            <div class="flex-grow min-w-0">
+              <div class="flex items-start justify-between gap-4 mb-2">
+                <a href="${postUrl}" class="text-lg font-semibold text-content hover:text-primary transition-colors group-hover:text-primary">
+                  ${post.data.title}
+                </a>
+                ${post.data.categories && post.data.categories.length > 0 ? `
+                  <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary-light text-primary-hover shrink-0">
+                    ${post.data.categories[0]}
+                  </span>
+                ` : ''}
+              </div>
+              
+              ${(post.data.summary || post.data.description) ? `
+                <p class="text-content-muted text-sm leading-relaxed line-clamp-2">
+                  ${post.data.summary || post.data.description}
+                </p>
+              ` : ''}
+              
+              ${post.data.tags && post.data.tags.length > 0 ? `
+                <div class="flex flex-wrap gap-1 mt-2">
+                  ${post.data.tags.slice(0, 4).map(t => 
+                    `<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-surface-2 text-content-muted">#${t}</span>`
+                  ).join('')}
+                  ${post.data.tags.length > 4 ? `
+                    <span class="text-xs text-content-subtle px-2 py-0.5">+${post.data.tags.length - 4} more</span>
+                  ` : ''}
+                </div>
+              ` : ''}
+            </div>
+          `;
+          
+          tagPostsContainer.appendChild(postElement);
+        });
+        
+        tagDetails.classList.remove('hidden');
+        tagDetails.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+      
+      function hideTagDetails() {
+        tagDetails.classList.add('hidden');
+      }
+      
+      // Add click handlers to tag pills
+      tagPills.forEach(element => {
+        element.addEventListener('click', function() {
+          const tag = this.getAttribute('data-tag');
+          showTagDetails(tag);
+        });
+      });
+      
+      closeButton.addEventListener('click', hideTagDetails);
+      
+      // Close on escape key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          hideTagDetails();
+        }
+      });
+    });
+  </script>
+</BaseLayout>

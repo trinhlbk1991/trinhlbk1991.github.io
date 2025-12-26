@@ -1,17 +1,17 @@
 import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
-import { SITE } from '../config';
+import { SITE } from '../../config';
 import type { APIRoute } from 'astro';
-import { parsePostId } from '../utils/content';
+import { parsePostId } from '../../utils/content';
 
 export const GET: APIRoute = async (context) => {
   const posts = await getCollection('blog');
-
-  // Filter for English posts and sort by date
+  
+  // Filter for Vietnamese posts and sort by date
   const sortedPosts = posts
     .filter(post => {
       const { lang } = parsePostId(post.id);
-      return lang === 'en';
+      return lang === 'vi';
     })
     .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
@@ -21,8 +21,8 @@ export const GET: APIRoute = async (context) => {
     site: context.site ?? SITE.url,
     items: sortedPosts.map((post) => {
       const { category, slug } = parsePostId(post.id);
-      const link = `/${category}/${slug}/`;
-
+      const link = `/vi/${category}/${slug}/`;
+      
       return {
         title: post.data.title,
         pubDate: post.data.date,
@@ -32,7 +32,7 @@ export const GET: APIRoute = async (context) => {
         author: SITE.author,
       };
     }),
-    customData: `<language>en-us</language>`,
+    customData: `<language>vi-vn</language>`,
     stylesheet: '/rss-styles.xsl',
   });
 };

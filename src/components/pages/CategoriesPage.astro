@@ -1,0 +1,114 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { SITE } from '../../config';
+import { getPostsByLang, parsePostId } from '../../utils/content';
+import { useTranslations } from '../../utils/i18n';
+
+interface Props {
+  lang: 'en' | 'vi';
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const posts = await getPostsByLang(lang);
+
+// Extract categories and count posts
+const categoryData: Record<string, { count: number; latestPost: Date }> = {};
+
+posts.forEach(post => {
+  // Get category from folder structure (e.g., 'android/post.md' -> 'android')
+  const { category } = parsePostId(post.id);
+  
+  if (!categoryData[category]) {
+    categoryData[category] = {
+      count: 0,
+      latestPost: post.data.date,
+    };
+  }
+  
+  categoryData[category].count++;
+  
+  // Track latest post date
+  if (post.data.date > categoryData[category].latestPost) {
+    categoryData[category].latestPost = post.data.date;
+  }
+});
+
+// Convert to array and sort by post count (descending)
+const categories = Object.entries(categoryData)
+  .map(([name, data]) => ({ name, ...data }))
+  .sort((a, b) => b.count - a.count);
+
+const totalPosts = posts.length;
+const langPrefix = lang === 'en' ? '' : `/${lang}`;
+---
+
+<BaseLayout 
+  title={`Categories | ${SITE.title}`}
+  description="Browse blog posts organized by categories and topics"
+  lang={lang}
+>
+  <div class="max-w-6xl mx-auto px-4 py-12">
+    <header class="text-center mb-12">
+      <h1 class="text-4xl font-bold text-content mb-4">{t('nav.categories')}</h1>
+      <p class="text-lg text-content-muted">
+        Explore {totalPosts} posts across {categories.length} categories
+      </p>
+      <div class="w-24 h-1 bg-primary mx-auto mt-6"></div>
+    </header>
+
+    <!-- Grid Layout -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {categories.map((category) => {
+        const latestDate = category.latestPost.toLocaleDateString(lang === 'vi' ? 'vi-VN' : 'en-US', {
+          year: 'numeric',
+          month: 'short',
+        });
+        
+        return (
+          <a 
+            href={`${langPrefix}/category/${category.name}/`}
+            class="block bg-surface-1 border border-surface-3 rounded-lg p-6 transition-all duration-200 hover:shadow-md hover:border-surface-3 group"
+          >
+            <div class="flex items-start justify-between">
+              <!-- Category Info -->
+              <div class="flex-1">
+                <h3 class="text-lg font-semibold text-content mb-2 capitalize group-hover:text-primary transition-colors">
+                  {category.name}
+                </h3>
+                
+                <p class="text-sm text-content-muted mb-1">
+                  {category.count} {category.count === 1 ? t('category.article') : t('category.articles')}
+                </p>
+                
+                <p class="text-xs text-content-subtle">
+                  Latest: {latestDate}
+                </p>
+              </div>
+
+              <!-- Arrow Icon -->
+              <div class="flex-shrink-0 ml-4">
+                <svg class="w-5 h-5 text-content-subtle group-hover:text-primary group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </div>
+            </div>
+          </a>
+        );
+      })}
+    </div>
+
+    <!-- Empty State -->
+    {categories.length === 0 && (
+      <div class="text-center py-16">
+        <div class="text-content-subtle mb-4">
+          <svg class="w-20 h-20 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-medium text-content mb-2">No categories found</h3>
+        <p class="text-content-subtle">Posts will appear here when categories are added.</p>
+      </div>
+    )}
+  </div>
+</BaseLayout>

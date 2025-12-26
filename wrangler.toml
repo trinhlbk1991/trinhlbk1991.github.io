@@ -15,7 +15,7 @@ pages_build_output_dir = "./dist"
 # For local development, create a preview namespace:
 #    npx wrangler kv:namespace create PAGEVIEWS --preview
 # Then add preview_id:
- kv_namespaces = [
+# kv_namespaces = [
 #   { 
 #     binding = "PAGEVIEWS", 
 #     id = "YOUR_PRODUCTION_KV_ID",

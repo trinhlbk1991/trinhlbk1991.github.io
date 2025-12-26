@@ -4,25 +4,32 @@ import Modal from '../components/Modal.astro';
 import ThemeToggle from '../components/ThemeToggle.astro';
 import SearchButton from '../components/SearchButton.astro';
 import SearchModal from '../components/SearchModal.astro';
+import LanguageSwitcher from '../components/LanguageSwitcher.astro';
 import { SITE } from '../config';
+import { useTranslations } from '../utils/i18n';
 
 interface Props {
   title: string;
   description?: string;
   image?: string;
   canonicalURL?: string;
+  lang?: 'en' | 'vi';
 }
 
 const { 
   title, 
   description = SITE.description,
   image = `${SITE.url}/og-image.png`,
-  canonicalURL = new URL(Astro.url.pathname, SITE.url).toString()
+  canonicalURL = new URL(Astro.url.pathname, SITE.url).toString(),
+  lang = 'en'
 } = Astro.props;
+
+const t = useTranslations(lang);
+const langPrefix = lang === 'en' ? '' : `/${lang}`;
 ---
 
 <!doctype html>
-<html lang="en" class="scroll-smooth">
+<html lang={lang} class="scroll-smooth">
   <head>
     <meta charset="utf-8" />
     
@@ -102,34 +109,36 @@ const {
     <header class="sticky top-0 z-50 w-full border-b border-stone-100 dark:border-gray-800 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md transition-all">
       <nav class="max-w-5xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
         <!-- Logo -->
-        <a href="/" class="flex items-center gap-2 sm:gap-3 text-lg sm:text-heading-m font-bold text-content hover:text-primary transition-colors">
+        <a href={`${langPrefix}/`} class="flex items-center gap-2 sm:gap-3 text-lg sm:text-heading-m font-bold text-content hover:text-primary transition-colors">
           <img src="/logo.png" alt="Iced Tea Labs Logo" class="h-8 w-8 sm:h-10 sm:w-10 object-contain" />
           <span class="hidden sm:inline">{SITE.title}</span>
         </a>
 
         <!-- Desktop Navigation -->
         <div class="hidden md:flex items-center gap-6 lg:gap-8">
-          <a href="/" class="text-body-base font-medium text-content-muted hover:text-primary transition-colors">
-            Home
+          <a href={`${langPrefix}/`} class="text-body-base font-medium text-content-muted hover:text-primary transition-colors">
+            {t('nav.home')}
           </a>
-          <a href="/archives" class="text-body-base font-medium text-content-muted hover:text-primary transition-colors">
-            Archives
+          <a href={`${langPrefix}/archives`} class="text-body-base font-medium text-content-muted hover:text-primary transition-colors">
+            {t('nav.archives')}
           </a>
-          <a href="/categories" class="text-body-base font-medium text-content-muted hover:text-primary transition-colors">
-            Categories
+          <a href={`${langPrefix}/categories`} class="text-body-base font-medium text-content-muted hover:text-primary transition-colors">
+            {t('nav.categories')}
           </a>
-          <a href="/tags" class="text-body-base font-medium text-content-muted hover:text-primary transition-colors">
-            Tags
+          <a href={`${langPrefix}/tags`} class="text-body-base font-medium text-content-muted hover:text-primary transition-colors">
+            {t('nav.tags')}
           </a>
-          <a href="/about" class="text-body-base font-medium text-content-muted hover:text-primary transition-colors">
-            About
+          <a href={`${langPrefix}/about`} class="text-body-base font-medium text-content-muted hover:text-primary transition-colors">
+            {t('nav.about')}
           </a>
+          <LanguageSwitcher lang={lang} />
           <SearchButton />
           <ThemeToggle />
         </div>
 
         <!-- Mobile Navigation -->
         <div class="flex md:hidden items-center gap-3">
+          <LanguageSwitcher lang={lang} />
           <SearchButton />
           <ThemeToggle />
           <!-- Mobile Menu Button -->
@@ -151,20 +160,20 @@ const {
         class="hidden md:hidden fixed inset-0 top-16 sm:top-20 bg-white dark:bg-gray-900 z-40 overflow-y-auto"
       >
         <div class="flex flex-col p-6 gap-4">
-          <a href="/" class="text-lg font-medium text-content-muted hover:text-primary transition-colors py-2 border-b border-stone-100 dark:border-gray-800">
-            Home
+          <a href={`${langPrefix}/`} class="text-lg font-medium text-content-muted hover:text-primary transition-colors py-2 border-b border-stone-100 dark:border-gray-800">
+            {t('nav.home')}
           </a>
-          <a href="/archives" class="text-lg font-medium text-content-muted hover:text-primary transition-colors py-2 border-b border-stone-100 dark:border-gray-800">
-            Archives
+          <a href={`${langPrefix}/archives`} class="text-lg font-medium text-content-muted hover:text-primary transition-colors py-2 border-b border-stone-100 dark:border-gray-800">
+            {t('nav.archives')}
           </a>
-          <a href="/categories" class="text-lg font-medium text-content-muted hover:text-primary transition-colors py-2 border-b border-stone-100 dark:border-gray-800">
-            Categories
+          <a href={`${langPrefix}/categories`} class="text-lg font-medium text-content-muted hover:text-primary transition-colors py-2 border-b border-stone-100 dark:border-gray-800">
+            {t('nav.categories')}
           </a>
-          <a href="/tags" class="text-lg font-medium text-content-muted hover:text-primary transition-colors py-2 border-b border-stone-100 dark:border-gray-800">
-            Tags
+          <a href={`${langPrefix}/tags`} class="text-lg font-medium text-content-muted hover:text-primary transition-colors py-2 border-b border-stone-100 dark:border-gray-800">
+            {t('nav.tags')}
           </a>
-          <a href="/about" class="text-lg font-medium text-content-muted hover:text-primary transition-colors py-2 border-b border-stone-100 dark:border-gray-800">
-            About
+          <a href={`${langPrefix}/about`} class="text-lg font-medium text-content-muted hover:text-primary transition-colors py-2 border-b border-stone-100 dark:border-gray-800">
+            {t('nav.about')}
           </a>
         </div>
       </div>
@@ -221,10 +230,10 @@ const {
         <div class="flex gap-6">
           <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="text-content-muted hover:text-primary transition-colors">GitHub</a>
           <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="text-content-muted hover:text-primary transition-colors">Twitter</a>
-          <a href="/rss.xml" class="text-content-muted hover:text-primary transition-colors">RSS</a>
+          <a href={`${langPrefix}/rss.xml`} class="text-content-muted hover:text-primary transition-colors">RSS</a>
         </div>
         <p class="text-caption text-content-subtle">
-          © {new Date().getFullYear()} {SITE.author}. All rights reserved.
+          © {new Date().getFullYear()} {SITE.author}. {t('footer.rights')}
         </p>
       </div>
     </footer>

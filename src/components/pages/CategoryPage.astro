@@ -1,0 +1,153 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { SITE } from '../../config';
+import { useTranslations } from '../../utils/i18n';
+import { parsePostId } from '../../utils/content';
+
+interface Props {
+  posts: any[];
+  category: string;
+  lang: 'en' | 'vi';
+}
+
+const { posts, category, lang } = Astro.props;
+const t = useTranslations(lang);
+
+// SEO metadata
+const pageTitle = `${category.charAt(0).toUpperCase() + category.slice(1)} | ${SITE.title}`;
+const pageDescription = `Browse all ${category} articles and tutorials`;
+const langPrefix = lang === 'en' ? '' : `/${lang}`;
+const canonicalURL = `${SITE.url}${langPrefix}/category/${category}/`;
+
+// Get post count
+const postCount = posts.length;
+
+// Group posts by year
+const postsByYear = posts.reduce((acc: any, post: any) => {
+  const year = post.data.date.getFullYear();
+  if (!acc[year]) {
+    acc[year] = [];
+  }
+  acc[year].push(post);
+  return acc;
+}, {} as Record<number, typeof posts>);
+
+const years = Object.keys(postsByYear).map(Number).sort((a, b) => b - a);
+---
+
+<BaseLayout 
+  title={pageTitle}
+  description={pageDescription}
+  canonicalURL={canonicalURL}
+  lang={lang}
+>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <!-- Page Header -->
+    <header class="mb-12">
+      <nav class="text-sm mb-6 text-content-muted">
+        <a href={`${langPrefix}/`} class="hover:text-primary">{t('nav.home')}</a>
+        <span class="mx-2">/</span>
+        <a href={`${langPrefix}/categories`} class="hover:text-primary">{t('nav.categories')}</a>
+        <span class="mx-2">/</span>
+        <span class="text-content capitalize">{category}</span>
+      </nav>
+
+      <h1 class="text-4xl font-bold mb-4 text-content capitalize">
+        {category}
+      </h1>
+      <p class="text-lg text-content-muted">
+        {postCount} {postCount === 1 ? t('category.article') : t('category.articles')} {t('category.inCategory')}
+      </p>
+    </header>
+
+    <!-- Posts List -->
+    <div class="space-y-12">
+      {years.map(year => (
+        <section class="relative">
+          <div class="sticky top-20 z-10 mb-8">
+            <h2 class="text-3xl font-bold text-content bg-surface-1/80 backdrop-blur-sm py-2 border-b-2 border-primary">
+              {year}
+              <span class="ml-3 text-lg font-normal text-content-subtle">
+                ({postsByYear[year].length} {postsByYear[year].length === 1 ? 'post' : 'posts'})
+              </span>
+            </h2>
+          </div>
+          
+          <div class="space-y-4">
+            {postsByYear[year].map((post: any) => {
+              const { category: postCategory, slug } = parsePostId(post.id);
+              const postUrl = `${langPrefix}/${postCategory}/${slug}/`;
+
+              return (
+                <article class="flex gap-6 p-4 rounded-lg border border-surface-3 hover:shadow-md hover:border-primary-light transition-all duration-200 group">
+                  <div class="flex-shrink-0 w-16 text-center">
+                    <time 
+                      datetime={post.data.date.toISOString()}
+                      class="text-sm text-content-subtle font-medium"
+                    >
+                      <div class="text-lg font-bold text-primary">
+                        {post.data.date.getDate().toString().padStart(2, '0')}
+                      </div>
+                      <div class="text-xs uppercase tracking-wide">
+                        {post.data.date.toLocaleDateString(lang === 'vi' ? 'vi-VN' : 'en-US', { month: 'short' })}
+                      </div>
+                    </time>
+                  </div>
+                  
+                  <div class="flex-grow min-w-0">
+                    <div class="flex items-start justify-between gap-4 mb-2">
+                      <a 
+                        href={postUrl}
+                        class="text-lg font-semibold text-content hover:text-primary transition-colors group-hover:text-primary"
+                      >
+                        {post.data.title}
+                      </a>
+                      {post.data.categories && post.data.categories.length > 0 && (
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary-light text-primary-hover shrink-0">
+                          {post.data.categories[0]}
+                        </span>
+                      )}
+                    </div>
+                    
+                    {(post.data.summary || post.data.description) && (
+                      <p class="text-content-muted text-sm leading-relaxed line-clamp-2">
+                        {post.data.summary || post.data.description}
+                      </p>
+                    )}
+                    
+                    {post.data.tags && post.data.tags.length > 0 && (
+                      <div class="flex flex-wrap gap-1 mt-2">
+                        {post.data.tags.slice(0, 4).map((tag: string) => (
+                          <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-surface-2 text-content-muted">
+                            #{tag}
+                          </span>
+                        ))}
+                        {post.data.tags.length > 4 && (
+                          <span class="text-xs text-content-subtle px-2 py-0.5">
+                            +{post.data.tags.length - 4} more
+                          </span>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+        </section>
+      ))}
+    </div>
+
+    <!-- Footer Navigation -->
+    <footer class="mt-12 pt-8 border-t">
+      <div class="flex justify-between items-center">
+        <a href={`${langPrefix}/categories`} class="text-primary hover:underline">
+          ← {t('category.viewAllCategories')}
+        </a>
+        <a href={`${langPrefix}/archives`} class="text-primary hover:underline">
+          {t('category.viewAllPosts')} →
+        </a>
+      </div>
+    </footer>
+  </div>
+</BaseLayout>
