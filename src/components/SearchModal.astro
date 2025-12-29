@@ -9,17 +9,17 @@
     <!-- Backdrop with Blur -->
     <div
         id="searchBackdrop"
-        class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-md transition-all"
+        class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm transition-all"
         aria-hidden="true"
     >
     </div>
 
     <!-- Spotlight-style Modal Content -->
-    <div class="flex min-h-screen items-center justify-center p-4">
+    <div class="flex min-h-screen items-center justify-center p-4 sm:p-6">
         <div class="relative w-full max-w-3xl">
             <!-- Spotlight Search Box -->
             <div
-                class="relative bg-white dark:bg-gray-800 rounded-3xl shadow-2xl overflow-hidden"
+                class="relative bg-white dark:bg-gray-800 rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden"
             >
                 <!-- Search Input -->
                 <div
@@ -29,11 +29,11 @@
                         type="text"
                         id="headerSearchInput"
                         placeholder="Search posts..."
-                        class="w-full px-6 py-6 pl-16 pr-16 text-2xl text-gray-900 dark:text-gray-100 bg-transparent border-0 focus:ring-0 outline-none placeholder-gray-400"
+                        class="w-full px-4 sm:px-6 py-4 sm:py-6 pl-12 sm:pl-16 pr-12 sm:pr-16 text-lg sm:text-2xl text-gray-900 dark:text-gray-100 bg-transparent border-0 focus:ring-0 outline-none placeholder-gray-400"
                         autofocus
                     />
                     <svg
-                        class="absolute left-6 top-1/2 transform -translate-y-1/2 w-7 h-7 text-gray-400"
+                        class="absolute left-4 sm:left-6 top-1/2 transform -translate-y-1/2 w-5 h-5 sm:w-7 sm:h-7 text-gray-400"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -49,7 +49,7 @@
                     <button
                         id="closeSearch"
                         type="button"
-                        class="absolute right-6 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
+                        class="absolute right-4 sm:right-6 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
                         aria-label="Close search"
                     >
                         <svg
@@ -86,7 +86,7 @@
             </div>
 
             <!-- Keyboard Shortcuts Hint -->
-            <div class="mt-4 text-center">
+            <div class="mt-4 text-center hidden sm:block">
                 <p class="text-sm text-gray-400 dark:text-gray-500">
                     <kbd
                         class="px-2 py-1 bg-gray-700 dark:bg-gray-600 text-white rounded text-xs"
@@ -228,7 +228,7 @@
 
     // Initialize on page load
     function setupHeaderSearch() {
-        const searchToggle = document.getElementById("searchToggle");
+        const searchToggles = document.querySelectorAll(".search-toggle");
         const searchModal = document.getElementById("searchModal");
         const searchBackdrop = document.getElementById("searchBackdrop");
         const closeSearch = document.getElementById("closeSearch");
@@ -237,7 +237,7 @@
         ) as HTMLInputElement;
         const searchResults = document.getElementById("headerSearchResults");
 
-        if (!searchToggle || !searchModal || !searchInput) return;
+        if (searchToggles.length === 0 || !searchModal || !searchInput) return;
 
         // Open modal
         const openModal = () => {
@@ -258,8 +258,10 @@
             if (searchResults) searchResults.innerHTML = "";
         };
 
-        // Open search modal
-        searchToggle.addEventListener("click", openModal);
+        // Add click event listeners to all search toggle buttons
+        searchToggles.forEach(toggle => {
+            toggle.addEventListener("click", openModal);
+        });
 
         // Close button
         closeSearch?.addEventListener("click", closeModal);

@@ -4,9 +4,8 @@
 
 <!-- Search Icon Button -->
 <button
-  id="searchToggle"
+  class="search-toggle text-body-base font-medium text-content-muted hover:text-primary transition-colors p-2"
   type="button"
-  class="text-body-base font-medium text-content-muted hover:text-primary transition-colors p-2"
   aria-label="Open search"
 >
   <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -202,14 +201,14 @@
   
   // Initialize on page load
   function setupHeaderSearch() {
-    const searchToggle = document.getElementById('searchToggle');
+    const searchToggles = document.querySelectorAll(".search-toggle");
     const searchModal = document.getElementById('searchModal');
     const searchBackdrop = document.getElementById('searchBackdrop');
     const closeSearch = document.getElementById('closeSearch');
     const searchInput = document.getElementById('headerSearchInput') as HTMLInputElement;
     const searchResults = document.getElementById('headerSearchResults');
     
-    if (!searchToggle || !searchModal || !searchInput) return;
+    if (searchToggles.length === 0 || !searchModal || !searchInput) return;
     
     // Open modal
     const openModal = () => {
@@ -229,8 +228,10 @@
       if (searchResults) searchResults.innerHTML = '';
     };
     
-    // Open search modal
-    searchToggle.addEventListener('click', openModal);
+    // Add click event listeners to all search toggle buttons
+    searchToggles.forEach(toggle => {
+      toggle.addEventListener('click', openModal);
+    });
     
     // Close button
     closeSearch?.addEventListener('click', closeModal);
