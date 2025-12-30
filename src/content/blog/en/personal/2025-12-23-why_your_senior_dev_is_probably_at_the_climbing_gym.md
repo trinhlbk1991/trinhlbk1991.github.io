@@ -3,7 +3,7 @@ title: "Why Your Senior Dev is Probably at the Climbing Gym"
 date: 2025-12-23
 categories: ["personal"]
 tags: ["Personal", "Climbing"]
-summary: "Bouldering isn't just a sport—it's physical programming. Here's why so many software engineers are obsessed with climbing gyms."
+summary: "Bouldering isn't just a sport - it's physical programming. Here's why so many software engineers are obsessed with climbing gyms."
 toc: true
 comments: true
 image: "/assets/images/personal/me-climbing.jpg"
@@ -11,7 +11,7 @@ image: "/assets/images/personal/me-climbing.jpg"
 
 It's been a while since my last post on [Iced Tea Labs](https://icedtealabs.com).
 
-Yep, I started bouldering at one of the coolest climbing gyms in Ho Chi Minh City—[Vertical District](https://verticaldistrict.vn/)! And I noticed something funny: the place was packed with *software engineers*.
+Yep, I started bouldering at one of the coolest climbing gyms in Ho Chi Minh City - [Vertical District](https://verticaldistrict.vn/)! And I noticed something funny: the place was packed with *software engineers*.
 
 At first, I was curious why. But the more I climbed (and fell off the wall), the more I realized that bouldering isn't just a sport... it's **physical programming**.
 
@@ -30,7 +30,7 @@ Just like in software, a problem is defined clearly with a set of requirements a
 
 <img src="/assets/images/personal/ifsc.jpg"  alt="Tapes on hold to indicate how many limbs climber have to use on specific holds for the starting position"/>
 
-When you're new to bouldering, you might look at a problem and try to muscle through it—like a Junior Dev trying to brute-force a solution. But a Senior Dev knows that brute force burns your resources (your muscles) in no time. You have to find the algorithm.
+When you're new to bouldering, you might look at a problem and try to muscle through it - like a Junior Dev trying to brute-force a solution. But a Senior Dev knows that brute force burns your resources (your muscles) in no time. You have to find the algorithm.
 
 ## The "Beta"
 
@@ -43,7 +43,7 @@ Surprisingly, the steps to solving a boulder problem are nearly identical to deb
 4.  **Patch the bug:** "Okay, this time I'll toe hook to prevent barndooring."
 5.  **Re-deploy:** Try the climb again.
 
-And when you can't figure out why you can't send the route? The climbing community is always there to share the beta with you—just like looking for help on StackOverflow.
+And when you can't figure out why you can't send the route? The climbing community is always there to share the beta with you - just like looking for help on StackOverflow.
 
 <img src="/assets/images/personal/community.webp"  alt="The supportive and destructive community in climbing is one of the best"/>
 
@@ -61,7 +61,7 @@ Besides the similarities between climbing and coding, I think the reason so many
 
 In software, we build features, fix bugs, and refactor code, often waiting weeks for user feedback.
 
-In bouldering, the feedback is instant and undeniable! You either held the rock, or you fell. Gravity doesn't care about your edge cases. When you finally reach the top, you get a hit of dopamine that is remarkably similar to fixing a bug that's been plaguing you for a week—but you also get to feel it in your muscles.
+In bouldering, the feedback is instant and undeniable! You either held the rock, or you fell. Gravity doesn't care about your edge cases. When you finally reach the top, you get a hit of dopamine that is remarkably similar to fixing a bug that's been plaguing you for a week - but you also get to feel it in your muscles.
 
 ***
 
