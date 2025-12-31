@@ -70,6 +70,28 @@ const langPrefix = lang === "en" ? "" : `/${lang}`;
             }
         </script>
 
+        <!-- Google Analytics (GA4) - Exclude localhost -->
+        {SITE.ga4MeasurementId && (
+            <>
+                <script is:inline define:vars={{ measurementId: SITE.ga4MeasurementId }}>
+                    // Only load Google Analytics if not on localhost
+                    if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+                        // Load gtag.js
+                        var script = document.createElement('script');
+                        script.async = true;
+                        script.src = 'https://www.googletagmanager.com/gtag/js?id=' + measurementId;
+                        document.head.appendChild(script);
+
+                        // Initialize gtag
+                        window.dataLayer = window.dataLayer || [];
+                        function gtag(){dataLayer.push(arguments);}
+                        gtag('js', new Date());
+                        gtag('config', measurementId);
+                    }
+                </script>
+            </>
+        )}
+
         <!-- SEO Meta Tags -->
         <title>{title}</title>
         <meta name="description" content={description} />
