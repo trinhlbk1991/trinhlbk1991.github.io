@@ -1,80 +1,81 @@
 ---
-title: "Firebase vs. Supabase: A Developer’s Honest Comparison"
+title: "Firebase vs. Supabase: Review Thiệt Tình Từ Một Mobile Dev"
 date: 2025-12-30
-categories: ["indie-hacker",]
-tags: ["Indie Hacker", "Firebase", "Supabase"]
-summary: "Honest take of a mobile developer on which you should choose: Firebase or Supabase"
+categories: ["indie-hacker"]
+tags: ["Indie Hacker", "Firebase", "Supabase", "Backend"]
+summary: "Góc nhìn thật lòng của một mobile developer về cuộc chiến Backend: Nên chọn 'Ma thuật' của Google hay 'Sức mạnh' của SQL?"
 toc: true
 comments: true
 image: "/assets/images/indie-hacker/firebase_supabase.jpeg"
 ---
 
-If you’re a mobile developer like me (Android, iOS, Flutter 🙋‍♂️), you know the drill: 
-1. You have a killer app idea. 
-2. You open your IDE. 
-3. And then you hit the wall: **The Backend.**
+Nếu anh em là mobile developer như mình (Android, iOS, hay Flutter 🙋‍♂️), chắc hẳn ai cũng thuộc lòng cái kịch bản này:
+1. Nảy số được một ý tưởng app triệu đô (hoặc ít nhất là mình nghĩ vậy).
+2. Mở IDE lên, code khí thế.
+3. Và rồi đâm sầm vào bức tường mang tên: **The Backend.**
 
-And the simpliest solution for this is: **"Just use Firebase."** It’s Google’s magic box. You throw JSON at it, and it syncs to everyone’s phone instantly.
+Giải pháp "mì ăn liền" phổ biến nhất suốt bao năm qua luôn là: **"Cứ dùng Firebase đi."** Nó giống như chiếc hộp ma thuật của Google vậy. Cứ ném cục JSON vào, bùm, dữ liệu được sync qua điện thoại của user trong một nốt nhạc.
 
-But lately, there’s a new challenger on the block: **Supabase**. It calls itself the "Open Source Firebase Alternative," and it’s built on top of the mighty PostgreSQL.
+Nhưng dạo gần đây, một thanh niên mới đã xuất hiện: **Supabase**. Tự xưng là "Mã nguồn mở thay thế cho Firebase", được xây dựng trên nền tảng **PostgreSQL** thần thánh.
 
-So, for my next app (maybe a major update for [Buckist](https://buckist.app)?), which one am I picking? Let’s break down the **Firebase vs. Supabase** battle, just based on my personal needs and experience.
+Vậy cho dự án tiếp theo (có thể là bản update lớn cho [Buckist](https://buckist.app) chẳng hạn?), mình sẽ chọn phe nào? Hãy cùng mổ xẻ cuộc chiến **Firebase vs. Supabase**, dựa trên những trải nghiệm "đau thương" của bản thân mình.
 
-<img src="/assets/images/indie-hacker/firebase_supabase.jpeg"  alt="Who's gonna win my choice? Firebase or Supabase?"/>
+<img src="/assets/images/indie-hacker/firebase_supabase.jpeg"  alt="Kèo này ai thắng? Firebase hay Supabase?"/>
 
-## 1. The Database: Firestore (NoSQL) vs. PostgreSQL (SQL)
-This is the biggest difference, and it changes how you code entirely.
+## 1. Database: Firestore (NoSQL) vs. PostgreSQL (SQL)
+Đây là sự khác biệt lớn nhất, và nó thay đổi hoàn toàn tư duy code của anh em.
 
-**Firebase (Firestore)** is a NoSQL document store. Think of it like a giant, messy folder of JSON files.
-*   **The Good:** It is incredibly fast to set up. You don't need to plan your schema.
-*   **The Bad:** Querying is limited. Want to filter data by *"Users who bought shoes AND live in Vietnam AND signed up last week"*? Good luck! Also the supported queries are very limited.
+**Firebase (Firestore)** là NoSQL document store. Hãy tưởng tượng nó giống như một cái folder khổng lồ chứa một đống file JSON lộn xộn.
+*   **Ngon:** Setup nhanh chóng. Không cần đau đầu thiết kế schema trước. Cứ code tới đâu phang data tới đó.
+*   **Dở:** Query cực kỳ tù túng. Muốn lọc data kiểu *"Tìm user đã mua giày VÀ sống ở Việt Nam VÀ đăng ký tuần trước"*? Goodluck! Hỗ trợ query của Firestore khá hạn chế, đôi khi bắt buộc mình phải duplicate data mới query được.
 
-**Supabase** is just **PostgreSQL** with a nice UI.
-*   **The Good:** It’s standard SQL. You can use `JOINS`, foreign keys, and complex filters. If your app has related data (like *myMoney* has Categories -> Transactions), SQL keeps your data sane.
-*   **The Bad:** You actually have to design your database schema upfront. Honestly I just put this to compare with Firestore, design database schema first is crucial skill, you should master it anyway.
+**Supabase** thực chất là **PostgreSQL** với giao diện thân thiện.
+*   **Ngon:** Chuẩn SQL. Anh em tha hồ dùng `JOINS`, khóa ngoại (foreign keys), và các query phức tạp. Nếu app có dữ liệu quan hệ (ví dụ như app *myMoney* của mình: Danh mục -> Giao dịch -> Ngân sách), SQL sẽ giúp cho dữ liệu luôn "ngay hàng thẳng lối".
+*   **Dở:** Phải thiết kế Database Schema (CSDL) ngay từ đầu. Mà thú thật, dù dùng cái nào thì kỹ năng thiết kế DB cũng là skill sinh tồn, anh em nên master nó nếu không muốn phải loay hoay viết migration scripts!
 
-**Verdict:** If you need relational data, Supabase wins. If you need unstructured logs, Firebase wins. I faced many problems with Firestore and querying data, so I'll pick Supabase.
+**Chốt:** Nếu cần dữ liệu có quan hệ chặt chẽ (Relational Data), Supabase thắng. Nếu cần lưu logs hoặc dữ liệu phi cấu trúc, Firebase vẫn ngon. Cá nhân mình đã gặp quá nhiều kiếp nạn khi query trên Firestore, nên 1 vé cho Supabase.
 
-## 2. Pricing: The "3AM Billing Anxiety"
-This is the main reason I'm going to migrate from Firebase to Supabase.
+## 2. Pricing: "Nỗi Lo Hoá Đơn Lúc 3 Giờ Sáng"
+Đây là lý do chính khiến mình quyết định "quay xe" sang Supabase.
 
-**Firebase** charges based on **Reads and Writes**.
-If you write a bad loop in your code that accidentally reads your database 10,000 times a second, you will wake up to a massive bill. It’s a pay-per-use model that punishes inefficient code.
-Personal experience: I have to cache database on the client side and limit user interval requests to avoid exceed calls to Firestore - this cause bad experience to users to be honest.
+**Firebase** tính tiền dựa trên **Reads và Writes** (Lượt đọc/ghi).
+Nếu anh em lỡ tay viết một vòng lặp "ngáo" khiến app đọc database 10.000 lần mỗi giây, anh em sẽ tỉnh dậy với một cái hoá đơn dài như sớ táo quân. Mô hình chi phí kiểu này bắt bạn phải cực kỳ kỹ lưỡng trong việc tối ưu code truy vấn tới Firebase, nếu không, mọi bài học đều phải trả giá bằng tiền!
 
-**Supabase** charges based on **Storage Size**.
-They generally don't care how many times you read the data. If your database fits in 500MB, the price is predictable, whether you have 10 users or 10,000 users.
+*Trải nghiệm đau thương:* Để tiết kiệm tiền, mình đã phải cache database xuống client và giới hạn số lần user được request lên server. Điều này ảnh hưởng nghiêm trọng tới trải nghiệm người dùng, làm họ cảm thấy app chạy không mượt mà :(
 
-<img src="/assets/images/indie-hacker/firebase_bill.jpeg"  alt="I do my best just to minimize number of calls to Firestore."/>
+**Supabase** tính tiền dựa trên **Dung lượng lưu trữ (Storage Size)**.
+Họ không quan tâm anh em đọc bao nhiêu lần. Nếu database của anh em chỉ nặng 500MB, thì giá tiền vẫn thế dù có 10 user hay 10.000 user. Dễ thở hơn nhiều!
 
-**Verdict:** I hate to sacrify user experience to save money. Supabase to go.
+<img src="/assets/images/indie-hacker/firebase_bill.jpeg"  alt="Cố gắng tối ưu code chỉ để không bị Google trừ tiền oan."/>
 
-## 3. Realtime Capabilities: Magic vs. Sockets
-If you are building a chat app, a live score tracker, or a multiplayer game, **Firebase** is still the king.
-*   **Firebase:** Realtime is in its DNA. Data updates on the client side in milliseconds with zero configuration.
-*   **Supabase:** Uses PostgreSQL's replication log to send updates via WebSockets. It works well, but you have to manually "subscribe" to tables. It feels slightly more "manual" than Firebase’s magic.
+**Chốt:** Mình ghét việc phải hy sinh trải nghiệm user chỉ để tiết kiệm tiền server. Một vé nữa cho Supabase.
 
-**Verdict:** This should be a tie. Choose based on your need.
+## 3. Đồng bộ dữ liệu real time
+Nếu anh em làm app Chat, app theo dõi tỉ số bóng đá, hay game multiplayer, **Firebase** vẫn là lựa chọn tối ưu.
+*   **Firebase:** Realtime luôn là điểm ăn tiền. Data thay đổi phát là client nhận được ngay, gần như zero-config.
+*   **Supabase:** Sử dụng replication log của PostgreSQL để bắn update qua WebSockets. Nó hoạt động ổn, nhưng anh em phải tự tay "subscribe" vào từng table. Cảm giác hơi thủ công so với độ tiện lợi của Firebase.
 
-## 4. Vendor Lock-In: Open Source vs. Google
-*   **Firebase:** It is proprietary. You are locked into the Google Cloud ecosystem. If Google shuts down a feature (which, let’s be honest, [Google does often](https://killedbygoogle.com)), you are stuck.
-*   **Supabase:** It is **Open Source**. You can self-host Supabase on your own server (DigitalOcean, AWS, or a Raspberry Pi) using Docker. You own your data.
+**Chốt kèo:** Kẻ tám lạng người nửa cân. Tuỳ nhu cầu mà chọn thôi (Chat thì Firebase, còn lại Supabase vẫn cân tốt).
 
-## Final Verdict: Which Backend Should You Choose in 2025?
+## 4. Vendor Lock-In: Mã nguồn mở vs. Google
+*   **Firebase:** Hàng độc quyền. Anh em bị trói chặt vào hệ sinh thái Google Cloud. Nếu Google buồn buồn "khai tử" một tính năng nào đó (mà Google thì [nổi tiếng vụ đem con bỏ chợ này rồi](https://killedbygoogle.com)), thì anh em chỉ có nước khóc tiếng Mán.
+*   **Supabase:** Là **Open Source**. Anh em có thể tự host Supabase trên server riêng (DigitalOcean, AWS, hay thậm chí con Raspberry Pi ở nhà) bằng Docker. Dữ liệu là của mình, mình thích làm gì thì làm.
 
-After building apps with both, here is my rule of thumb:
+## Tổng Kết: Chọn Phe Nào Năm 2025?
 
-**Stick with Firebase if:**
-*   You are building an MVP or a simple prototype this weekend.
-*   You need the absolute best offline support for mobile apps.
-*   You heavily rely on Google Analytics and Crashlytics.
+Sau khi lăn lộn với cả hai ông lớn này, đây là quy tắc nằm lòng của mình:
 
-**Switch to Supabase if:**
-*   Your app relies on **relational data** (e.g., Customers, Orders, Inventory).
-*   You are worried about unpredictable billing spikes.
-*   You want the power of **SQL** to run complex queries without hacking your code.
+**Vẫn dùng Firebase nếu:**
+*   Cần làm MVP hoặc prototype nhanh gọn lẹ cuối tuần này.
+*   Cần tính năng Offline mode xịn nhất cho mobile app.
+*   Phụ thuộc nhiều vào Google Analytics và Crashlytics.
 
-## What I’m Using
-For my simple tools, I still love Firebase. But for my more complex personal finance apps like **myMoney**, I’m finding myself reaching for Supabase. The peace of mind of having a structured SQL database—and a predictable bill—is worth the switch.
+**Chuyển sang Supabase ngay nếu:**
+*   App có dữ liệu quan hệ phức tạp (Khách hàng, Đơn hàng, Kho bãi...).
+*   Sợ đau tim vì hoá đơn server tăng đột biến.
+*   Muốn dùng sức mạnh của **SQL** để query thoải mái mà không cần hack code nát bét.
 
-What about you? Let me know in the comments!
+## Mình Đang Dùng Gì?
+Với mấy tool nhỏ nhỏ, side project mình vẫn dùng Firebase. Nhưng với các app quản lý tài chính phức tạp hơn như **myMoney**, mình đang dần chuyển sang Supabase. Cảm giác yên tâm khi có một SQL database chuẩn chỉnh - và một hoá đơn tiền server dễ đoán - thực sự đáng để thay đổi.
+
+Còn anh em? Team Google hay Team Open Source?
