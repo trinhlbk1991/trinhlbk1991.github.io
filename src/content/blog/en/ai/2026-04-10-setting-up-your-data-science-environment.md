@@ -6,7 +6,7 @@ tags: ["AI", "Machine Learning", "Python", "Jupyter", "Setup"]
 summary: "Goodbye Android Studio, hello Jupyter. Here's how to set up your data science environment — and why the workflow feels so alien to mobile developers."
 toc: true
 comments: true
-image: "/assets/images/ai/android-to-ai.jpg"
+image: "/assets/images/ai/android-to-ai.png"
 ---
 
 Day 2 of my [Android-to-AI journey](/ai/2026-04-09-why-im-leaving-android-for-ai/), and today we're doing what every developer does at the start of a new project: **setting up the environment**.

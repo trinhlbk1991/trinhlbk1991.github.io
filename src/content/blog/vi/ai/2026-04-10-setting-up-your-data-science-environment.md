@@ -6,7 +6,7 @@ tags: ["AI", "Machine Learning", "Python", "Jupyter", "Setup"]
 summary: "Tạm biệt Android Studio, xin chào Jupyter. Hướng dẫn setup môi trường Data Science — và tại sao workflow này khiến dân mobile dev 'ngơ ngác' lúc đầu."
 toc: true
 comments: true
-image: "/assets/images/ai/android-to-ai.jpg"
+image: "/assets/images/ai/android-to-ai.png"
 ---
 
 Ngày thứ 2 trong hành trình [Android-sang-AI](/vi/ai/2026-04-09-why-im-leaving-android-for-ai/) của mình, và hôm nay chúng ta làm cái việc mà dev nào cũng phải làm khi bắt đầu project mới: **setup môi trường**.

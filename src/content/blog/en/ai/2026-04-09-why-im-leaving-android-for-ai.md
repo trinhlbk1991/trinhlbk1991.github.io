@@ -6,7 +6,7 @@ tags: ["AI", "Machine Learning", "Career Change", "Android"]
 summary: "After 10+ years of Android development, I'm diving into AI and Machine Learning. Here's why, how, and what my 6-month roadmap looks like."
 toc: true
 comments: true
-image: "/assets/images/ai/android-to-ai.jpg"
+image: "/assets/images/ai/android-to-ai.png"
 ---
 
 If you've been following [Iced Tea Labs](https://icedtealabs.com) for a while, you know me as the Android guy. Custom Views, Dagger, Hilt, Clean Architecture, RxJava — that's been my world for over a decade. I've shipped apps at Lazada, built side projects like [Buckist](https://buckist.app) and myMoney, and honestly? Android development has been *very* good to me.
