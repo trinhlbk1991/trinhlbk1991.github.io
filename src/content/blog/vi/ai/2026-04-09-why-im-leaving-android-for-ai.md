@@ -1,6 +1,6 @@
 ---
 title: "Tại Sao Mình Rời Bỏ 'Vùng An Toàn' Android Để Lao Vào AI"
-date: 2026-04-09
+date: 2026-04-09T08:00:00
 categories: ["ai"]
 tags: ["AI", "Machine Learning", "Career Change", "Android"]
 summary: "Sau hơn 10 năm gắn bó với Android, mình quyết định lao đầu vào AI và Machine Learning. Đây là lý do, cách thức, và lộ trình 6 tháng của mình."

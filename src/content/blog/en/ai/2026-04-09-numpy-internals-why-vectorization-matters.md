@@ -1,6 +1,6 @@
 ---
 title: "NumPy Internals: Why Vectorization Matters"
-date: 2026-04-09
+date: 2026-04-09T14:00:00
 categories: ["ai"]
 tags: ["AI", "Machine Learning", "NumPy", "Python", "Performance"]
 summary: "What 10 years of Java taught me about why NumPy is fast — and it's not what you think. Deep dive into memory layout, vectorization, and the paradigm shift from loops to arrays."

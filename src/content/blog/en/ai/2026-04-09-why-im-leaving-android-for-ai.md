@@ -1,6 +1,6 @@
 ---
 title: "Why I'm Leaving Comfortable Android Development for AI"
-date: 2026-04-09
+date: 2026-04-09T08:00:00
 categories: ["ai"]
 tags: ["AI", "Machine Learning", "Career Change", "Android"]
 summary: "After 10+ years of Android development, I'm diving into AI and Machine Learning. Here's why, how, and what my 6-month roadmap looks like."

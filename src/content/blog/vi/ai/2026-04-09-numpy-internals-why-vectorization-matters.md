@@ -1,6 +1,6 @@
 ---
 title: "NumPy Internals: Tại Sao Vectorization Quan Trọng"
-date: 2026-04-09
+date: 2026-04-09T14:00:00
 categories: ["ai"]
 tags: ["AI", "Machine Learning", "NumPy", "Python", "Performance"]
 summary: "10 năm kinh nghiệm Java đã dạy tôi điều gì về lý do NumPy nhanh — và đó không phải là những gì bạn nghĩ. Đào sâu vào memory layout, vectorization, và sự thay đổi paradigm từ loops sang arrays."
