@@ -1,12 +1,12 @@
 ---
 title: "Tại Sao Mình Rời Bỏ 'Vùng An Toàn' Android Để Lao Vào AI"
-date: 2026-04-09
+date: 2026-04-09T08:00:00
 categories: ["ai"]
 tags: ["AI", "Machine Learning", "Career Change", "Android"]
 summary: "Sau hơn 10 năm gắn bó với Android, mình quyết định lao đầu vào AI và Machine Learning. Đây là lý do, cách thức, và lộ trình 6 tháng của mình."
 toc: true
 comments: true
-image: "/assets/images/ai/android-to-ai.jpg"
+image: "/assets/images/ai/android-to-ai.png"
 ---
 
 Anh em theo dõi [Iced Tea Labs](https://icedtealabs.com) chắc biết mình là dân Android "nòi". Custom Views, Dagger, Hilt, Clean Architecture, RxJava — đó là thế giới của mình suốt hơn chục năm qua. Mình đã ship app ở Lazada, build side projects như [Buckist](https://buckist.app) và myMoney, và thú thật? Cuộc sống Android dev rất ổn, rất "chill".
