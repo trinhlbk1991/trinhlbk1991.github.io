@@ -1,12 +1,12 @@
 ---
-title: "NumPy Internals: Why Vectorization Matters (Day 2)"
-date: 2026-04-10
+title: "NumPy Internals: Why Vectorization Matters"
+date: 2026-04-09
 categories: ["ai"]
 tags: ["AI", "Machine Learning", "NumPy", "Python", "Performance"]
 summary: "What 10 years of Java taught me about why NumPy is fast — and it's not what you think. Deep dive into memory layout, vectorization, and the paradigm shift from loops to arrays."
 toc: true
 comments: true
-image: "/assets/images/ai/android-to-ai.png"
+image: "/assets/images/ai/numpy-vectorization-hero.png"
 ---
 
 Day 2 of my [Android-to-AI journey](/ai/2026-04-09-why-im-leaving-android-for-ai/), and we're diving straight into the deep end: **NumPy internals**.
@@ -124,6 +124,9 @@ Modern CPUs have multiple levels of cache (L1, L2, L3). When you access memory, 
 
 This is why NumPy is fast: **it's not fighting the hardware**.
 
+![Memory layout comparison: Java ArrayList with scattered Integer objects and pointer chains vs NumPy ndarray with contiguous memory block](/assets/images/ai/numpy-memory-layout-comparison.png)
+*Java ArrayList stores Integer objects scattered across the heap with pointer indirection. NumPy stores raw bytes in a contiguous block — no pointers, no overhead.*
+
 ## Memory Layout Deep Dive: C-Order vs Fortran-Order
 
 Here's something that caught me off guard. NumPy arrays can be stored in two different orders:
@@ -188,6 +191,9 @@ F-order, col sum: 0.044s  ← Now F-order wins.
 
 **Analogy for Android devs:** This is like how RecyclerView is optimized for vertical scrolling by default. If you try to scroll horizontally without configuring it properly, performance tanks. NumPy's memory layout is the same principle — optimize for your access pattern.
 
+![C-order vs Fortran-order memory layout: showing how a 2D array is stored in row-major vs column-major order](/assets/images/ai/numpy-c-order-vs-fortran.png)
+*Row-major (C-order) stores rows contiguously — fast for row operations. Column-major (Fortran-order) stores columns contiguously — fast for column operations.*
+
 ### Understanding Strides
 
 NumPy uses **strides** to navigate arrays without copying data:
@@ -244,6 +250,9 @@ for i in range(len(a)):
 BLAS (Basic Linear Algebra Subprograms) and LAPACK are Fortran libraries from the 1970s-1990s that have been optimized by generations of performance engineers. They're so good that even modern libraries use them.
 
 **Analogy for Android devs:** This is like Android's RenderThread offloading UI drawing to the GPU. Your main thread says "draw this list" and the RenderThread handles the optimized execution with GPU shaders. NumPy says "add these arrays" and BLAS handles the optimized execution with SIMD instructions.
+
+![SIMD vectorization: showing how a single CPU instruction processes multiple array elements simultaneously](/assets/images/ai/numpy-simd-vectorization.png)
+*SIMD (Single Instruction, Multiple Data) processes 4-8 elements per CPU cycle. Instead of adding numbers one by one, the CPU adds entire vectors in parallel.*
 
 ### The Python Overhead Problem
 
@@ -333,6 +342,9 @@ result = a + b  # b broadcasts to each row
 ```
 
 **My mental model:** Think of it like CSS flexbox alignment. The dimensions stretch to fill the larger shape, but only if the smaller dimension is 1 or they match exactly.
+
+![NumPy broadcasting visualization: showing how shapes (3,1) and (1,4) broadcast to (3,4)](/assets/images/ai/numpy-broadcasting-visual.png)
+*Broadcasting stretches dimensions to match. The (3,1) array expands horizontally, the (1,4) array expands vertically, producing a (3,4) result without copying data.*
 
 ## Views vs Copies: The Subtle Bugs
 
@@ -472,6 +484,9 @@ Method 1 takes **1.2 seconds** for 100×100 matrices. Extrapolating to 1000×100
 Method 3 does 1000×1000 in **0.02 seconds**.
 
 That's a **60,000x speedup**. Not a typo.
+
+![Benchmark chart: bar graph comparing execution times of 4 matrix multiplication methods](/assets/images/ai/numpy-benchmark-chart.png)
+*Python loops: 20 minutes. NumPy @: 0.02 seconds. The difference isn't incremental — it's transformational.*
 
 ## The Mental Model Shift
 

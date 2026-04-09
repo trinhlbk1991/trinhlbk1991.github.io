@@ -1,12 +1,12 @@
 ---
-title: "NumPy Internals: Tại Sao Vectorization Quan Trọng (Ngày 2)"
-date: 2026-04-10
+title: "NumPy Internals: Tại Sao Vectorization Quan Trọng"
+date: 2026-04-09
 categories: ["ai"]
 tags: ["AI", "Machine Learning", "NumPy", "Python", "Performance"]
 summary: "10 năm kinh nghiệm Java đã dạy tôi điều gì về lý do NumPy nhanh — và đó không phải là những gì bạn nghĩ. Đào sâu vào memory layout, vectorization, và sự thay đổi paradigm từ loops sang arrays."
 toc: true
 comments: true
-image: "/assets/images/ai/android-to-ai.png"
+image: "/assets/images/ai/numpy-vectorization-hero.png"
 ---
 
 Ngày 2 của [hành trình Android-to-AI](/vi/ai/2026-04-09-why-im-leaving-android-for-ai/), và chúng ta sẽ đi thẳng vào phần sâu: **NumPy internals**.
@@ -124,6 +124,9 @@ CPU hiện đại có nhiều cấp cache (L1, L2, L3). Khi bạn truy cập mem
 
 Đây là lý do NumPy nhanh: **nó không chống lại hardware**.
 
+![So sánh memory layout: Java ArrayList với Integer objects rải rác và pointer chains vs NumPy ndarray với contiguous memory block](/assets/images/ai/numpy-memory-layout-comparison.png)
+*Java ArrayList lưu Integer objects rải rác trong heap với pointer indirection. NumPy lưu raw bytes trong block liền kề — không pointers, không overhead.*
+
 ## Memory Layout Deep Dive: C-Order vs Fortran-Order
 
 Đây là điều làm tôi bất ngờ. NumPy arrays có thể được lưu theo hai thứ tự khác nhau:
@@ -188,6 +191,9 @@ F-order, col sum: 0.044s  ← Bây giờ F-order thắng.
 
 **Ví dụ cho Android devs:** Giống như RecyclerView được optimize cho vertical scrolling mặc định. Nếu bạn cố scroll ngang mà không config đúng, performance tệ. Memory layout của NumPy cũng nguyên tắc đó — optimize cho access pattern của bạn.
 
+![C-order vs Fortran-order memory layout: cho thấy cách 2D array được lưu theo row-major vs column-major](/assets/images/ai/numpy-c-order-vs-fortran.png)
+*Row-major (C-order) lưu rows liền kề — nhanh cho row operations. Column-major (Fortran-order) lưu columns liền kề — nhanh cho column operations.*
+
 ### Hiểu Về Strides
 
 NumPy dùng **strides** để navigate arrays mà không copy data:
@@ -244,6 +250,9 @@ for i in range(len(a)):
 BLAS (Basic Linear Algebra Subprograms) và LAPACK là Fortran libraries từ những năm 1970-1990 đã được optimize bởi nhiều thế hệ performance engineers. Chúng tốt đến mức ngay cả modern libraries cũng sử dụng chúng.
 
 **Ví dụ cho Android devs:** Giống như RenderThread của Android offload UI drawing cho GPU. Main thread của bạn nói "draw this list" và RenderThread xử lý execution được optimize với GPU shaders. NumPy nói "cộng các arrays này" và BLAS xử lý execution được optimize với SIMD instructions.
+
+![SIMD vectorization: cho thấy cách một CPU instruction xử lý nhiều array elements cùng lúc](/assets/images/ai/numpy-simd-vectorization.png)
+*SIMD (Single Instruction, Multiple Data) xử lý 4-8 elements mỗi CPU cycle. Thay vì cộng từng số một, CPU cộng toàn bộ vectors song song.*
 
 ### Vấn Đề Python Overhead
 
@@ -333,6 +342,9 @@ result = a + b  # b broadcasts cho mỗi row
 ```
 
 **Mental model của tôi:** Nghĩ về nó như CSS flexbox alignment. Các dimensions stretch để fill shape lớn hơn, nhưng chỉ khi dimension nhỏ hơn là 1 hoặc chúng match chính xác.
+
+![NumPy broadcasting visualization: cho thấy cách shapes (3,1) và (1,4) broadcast thành (3,4)](/assets/images/ai/numpy-broadcasting-visual.png)
+*Broadcasting stretch dimensions để match. Array (3,1) mở rộng ngang, array (1,4) mở rộng dọc, tạo ra kết quả (3,4) mà không copy data.*
 
 ## Views vs Copies: Những Bugs Tinh Vi
 
@@ -472,6 +484,9 @@ Method 1 mất **1.2 giây** cho matrices 100×100. Ngoại suy đến 1000×100
 Method 3 làm 1000×1000 trong **0.02 giây**.
 
 Đó là **tăng tốc 60,000 lần**. Không phải lỗi đánh máy.
+
+![Benchmark chart: biểu đồ cột so sánh thời gian thực thi của 4 phương pháp nhân ma trận](/assets/images/ai/numpy-benchmark-chart.png)
+*Python loops: 20 phút. NumPy @: 0.02 giây. Sự khác biệt không phải tăng dần — mà là biến đổi hoàn toàn.*
 
 ## Sự Thay Đổi Mental Model
 
