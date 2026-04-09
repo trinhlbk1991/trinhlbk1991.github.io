@@ -118,16 +118,23 @@
     @apply text-content;
   }
 
-  .prose :where(code):not(:where([class~="not-prose"] *)) {
-    @apply text-content bg-surface-2;
+  /* Inline code only (not inside pre blocks) */
+  .prose :where(code):not(:where(pre code, [class~="not-prose"] *)) {
+    @apply text-content bg-surface-2 px-1.5 py-0.5 rounded text-sm;
   }
 
   .prose :where(blockquote):not(:where([class~="not-prose"] *)) {
     @apply text-content-muted border-l-primary;
   }
 
+  /* Code blocks - let Shiki handle the styling */
   .prose :where(pre):not(:where([class~="not-prose"] *)) {
-    @apply bg-surface-2;
+    @apply rounded-lg overflow-x-auto;
+  }
+
+  /* Ensure code inside pre doesn't get extra styling */
+  .prose :where(pre code):not(:where([class~="not-prose"] *)) {
+    @apply bg-transparent p-0 text-sm;
   }
 
   .prose :where(thead):not(:where([class~="not-prose"] *)) {
