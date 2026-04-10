@@ -15,6 +15,9 @@ If NumPy is like Android's `ByteBuffer` (low-level, fast, precise), then pandas 
 
 Let's dive in.
 
+![Pandas DataFrame Concept](/assets/images/ai/pandas-dataframe-concept.png)
+*Diagram: A DataFrame visualized as a spreadsheet-like table with labeled rows (index) and columns, showing how data is organized in a 2D structure with mixed data types.*
+
 ## Why Pandas? The 10-Second Pitch
 
 Here's the reality of data science work: **80% of your time is spent cleaning and preparing data.** Not training models. Not tuning hyperparameters. Just wrestling with missing values, inconsistent formats, and joining datasets that don't quite match up.
@@ -53,6 +56,9 @@ A **DataFrame** is like a `RecyclerView.Adapter` backed by a database table:
 | `df.merge()` | Room `@Relation` / JOIN |
 
 But unlike `RecyclerView.Adapter`, pandas lets you transform the entire dataset in one operation without writing loops. It's declarative, not imperative.
+
+![Pandas vs Android Mental Model](/assets/images/ai/pandas-android-mental-model.png)
+*Diagram: Side-by-side comparison showing Android RecyclerView.Adapter architecture (ViewHolder, onBindViewHolder loop) vs pandas DataFrame operations (vectorized transformations). Highlight the "loop vs no-loop" difference.*
 
 ## Series: The Building Block
 
@@ -180,6 +186,9 @@ As an Android developer, I think of it this way:
 - `.iloc[]` is like `list.subList(0, 2)` — exclusive end
 - `.loc[]` is like SQL's `BETWEEN` — inclusive on both ends
 
+![loc vs iloc Visual Comparison](/assets/images/ai/pandas-loc-vs-iloc.png)
+*Diagram: A DataFrame with both integer positions (0, 1, 2) and string labels ('a', 'b', 'c') as index. Show how .loc['a':'b'] selects rows 'a' AND 'b' (inclusive), while .iloc[0:2] selects positions 0 and 1 only (exclusive end). Use color highlighting to show selected vs excluded rows.*
+
 ## Filtering: The Query Method
 
 Here's where pandas feels like writing Room queries:
@@ -290,6 +299,9 @@ Under the hood, `groupby()` follows the **split-apply-combine** pattern:
 
 This is exactly how I think about RecyclerView's `ItemDecoration` with section headers — you split items by category, apply formatting to each section, and combine them into the final list.
 
+![Split-Apply-Combine Pattern](/assets/images/ai/pandas-split-apply-combine.png)
+*Diagram: Three-step visualization showing: (1) SPLIT - a DataFrame being divided into colored groups by region (APAC=blue, EU=green, NA=orange), (2) APPLY - each group having sum() applied independently, (3) COMBINE - results merged back into a single summary DataFrame. Use arrows to show the flow.*
+
 ```python
 # Custom aggregation with apply
 def revenue_per_user(group):
@@ -340,6 +352,9 @@ merged = pd.merge(users, orders, on='user_id', how='outer')
 | `'left'` | LEFT OUTER JOIN | `@Relation` with nullable result |
 | `'right'` | RIGHT OUTER JOIN | (less common) |
 | `'outer'` | FULL OUTER JOIN | (manual implementation) |
+
+![DataFrame Merge Types](/assets/images/ai/pandas-merge-types.png)
+*Diagram: Four Venn diagram-style illustrations showing INNER (intersection only), LEFT (all left + matching right), RIGHT (all right + matching left), and OUTER (union of both) joins. Use two overlapping circles representing 'users' and 'orders' tables, with colored regions showing which records are included in each join type.*
 
 ## Method Chaining: Pandas' Fluent API
 
@@ -411,6 +426,9 @@ def fast_calculate(df):
 
 That's a **3000x speedup**. Never use `iterrows()` for computation.
 
+![Vectorized vs Loop Performance](/assets/images/ai/pandas-vectorization-benchmark.png)
+*Chart: Horizontal bar chart comparing iterrows() (45,000ms, red/slow) vs vectorized operations (15ms, green/fast) on 1 million rows. Include a "3000x faster" callout. The visual scale should make the dramatic difference obvious.*
+
 ### Memory Efficiency with dtypes
 
 Pandas infers dtypes when reading data, but it's often wasteful:
@@ -451,6 +469,9 @@ df['region'].memory_usage(deep=True)  # 100300 bytes (88% reduction!)
 ```
 
 This is exactly like Android's string resources — store once, reference many times.
+
+![dtype Memory Optimization](/assets/images/ai/pandas-dtype-memory.png)
+*Diagram: Side-by-side memory blocks comparison. Left side shows "Before optimization" with large int64 blocks (8 bytes each) and bloated object strings. Right side shows "After optimization" with compact int8 (1 byte), bool (1 byte), and category dtype (integer + small lookup table). Include percentage savings: "88% memory reduction".*
 
 ## Common Gotchas
 
