@@ -6,7 +6,8 @@ tags: ["Indie Hacker", "AI", "Claude Code", "Cursor", "Developer Tools", "Produc
 summary: "I spent 30 days using both Cursor and Claude Code on real side projects. Here's what no one tells you: you don't have to pick one — and the real question isn't which is better, it's knowing when to use which."
 toc: true
 comments: true
-image: "/assets/images/indie-hacker/cursor-vs-claude-code.png"
+image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1200&q=80"
+imageAlt: "Code on a computer screen — Photo by Ilya Pavlov on Unsplash"
 ---
 
 There's a war happening in developer Twitter right now, and it's exhausting.
